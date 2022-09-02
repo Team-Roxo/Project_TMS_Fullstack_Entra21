@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -7,9 +8,16 @@ import { Observable } from 'rxjs';
 })
 export class LoginserviceService implements CanActivate {
 
+  user!:string
+  TMSLoginAPI:string = "https://imagina-uma-api-bem-daora-aqui.com"
   succeed!:boolean
 
-  constructor(private router:Router) {}
+  constructor(private router:Router, private http:HttpClient) {}
+
+  logging(user:string, password:string){
+    this.user = user
+    return this.http.get<any>(this.TMSLoginAPI+user+password)
+  }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
 

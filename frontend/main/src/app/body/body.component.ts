@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginComponent } from '../login/login.component';
 import { LoginserviceService } from '../loginservice.service';
 
 @Component({
@@ -8,16 +9,14 @@ import { LoginserviceService } from '../loginservice.service';
 })
 export class BodyComponent implements OnInit {
 
-  name:string = "Admin"
-
-  constructor(private login:LoginserviceService) { }
+  constructor(public loginService:LoginserviceService) { }
 
   ngOnInit(): void {
   }
 
   sair(){
 
-    this.login.succeed = false;
+    this.loginService.succeed = false;
 
   }
 
