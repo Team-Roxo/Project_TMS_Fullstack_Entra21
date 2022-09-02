@@ -21,6 +21,7 @@ import { ShipQtComponent } from './ship-qt/ship-qt.component';
 import { RctQtComponent } from './rct-qt/rct-qt.component';
 import { EditComponent } from './edit/edit.component';
 import { AboutComponent } from './about/about.component';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { AboutComponent } from './about/about.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
