@@ -10,6 +10,10 @@ import { LoginserviceService } from '../loginservice.service';
 })
 export class LoginComponent implements OnInit {
 
+  emailReg!:string
+  nameReg!:string
+  passwordReg!:string
+
   user!:string
   password!:string
 
@@ -20,17 +24,32 @@ export class LoginComponent implements OnInit {
   }
 
   submit():void{
-    this.loginService.succeed = true
-    this.router.navigateByUrl('home');
-    this.loginService.logging(this.user, this.password)
-    .pipe(
-      catchError((error)=>{
-        return of(['Deu erro parcero é isso', 'tu não vai encontrar detalhe aqui','pode sair já...', error, 'só pq sou teu amigo vou deixar esse error ai'])
-      })
-    )
-    .subscribe((response)=>{
-      console.log('Running...', response);
-    });
+    if(this.user != null && this.password != null){
+      this.loginService.succeed = true
+      this.router.navigateByUrl('home')
+      this.loginService.logging(this.user, this.password)
+      .pipe(
+        catchError((error)=>{
+          return of(['Deu erro parcero é isso', 'tu não vai encontrar detalhe aqui','pode sair já...', error, 'só pq sou teu amigo vou deixar esse error ai'])
+        })
+      )
+      .subscribe((response)=>{
+        console.log('Running...', response);
+      });
+    }else{
+      alert('DIGITE TODOS OS CAMPOS OBRIGATÓRIOS!')
+    }
+  }
+
+  register(){
+    if(this.nameReg != null && this.passwordReg != null && this.emailReg != null){
+      this.loginService.succeed = true
+      this.router.navigateByUrl('home')
+      this.loginService.registering(this.nameReg, this.nameReg, this.passwordReg)
+    }else{
+      alert('DIGITE TODOS OS CAMPOS OBRIGATÓRIOS!')
+    }
+
   }
 
 }
