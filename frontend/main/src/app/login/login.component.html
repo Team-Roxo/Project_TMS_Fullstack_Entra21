@@ -1,4 +1,4 @@
-<div class="section" style="background-image: url('https://github.com/Team-Roxo/Project_TMS_Fullstack_Entra21/blob/main/assets/img/pexels-karolina-grabowska-4506249.jpg?raw=true');">
+<div class="section" style="background-image: url('https://cdn.discordapp.com/attachments/982441341638295574/1015433573307793448/pexels-artem-podrez-5025654.jpg');">
   <div class="container">
     <div class="row full-height justify-content-center">
       <div class="col-12 text-center align-self-center py-5">
@@ -14,12 +14,12 @@
                     <h4 class="mb-4 pb-3">Log In</h4>
                     <div class="form-group">
                       <input type="text" name="user" class="form-style" placeholder="User" id="user"
-                        autocomplete="off" [(ngModel)]="user">
+                        autocomplete="off" [(ngModel)]="user" required>
                       <i class="input-icon uil uil-at"></i>
                     </div>
                     <div class="form-group mt-2">
                       <input type="password" name="password" class="form-style" placeholder="Password" id="password"
-                        autocomplete="on" [(ngModel)]="password">
+                        autocomplete="on" [(ngModel)]="password" required>
                       <i class="input-icon uil uil-lock-alt"></i>
                     </div>
                     <a class="btn mt-4" (click)="submit()">submit</a>
@@ -33,17 +33,17 @@
                     <h4 class="mb-4 pb-3">Sign Up</h4>
                     <div class="form-group">
                       <input type="text" name="logname" class="form-style" placeholder="Your Full Name" id="name"
-                        autocomplete="off">
+                        autocomplete="on" [(ngModel)]="nameReg" required>
                       <i class="input-icon uil uil-user"></i>
                     </div>
                     <div class="form-group mt-2">
                       <input type="email" name="logemail" class="form-style" placeholder="Your Email" id="email"
-                        autocomplete="off">
+                        autocomplete="on" [(ngModel)]="emailReg" required>
                       <i class="input-icon uil uil-at"></i>
                     </div>
                     <div class="form-group mt-2">
                       <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="password"
-                        autocomplete="off">
+                        autocomplete="on" [(ngModel)]="passwordReg" required>
                       <i class="input-icon uil uil-lock-alt"></i>
                     </div>
                     <a class="btn mt-4" (click)="register()">submit</a>

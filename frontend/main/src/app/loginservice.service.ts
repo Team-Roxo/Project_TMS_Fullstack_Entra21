@@ -16,7 +16,11 @@ export class LoginserviceService implements CanActivate {
 
   logging(user:string, password:string){
     this.user = user
-    return this.http.get<any>(this.TMSLoginAPI+user+password)
+    return this.http.get<any>(this.TMSLoginAPI+'/'+user+'/'+password)
+  }
+
+  registering(user:string, password:string, email:string){
+    this.user = user
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
