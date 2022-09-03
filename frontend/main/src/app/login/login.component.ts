@@ -10,6 +10,10 @@ import { LoginserviceService } from '../loginservice.service';
 })
 export class LoginComponent implements OnInit {
 
+  userReg!:string
+  nameReg!:string
+  passwordReg!:string 
+
   user!:string
   password!:string
 
@@ -31,6 +35,10 @@ export class LoginComponent implements OnInit {
     .subscribe((response)=>{
       console.log('Running...', response);
     });
+  }
+
+  register(){
+
   }
 
 }

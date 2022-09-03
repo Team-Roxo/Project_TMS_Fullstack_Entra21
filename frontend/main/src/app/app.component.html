@@ -1,20 +1,22 @@
-<body class="hold-transition sidebar-mini">
-  <div class="wrapper">
+<body [ngClass]="{'hold-transition sidebar-mini':login.succeed}">
+  <div [ngClass]="{'wrapper':login.succeed}">
 
     <app-body [hidden]="!login.succeed"></app-body>
 
-    <div class="content-wrapper">
+    <div [ngClass]="{'content-wrapper':login.succeed}">
       <section class="content">
         <div class="container-fluid">
           <div class="row">
-            <router-outlet></router-outlet>
+            <div class="col">
+              <router-outlet></router-outlet>
+            </div>
           </div>
         </div>
       </section>
     </div>
 
-    <app-footer></app-footer>
+    <app-footer [hidden]="!login.succeed"></app-footer>
 
-    <aside class="control-sidebar control-sidebar-dark" ></aside>
+    <aside class="control-sidebar control-sidebar-dark"></aside>
   </div>
 </body>

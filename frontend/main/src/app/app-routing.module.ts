@@ -6,6 +6,7 @@ import { CarriersComponent } from './carriers/carriers.component';
 import { CostComponent } from './cost/cost.component';
 import { EditComponent } from './edit/edit.component';
 import { FinanceComponent } from './finance/finance.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { HomeComponent } from './home/home.component';
 import { InsightComponent } from './insight/insight.component';
 import { LoginComponent } from './login/login.component';
@@ -32,7 +33,8 @@ const routes: Routes = [
   { path: 'ship-quote', component:ShipQtComponent, canActivate:[LoginserviceService]},
   { path: 'recent-quote', component:RctQtComponent, canActivate:[LoginserviceService]},
   { path: 'edit', component:EditComponent, canActivate:[LoginserviceService]},
-  { path: 'about', component:AboutComponent, canActivate:[LoginserviceService]}
+  { path: 'about', component:AboutComponent, canActivate:[LoginserviceService]},
+  { path: 'forgetPassword', component:ForgetPasswordComponent}
 ];
 
 @NgModule({
