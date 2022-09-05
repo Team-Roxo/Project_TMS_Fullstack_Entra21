@@ -11,8 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import br.com.teamroxo.entra21.TMSFullstackProject.List.Localizations;
+
 @Entity
-public class Package {
+public class Pacotes {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +33,7 @@ public class Package {
 	private LocalDate envio;
 	
 	@Column
-	@OneToMany(mappedBy = "pack")
+	@OneToMany(mappedBy = "pack", targetEntity = Localizations.class)
 	private List<Localizations> enderecos;
 
 	public Long getId() {
@@ -95,7 +97,7 @@ public class Package {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Package other = (Package) obj;
+		Pacotes other = (Pacotes) obj;
 		return Objects.equals(id, other.id);
 	}
 	
