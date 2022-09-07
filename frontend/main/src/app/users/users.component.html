@@ -36,7 +36,10 @@
             <td>{{user.name}}</td>
             <td>{{user.email}}</td>
             <td>{{user.cpf}}</td>
-            <td><button class="btn btn-danger" (click)="deletar(i)">Deletar</button></td>
+            <td>
+                <button class="btn btn-danger mr-2" (click)="deletar(i)">Deletar</button>
+                <button class="btn btn-primary mr-2" (click)="alterar(i)">Alterar</button>
+            </td>
         </tr>
     </tbody>
 </table>

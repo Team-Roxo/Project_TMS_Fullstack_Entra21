@@ -36,4 +36,9 @@ cpf!:string
     this.users.splice(index,1)
   }
 
+  alterar(index:number){
+   // this.users.splice(index,1)
+  }
+
+
 }
