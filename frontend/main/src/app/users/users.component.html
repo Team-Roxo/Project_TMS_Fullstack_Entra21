@@ -1,1 +1,42 @@
-<p>users works!</p>
+<table class="table table-bordered">
+    <thead>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>CPF</th>
+
+    </thead>
+    <tbody>
+        <tr>
+
+            <td><input type="text" [(ngModel)]="name"></td>
+            <td><input type="text" [(ngModel)]="email"></td>
+            <td><input type="text" [(ngModel)]="cpf"></td>
+
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+<button class="btn btn-success" (click)="adicionar()">Add</button>
+<br>
+<hr>
+<table class="table table-bordered">
+    <thead>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>CPF</th>
+        <th>Ações</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users;let i = index;">
+            <td>{{i}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.cpf}}</td>
+            <td><button class="btn btn-danger" (click)="deletar(i)">Deletar</button></td>
+        </tr>
+    </tbody>
+</table>
