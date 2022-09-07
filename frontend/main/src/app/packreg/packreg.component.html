@@ -1,1 +1,48 @@
-<p>packreg works!</p>
+<table class="table table-bordered">
+    <thead>
+        <th>Centro de Distribuição</th>
+        <th>Origem</th>
+        <th>Destino</th>
+        <th>Dimensões</th>
+       
+
+    </thead>
+    <tbody>
+        <tr>
+
+            <td><input type="text" [(ngModel)]="cd"></td>
+            <td><input type="text" [(ngModel)]="origem"></td>
+            <td><input type="text" [(ngModel)]="destino"></td>
+            <td><input type="text" [(ngModel)]="dimensao"></td>
+
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+<button class="btn btn-success" (click)="adicionar()">Adicionar Pedido</button>
+<br>
+<hr>
+<table class="table table-bordered">
+    <thead>
+        <th>Número de pedido</th>
+        <th>Centro de Distribuição</th>
+        <th>Origem</th>
+        <th>Destino</th>
+        <th>Dimensões</th>
+        <th>Ações</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let register of registers;let i = index;">
+            <td>{{i}}</td>
+            <td>{{register.cd}}</td>
+            <td>{{register.origem}}</td>
+            <td>{{register.destino}}</td>
+            <td>{{register.dimensao}}</td>
+            <td><button class="btn btn-danger mr-2" (click)="deletar(i)">Excluir pedido</button> 
+                <button class="btn btn-primary mr-2" (click)="deletar(i)">Alterar pedido</button></td>
+        </tr>
+    </tbody>
+</table>
