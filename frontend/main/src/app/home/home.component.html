@@ -1,75 +1,104 @@
 <main class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <div class="card bg-gray-dark mt-4">
-                <div class="card-body mt-2">
-                    <h1>Welcome!!</h1>
-                    <h3>Where do you want to go?</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    
-</main>
-<div class="row">
+  <div class="row">
     <div class="col">
+      <div class="card bg-gray-dark mt-4">
+        <div class="card-body mt-2">
+          <h1>Welcome!!</h1>
+          <h3>Where do you want to go?</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="cards">
+    <div class="row">
+      <div class="col">
         <div class="card bg-warning mr-2" style="max-width: 18rem">
-            <div class="card-body">
-                <h3 class="card-title">Dashboards</h3>
-                <p class="card-text mt-4"><br><br> Clique para ver os Dashboards <br></p>
-            </div>
+          <div class="card-body" routerLink="dashboard">
+            <h3 class="card-title"> <span class="fas fa-chart-bar"></span>&nbsp;&nbsp;Dashboards</h3>
+            <p class="card-text mt-5"><br><br> <a href="" routerLink="dashboard">Click here to go to Dashboards!</a> <br></p>
+          </div>
         </div>
-    </div>
-<div class="col">
-    <div class="card bg-primary mr-2" style="max-width: 18rem">
-        <div class="card-body">
-            <h3 class="card-title">User</h3>
-            <p class="card-text mt-4"><br><br> Clique para ver User</p>
+      </div>
+      <div class="col">
+        <div class="card bg-primary mr-2" style="max-width: 18rem">
+          <div class="card-body">
+            <h3 class="card-title"><span class="fas fa-users"></span>&nbsp;&nbsp;User</h3>
+            <br>
+            <ul class="card-text mt-5">
+              <li>
+                <a href="">Clients</a>
+              </li>
+              <li>
+                <a href="">Carriers</a>
+              </li>
+            </ul>
+          </div>
         </div>
-    </div>
-</div>
-<div class="col">
-    <div class="card bg-olive" style="max-width: 18rem">
-        <div class="card-body">
-            <h3 class="card-title">Packages</h3>
-            <p class="card-text mt-4"><br><br> Clique para ver Packages</p>
+      </div>
+      <div class="col">
+        <div class="card bg-olive" style="max-width: 18rem">
+          <div class="card-body">
+            <h3 class="card-title"><span class="fas fa-box"></span>&nbsp;&nbsp;Packages</h3>
+            <br>
+            <ul class="card-text mt-5">
+              <li>
+                <a href="">Register</a>
+              </li>
+              <li>
+                <a href="">Tracking</a>
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-</div>
 
     <div class="row">
-        <div class="col">
-            <div class="card bg-orange" style="max-width: 18rem">
-                <div class="card-body">
-                    <h3 class="card-title">Finance</h3>
-                    <p class="card-text mt-4"><br><br> Clique para ver Finance</p>
-                </div>
-            </div>
+      <div class="col">
+        <div class="card bg-orange" style="max-width: 18rem">
+          <div class="card-body">
+            <h3 class="card-title"><span class="fas fa-dollar-sign"></span>&nbsp;&nbsp;Finance</h3>
+            <br>
+            <ul class="card-text mt-4">
+              <li>
+                <a href="">Receipt</a>
+              </li>
+              <li>
+                <a href="">Cost</a>
+              </li>
+              <li>
+                <a href="">Balance</a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="col">
-            <div class="card bg-info" style="max-width: 18rem">
-                <div class="card-body">
-                    <h3 class="card-title">Quotes</h3>
-                    <p class="card-text mt-4"><br><br> Clique para ver Quotes</p>
-                </div>
-            </div>
+      </div>
+      <div class="col">
+        <div class="card bg-info" style="max-width: 18rem">
+          <div class="card-body">
+            <h3 class="card-title"><span class="fas fa-truck"></span>&nbsp;&nbsp;Quotes</h3>
+            <br>
+            <ul class="card-text mt-5">
+              <li>
+                <a href="">Shipping Quote</a>
+              </li>
+              <li>
+                <a href="">Recents Quotes</a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="col">
-            <div class="card bg-success" style="max-width: 18rem">
-                <div class="card-body">
-                    <h3 class="card-title">About us</h3>
-                    <p class="card-text mt-4"><br><br> Clique para ver About Us</p>
-                </div>
-            </div>
+      </div>
+      <div class="col">
+        <div class="card bg-success" style="max-width: 18rem">
+          <div class="card-body">
+            <h3 class="card-title"><span class="fas fa-building"></span>&nbsp;&nbsp;About us</h3>
+            <p class="card-text mt-5"><br><br> <a href="">Click here to go to About Us</a></p>
+          </div>
         </div>
+      </div>
     </div>
-
-
-
-
-    
-
-
-   
+  </div>
+</main>

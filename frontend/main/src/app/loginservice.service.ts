@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { InjectSetupWrapper } from '@angular/core/testing';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import { LoginComponent } from './login/login.component';
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +11,26 @@ import { Observable } from 'rxjs';
 export class LoginserviceService implements CanActivate {
 
   user!:string
-  TMSLoginAPI:string = "https://imagina-uma-api-bem-daora-aqui.com"
+  TMSLoginAPI:string = "https://randomuser.me/api/?results=1"
   succeed!:boolean
 
   constructor(private router:Router, private http:HttpClient) {}
 
   logging(user:string, password:string){
-    this.user = user
+    fetch(this.TMSLoginAPI)
+    .then((resp) => resp.json())
+    .then((data) =>{
+      let ranUsers = data.results;
+      return ranUsers.map((ranUser:any) =>{
+        this.user = `${ranUser.name.first}`
+        this.succeed = true
+        new LoginComponent(this.router, this).gotoHome()
+      })
+    })
+    .catch(function(error){
+      console.log(error);
+    })
+
     return this.http.get<any>(this.TMSLoginAPI+'/'+user+'/'+password)
   }
 

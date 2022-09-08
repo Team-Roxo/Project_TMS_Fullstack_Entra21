@@ -1,0 +1,13 @@
+.card-title{
+  font-size: 25px;
+}
+#cards .row{
+  margin-left: 100px;
+  margin-top: 80px;
+}
+.card-body ul li a{
+  color: white;
+}
+.card-body ul li a:hover{
+  color: lightslategrey;
+}
