@@ -15,9 +15,10 @@
     <div class="row">
       <div class="col">
         <div class="card bg-warning mr-2" style="max-width: 18rem">
-          <div class="card-body" routerLink="dashboard">
-            <h3 class="card-title"> <span class="fas fa-chart-bar"></span>&nbsp;&nbsp;Dashboards</h3>
-            <p class="card-text mt-5"><br><br> <a href="" routerLink="dashboard">Click here to go to Dashboards!</a> <br></p>
+          <div class="card-body" (click)="dashboard()">
+            <h3 class="card-title">
+              <span class="fas fa-chart-bar"></span>&nbsp;&nbsp;Dashboards</h3>
+            <p class="card-text mt-5"><br><br> <a>Click here to go to Dashboards!</a> <br></p>
           </div>
         </div>
       </div>
@@ -28,10 +29,10 @@
             <br>
             <ul class="card-text mt-5">
               <li>
-                <a href="">Clients</a>
+                <a (click)="clients()">Clients</a>
               </li>
               <li>
-                <a href="">Carriers</a>
+                <a (click)="carriers()">Carriers</a>
               </li>
             </ul>
           </div>
@@ -44,10 +45,10 @@
             <br>
             <ul class="card-text mt-5">
               <li>
-                <a href="">Register</a>
+                <a (click)="register()">Register</a>
               </li>
               <li>
-                <a href="">Tracking</a>
+                <a (click)="tracking()">Tracking</a>
               </li>
             </ul>
           </div>
@@ -59,17 +60,17 @@
       <div class="col">
         <div class="card bg-orange" style="max-width: 18rem">
           <div class="card-body">
-            <h3 class="card-title"><span class="fas fa-dollar-sign"></span>&nbsp;&nbsp;Finance</h3>
+            <h3 class="card-title" (click)="finance()"><span class="fas fa-dollar-sign"></span>&nbsp;&nbsp;Finance</h3>
             <br>
             <ul class="card-text mt-4">
               <li>
-                <a href="">Receipt</a>
+                <a (click)="receipt()">Receipt</a>
               </li>
               <li>
-                <a href="">Cost</a>
+                <a (click)="cost()">Cost</a>
               </li>
               <li>
-                <a href="">Balance</a>
+                <a (click)="balance()">Balance</a>
               </li>
             </ul>
           </div>
@@ -82,10 +83,10 @@
             <br>
             <ul class="card-text mt-5">
               <li>
-                <a href="">Shipping Quote</a>
+                <a (click)="shpQt()">Shipping Quote</a>
               </li>
               <li>
-                <a href="">Recents Quotes</a>
+                <a (click)="rctQt()">Recents Quotes</a>
               </li>
             </ul>
           </div>
@@ -93,9 +94,9 @@
       </div>
       <div class="col">
         <div class="card bg-success" style="max-width: 18rem">
-          <div class="card-body">
+          <div class="card-body" (click)="about()">
             <h3 class="card-title"><span class="fas fa-building"></span>&nbsp;&nbsp;About us</h3>
-            <p class="card-text mt-5"><br><br> <a href="">Click here to go to About Us</a></p>
+            <p class="card-text mt-5"><br><br> <a (click)="about()">Click here to go to About Us</a></p>
           </div>
         </div>
       </div>

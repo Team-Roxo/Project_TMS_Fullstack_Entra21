@@ -10,4 +10,5 @@
 }
 .card-body ul li a:hover{
   color: lightslategrey;
+  text-decoration: underline;
 }
