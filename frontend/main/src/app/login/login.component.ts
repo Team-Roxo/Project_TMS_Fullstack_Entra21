@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, of } from 'rxjs';
 import { LoginserviceService } from '../loginservice.service';
+import * as $ from 'jquery'
 
 @Component({
   selector: 'app-login',
@@ -21,12 +22,16 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginService.succeed = false
+    document.addEventListener("keypress", function(e){
+      if(e.key === 'Enter'){
+        $('#submitButton')
+        alert('Ainda na luta pra fazer funcionar esse button pelo Enter')
+      }
+    })
   }
 
   submit():void{
     if(this.user != null && this.password != null){
-      this.loginService.succeed = true
-      this.router.navigateByUrl('home')
       this.loginService.logging(this.user, this.password)
       .pipe(
         catchError((error)=>{
@@ -39,6 +44,10 @@ export class LoginComponent implements OnInit {
     }else{
       alert('DIGITE TODOS OS CAMPOS OBRIGATÓRIOS!')
     }
+  }
+
+  gotoHome(){
+    this.router.navigateByUrl('home')
   }
 
   register(){
