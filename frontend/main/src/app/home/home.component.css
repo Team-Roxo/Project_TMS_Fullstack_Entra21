@@ -5,9 +5,11 @@
   margin-left: 100px;
   margin-top: 80px;
 }
-.card-body ul li a{
+.card-body a{
   color: white;
+  transition: ease-in-out 0.35s ;
 }
-.card-body ul li a:hover{
+.card-body a:hover{
+  transition: ease-in-out 0.35s ;
   color: lightslategrey;
 }
