@@ -27,7 +27,7 @@ dimensao!:string
   adicionar(){
     if(this.cd){
       this.registers.push({cd:this.cd, origem:this.origem, destino:this.destino, dimensao:this.dimensao})
-      this.cd ="" 
+      this.cd = "" 
       this.origem=""
       this.destino=""   
       this.dimensao=""   
