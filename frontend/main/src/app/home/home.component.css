@@ -7,9 +7,10 @@
 }
 .card-body a{
   color: white;
-  transition: ease-in-out 0.35s ;
+  transition: ease-in-out 200ms ;
+  cursor: pointer;
 }
 .card-body a:hover{
-  transition: ease-in-out 0.35s ;
+  transition: ease-in-out 200ms ;
   color: lightslategrey;
 }
