@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, of } from 'rxjs';
 import { LoginserviceService } from '../loginservice.service';
-import * as $ from 'jquery'
 
 @Component({
   selector: 'app-login',
