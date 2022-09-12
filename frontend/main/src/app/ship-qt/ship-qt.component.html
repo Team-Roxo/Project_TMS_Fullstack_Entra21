@@ -9,17 +9,17 @@
     </thead>
     <tbody>
         <tr>
-            <td><input type="text" [(ngModel)]="cepOrigem"></td>
-            <td><input type="text" [(ngModel)]="cepDestino"></td>
-            <td><input type="text" [(ngModel)]="comprimento"></td>
-            <td><input type="text" [(ngModel)]="largura"></td>
-            <td><input type="text" [(ngModel)]="altura"></td>
-            <td><input type="text" [(ngModel)]="peso"></td>
+            <td><input type="number" [(ngModel)]="cepOrigem"></td>
+            <td><input type="number" [(ngModel)]="cepDestino"></td>
+            <td><input type="number" [(ngModel)]="comprimento"></td>
+            <td><input type="number" [(ngModel)]="largura"></td>
+            <td><input type="number" [(ngModel)]="altura"></td>
+            <td><input type="number" [(ngModel)]="peso"></td>
         </tr>
     </tbody>
 </table>
 
-<button class="btn btn-success" (click)="quote(cepOrigem,cepDestino)">Quote</button>
+<button class="btn btn-success" (click)="quote()">Quote</button>
 <br>
 <hr>
 <table class="table table-bordered">
@@ -47,9 +47,6 @@
             <td>{{quote.largura}}</td>
             <td>{{quote.altura}}</td>
             <td>{{quote.peso}}</td>
-           
-            
-            
         </tr>
     </tbody>
 </table>
