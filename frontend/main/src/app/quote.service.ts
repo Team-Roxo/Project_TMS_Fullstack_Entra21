@@ -8,13 +8,13 @@ import { ShipQtComponent } from './ship-qt/ship-qt.component';
 })
 export class QuoteService {
 
-   apiURL:string = 'https://maps.googleapis.com/maps/api/distancematrix/json?destinations='
+   apiURL:string = 'https://maps.googleapis.com/maps/api/directions/json?origin='
 
   constructor(private http: HttpClient) { }
 
   quote(cepOrigem:string, cepDestino:string):any{
 
-    return this.http.get(this.apiURL+cepOrigem+'&origins='+cepDestino+'&units=imperial&key=AIzaSyCKNjLUI0d01M0SfoDjIov4vZlR3DprotM')
+    return this.http.get<any>(this.apiURL+cepOrigem+'&destination='+cepDestino+'&key=AIzaSyCKNjLUI0d01M0SfoDjIov4vZlR3DprotM')
 
   }
 

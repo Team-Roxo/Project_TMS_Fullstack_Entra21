@@ -36,9 +36,7 @@ export class ShipQtComponent implements OnInit {
       .pipe()
       .subscribe((response:any) => {
         console.log(response);
-        console.log(response.rows);
-        console.log(response.rows);
-        alert(`${response.rows.elements.duration.text}`)
+        console.log(response.routes[0].legs[0].duration.text);
       })
     }else{
       alert('DIGITE TODOS OS DADOS!')
