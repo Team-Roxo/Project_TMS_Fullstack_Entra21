@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       this.loginService.logging(this.user, this.password)
       .pipe(
         catchError((error)=>{
-          return of(['Deu erro parcero é isso', 'tu não vai encontrar detalhe aqui','pode sair já...', error, 'só pq sou teu amigo vou deixar esse error ai'])
+          return of([error])
         })
       )
       .subscribe((response)=>{
