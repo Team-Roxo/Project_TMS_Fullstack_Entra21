@@ -25,6 +25,7 @@
         <th>Razão social</th>
         <th>E-mail</th>
         <th>CNPJ</th>
+        <th>Taxa - Tabela de frete</th>
         <th>Ações</th>
     </thead>
     <tbody>
@@ -33,6 +34,7 @@
             <td>{{carrier.name}}</td>
             <td>{{carrier.email}}</td>
             <td>{{carrier.cnpj}}</td>
+            <td>{{carrier.taxValorFrete}}</td>
             <td>
             <button class="btn btn-danger mr-2" (click)="deletar(i)">Deletar</button>
             <button class="btn btn-primary mr-2" (click)="alterar(i)">Alterar</button>
