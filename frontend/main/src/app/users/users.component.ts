@@ -19,18 +19,20 @@ cpf!:string
     this.users.push({name:"Bruno Roberto", email:"bruno@gmail.com", cpf:"03215415454"})
     this.users.push({name:"Cristian Schaufer", email:"cristian@gmail.com", cpf:"03215415454"})
     this.users.push({name:"Kalil", email:"kalil@gmail.com", cpf:"03215415454"})
-    
+
   }
 
   adicionar(){
-    if(this.name){
+    if(this.name != null && this.email != null && this.cpf != null){
       this.users.push({name:this.name, email:this.email, cpf:this.cpf})
-      this.name ="" 
+      this.name =""
       this.email=""
-      this.cpf=""   
+      this.cpf=""
+    }else{
+      alert('DIGITE TODOS OS DADOS!')
     }
     }
-  
+
 
   deletar(index:number){
     this.users.splice(index,1)
