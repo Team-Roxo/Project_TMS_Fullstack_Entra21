@@ -1,0 +1,16 @@
+.card-title{
+  font-size: 25px;
+}
+#cards .row{
+  margin-left: 100px;
+  margin-top: 80px;
+}
+.card-body a{
+  color: white;
+  transition: ease-in-out 200ms ;
+  cursor: pointer;
+}
+.card-body a:hover{
+  transition: ease-in-out 200ms ;
+  color: lightslategrey;
+}

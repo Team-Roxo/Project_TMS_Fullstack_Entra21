@@ -1,10 +1,10 @@
-package br.com.teamroxo.entra21.TMSFullstackProject;
+package br.com.entra21.teamroxo.TMSProject;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TmsFullstackProjectApplicationTests {
+class TmsProjectApplicationTests {
 
 	@Test
 	void contextLoads() {
