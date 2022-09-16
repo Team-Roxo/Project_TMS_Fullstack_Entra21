@@ -12,25 +12,25 @@ export class LoginComponent implements OnInit {
 
   emailReg!:string
   nameReg!:string
+  userReg!:string
   passwordReg!:string
 
   user!:string
   password!:string
 
-  constructor(private router:Router, private loginService:LoginserviceService) { }
+  constructor(private router:Router, public loginService:LoginserviceService) { }
 
   ngOnInit(): void {
     this.loginService.succeed = false
+    this.loginService.progress = false
   }
 
   submit():void{
     if(this.user != null && this.password != null){
-      this.loginService.succeed = true
-      this.router.navigateByUrl('home')
       this.loginService.logging(this.user, this.password)
       .pipe(
         catchError((error)=>{
-          return of(['Deu erro parcero é isso', 'tu não vai encontrar detalhe aqui','pode sair já...', error, 'só pq sou teu amigo vou deixar esse error ai'])
+          return of([error])
         })
       )
       .subscribe((response)=>{
@@ -38,18 +38,29 @@ export class LoginComponent implements OnInit {
       });
     }else{
       alert('DIGITE TODOS OS CAMPOS OBRIGATÓRIOS!')
+      this.loginService.progress = false
     }
   }
 
+  gotoHome(){
+    this.router.navigateByUrl('home')
+  }
+
   register(){
-    if(this.nameReg != null && this.passwordReg != null && this.emailReg != null){
-      this.loginService.succeed = true
-      this.router.navigateByUrl('home')
-      this.loginService.registering(this.nameReg, this.nameReg, this.passwordReg)
+    if(this.nameReg != null && this.emailReg != null && this.passwordReg != null){
+      this.loginService.registering(this.nameReg, this.userReg , this.emailReg, this.passwordReg)
+      .pipe(
+        catchError((error)=>{
+          return of(['Error!', error])
+        })
+      )
+      .subscribe((response)=>{
+        console.log('Successful Login!');
+      });
     }else{
       alert('DIGITE TODOS OS CAMPOS OBRIGATÓRIOS!')
+      this.loginService.progress = false
     }
-
   }
 
 }

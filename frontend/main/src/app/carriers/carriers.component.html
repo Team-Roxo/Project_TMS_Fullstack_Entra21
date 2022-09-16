@@ -1,6 +1,6 @@
 <table class="table table-bordered">
     <thead>
-        <th>Nome</th>
+        <th>Razão social</th>
         <th>E-mail</th>
         <th>CNPJ</th>
 
@@ -15,9 +15,6 @@
         </tr>
     </tbody>
 </table>
-
-
-
 
 <button class="btn btn-success" (click)="adicionar()">Add</button>
 <br>
@@ -36,7 +33,10 @@
             <td>{{carrier.name}}</td>
             <td>{{carrier.email}}</td>
             <td>{{carrier.cnpj}}</td>
-            <td><button class="btn btn-danger" (click)="deletar(i)">Deletar</button></td>
+            <td>
+            <button class="btn btn-danger mr-2" (click)="deletar(i)">Deletar</button>
+            <button class="btn btn-primary mr-2" (click)="alterar(i)">Alterar</button>
+            </td>
         </tr>
     </tbody>
 </table>

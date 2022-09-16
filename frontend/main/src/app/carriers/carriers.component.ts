@@ -35,5 +35,9 @@ export class CarriersComponent implements OnInit {
     deletar(index:number){
       this.carriers.splice(index,1)
     }
+
+    alterar(index:number){
+    //  this.carriers.splice(index,1)
+    }
   
   }
