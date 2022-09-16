@@ -18,7 +18,6 @@
         </tr>
     </tbody>
 </table>
-
 <button class="btn btn-success" (click)="quote()">Quote</button>
 <br>
 <hr>
@@ -26,8 +25,7 @@
     <thead>
         <th>ID</th>
         <th>Preço do frete</th>
-        <th>Prazo</th>
-        <th>Tracking code</th>
+        <th>Prazo</th>    
         <th>Origem</th>
         <th>Destino</th>
         <th>Comprimento (cm)</th>
@@ -39,10 +37,9 @@
         <tr *ngFor="let quote of quotes;let i = index;">
             <td>{{i}}</td>
             <td>R${{quote.precoFrete}}</td>
-            <td>{{quote.tempo}} dias úteis</td>
-            <td>{{quote.trackid}}</td>
-            <td>{{quote.cepOrigem}}</td>
-            <td>{{quote.cepDestino}}</td>
+            <td>{{quote.durationTime}} dias úteis</td>
+            <td>{{quote.startAdress}}</td>
+            <td>{{quote.endAdress}}</td>
             <td>{{quote.comprimento}}</td>
             <td>{{quote.largura}}</td>
             <td>{{quote.altura}}</td>
