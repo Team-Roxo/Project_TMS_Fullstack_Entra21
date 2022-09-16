@@ -14,3 +14,11 @@
   transition: ease-in-out 200ms ;
   color: lightslategrey;
 }
+.card-title{
+  color: white;
+}
+#card-body-dash:hover{
+  cursor: pointer;
+}
+.card-body:hover{
+}

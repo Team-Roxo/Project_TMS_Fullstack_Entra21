@@ -6,7 +6,9 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,15 +22,20 @@ import br.com.entra21.teamroxo.TMSProject.template.Pessoa;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/login")
+@RequestMapping("/user")
 public class PessoaController {
 
-	private final String PATH = "http://localhost:8080/pessoas";
+	private final String PATH = "http://localhost:8080/users";
 	
 	@GetMapping()
 	@ResponseStatus(code = HttpStatus.OK)
 	public List<Pessoa>listAll(){
 		return obterListaCompleta();
+	}
+	
+	@GetMapping("/{user}")
+	public List<Pessoa>list(@PathVariable String user){
+		return null;
 	}
 
 	private List<Pessoa> obterListaCompleta() {

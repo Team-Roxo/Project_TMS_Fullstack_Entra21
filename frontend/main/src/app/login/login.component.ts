@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
 
   emailReg!:string
   nameReg!:string
+  userReg!:string
   passwordReg!:string
 
   user!:string
@@ -47,14 +48,14 @@ export class LoginComponent implements OnInit {
 
   register(){
     if(this.nameReg != null && this.emailReg != null && this.passwordReg != null){
-      this.loginService.registering(this.nameReg, this.emailReg, this.passwordReg)
+      this.loginService.registering(this.nameReg, this.userReg , this.emailReg, this.passwordReg)
       .pipe(
         catchError((error)=>{
-          return of(['Deu erro parcero é isso', 'tu não vai encontrar detalhe aqui','pode sair já...', error, 'só pq sou teu amigo vou deixar esse error ai'])
+          return of(['Error!', error])
         })
       )
       .subscribe((response)=>{
-        console.log('Running...', response);
+        console.log('Successful Login!');
       });
     }else{
       alert('DIGITE TODOS OS CAMPOS OBRIGATÓRIOS!')

@@ -37,22 +37,11 @@ export class LoginserviceService implements CanActivate {
     return this.http.get<any>(this.TMSLoginAPI + '/' + user + '/' + password)
   }
 
-  registering(user: string, password: string, email: string) {
+  registering(name:string ,user: string, password: string, email: string) {
+
     this.progress = true
-    fetch(this.TMSLoginAPI)
-      .then((resp) => resp.json())
-      .then((data) => {
-        let ranUsers = data.results;
-        return ranUsers.map((ranUser: any) => {
-          this.user = `${ranUser.name.first}`
-          this.succeed = true
-          new LoginComponent(this.router, this).gotoHome()
-        })
-      })
-      .catch((error) => {
-        console.log(error);
-        this.progress = false
-      })
+
+    
 
     return this.http.get<any>(this.TMSLoginAPI + '/' + user + '/' + password)
 
