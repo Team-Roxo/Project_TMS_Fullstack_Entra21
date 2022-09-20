@@ -1,8 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { InjectSetupWrapper } from '@angular/core/testing';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 import { LoginComponent } from './login/login.component';
 
 @Injectable({
@@ -11,7 +11,7 @@ import { LoginComponent } from './login/login.component';
 export class LoginserviceService implements CanActivate {
 
   user!: string
-  TMSLoginAPI: string = "https://randomuser.me/api/?results=1"
+  TMSLoginAPI: string = "http://localhost:8080"
   succeed!: boolean
   progress: boolean = false
 
@@ -41,9 +41,24 @@ export class LoginserviceService implements CanActivate {
 
     this.progress = true
 
-    
+    let build:any = {
+      'name':name,
+      'user':user,
+      'password':password,
+      'email':email
+    }
 
-    return this.http.get<any>(this.TMSLoginAPI + '/' + user + '/' + password)
+    this.http.post(this.TMSLoginAPI+'/register', build)
+    .pipe(
+      catchError((error)=>{
+        return error
+      })
+    )
+    .subscribe((response)=>{
+      return response
+    })
+
+    return build
 
   }
 

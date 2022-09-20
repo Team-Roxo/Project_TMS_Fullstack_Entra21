@@ -8,13 +8,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import br.com.entra21.teamroxo.TMSProject.interfaces.PessoaRepository;
 import br.com.entra21.teamroxo.TMSProject.template.Login;
 import br.com.entra21.teamroxo.TMSProject.template.Pessoa;
 
 @SpringBootApplication
 public class TmsProjectApplication implements CommandLineRunner {
 	
-	public static ArrayList<Pessoa> pessoas=new ArrayList();
+	private static PessoaRepository pessoaRepository;
+	
 	public static ArrayList<Login> login = new ArrayList();
 	
 	@Autowired

@@ -3,6 +3,7 @@ package br.com.entra21.teamroxo.TMSProject.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.entra21.teamroxo.TMSProject.TmsProjectApplication;
+import br.com.entra21.teamroxo.TMSProject.interfaces.PessoaRepository;
 import br.com.entra21.teamroxo.TMSProject.template.ItemNivel3;
 import br.com.entra21.teamroxo.TMSProject.template.Pessoa;
 
@@ -26,6 +28,9 @@ import br.com.entra21.teamroxo.TMSProject.template.Pessoa;
 public class PessoaController {
 
 	private final String PATH = "http://localhost:8080/users";
+	
+	@Autowired
+	private PessoaRepository pessoaRepository;
 	
 	@GetMapping()
 	@ResponseStatus(code = HttpStatus.OK)
@@ -40,7 +45,7 @@ public class PessoaController {
 
 	private List<Pessoa> obterListaCompleta() {
 
-		List<Pessoa> response = TmsProjectApplication.pessoas.stream().toList();
+		List<Pessoa> response = pessoaRepository.findAll();
 		response.forEach(pessoa -> {
 			setMaturidadeNivel3(pessoa);
 		});
