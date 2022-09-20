@@ -15,8 +15,8 @@
     <div class="row">
       <div class="col">
         <div class="card bg-warning mr-2" style="max-width: 18rem">
-          <div class="card-body" (click)="dashboard()">
-            <h3 class="card-title">
+          <div class="card-body" (click)="dashboard()" >
+            <h3 class="card-title" id="card-body-dash">
               <span class="fas fa-chart-bar"></span>&nbsp;&nbsp;Dashboards</h3>
             <p class="card-text mt-5"><br><br> <a>Click here to go to Dashboards!</a> <br></p>
           </div>
@@ -60,7 +60,7 @@
       <div class="col">
         <div class="card bg-orange" style="max-width: 18rem">
           <div class="card-body">
-            <h3 class="card-title" (click)="finance()"><span class="fas fa-dollar-sign"></span>&nbsp;&nbsp;Finance</h3>
+            <h3 class="card-title" (click)="finance()"><span class="fas fa-dollar-sign" id="card-body-dash"></span>&nbsp;&nbsp;Finance</h3>
             <br>
             <ul class="card-text mt-4">
               <li>
