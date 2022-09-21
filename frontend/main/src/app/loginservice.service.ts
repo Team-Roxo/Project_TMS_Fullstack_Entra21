@@ -18,23 +18,31 @@ export class LoginserviceService implements CanActivate {
   constructor(private router: Router, private http: HttpClient) { }
 
   logging(user: string, password: string) {
-    this.progress = true
-    fetch(this.TMSLoginAPI)
-      .then((resp) => resp.json())
-      .then((data) => {
-        let ranUsers = data.results;
-        return ranUsers.map((ranUser: any) => {
-          this.user = `${ranUser.name.first}`
-          this.succeed = true
-          new LoginComponent(this.router, this).gotoHome()
-        })
-      })
-      .catch((error) => {
-        console.log(error);
-        this.progress = false
-      })
 
-    return this.http.get<any>(this.TMSLoginAPI + '/' + user + '/' + password)
+    this.progress = true
+
+    let build:any = {
+      'user':user,
+      'senha':password
+    }
+
+    this.http.post(this.TMSLoginAPI +'/login', build)
+    .pipe(
+      catchError((error)=>{
+        this.progress = false
+        return error
+      })
+    )
+    .subscribe((response:any)=>{
+      this.http.get(this.TMSLoginAPI+'/user/'+response[0].pessoa_id)
+      .subscribe((resp:any) =>{
+        console.log(resp);
+        this.user = resp.nome
+      })
+      return response
+    })
+
+    return this.http.post(this.TMSLoginAPI +'/login', build)
   }
 
   registering(name:string ,user: string, password: string, email: string) {

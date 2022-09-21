@@ -2,6 +2,7 @@ package br.com.entra21.teamroxo.TMSProject.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,9 +41,11 @@ public class PessoaController {
 		return obterListaCompleta();
 	}
 	
-	@GetMapping("/{user}")
-	public List<Pessoa>list(@PathVariable String user){
-		return null;
+	@GetMapping("/{id}")
+	public Optional<Pessoa> list(@PathVariable int id){
+		
+		return pessoaRepository.findById(id);
+		
 	}
 
 	private List<Pessoa> obterListaCompleta() {
