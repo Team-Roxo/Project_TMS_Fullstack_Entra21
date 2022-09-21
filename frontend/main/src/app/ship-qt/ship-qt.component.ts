@@ -27,8 +27,7 @@ export class ShipQtComponent implements OnInit {
   distanceKm!:string
 
   constructor(
-    public quoteService: QuoteService,
-    private activatedRoute: ActivatedRoute 
+    public quoteService: QuoteService, private activatedRoute: ActivatedRoute
     ) { }
 
   ngOnInit(): void {
@@ -54,7 +53,7 @@ export class ShipQtComponent implements OnInit {
           this.startAdress = response.routes[0].legs[0].start_address;
           this.endAdress = response.routes[0].legs[0].end_address;
 
-          
+
 
           this.precoFrete = (parseFloat(this.distanceKm)/1000) * 0.081;
           console.log(this.precoFrete);
@@ -66,7 +65,7 @@ export class ShipQtComponent implements OnInit {
     } else {
       alert('DIGITE TODOS OS DADOS!')
     }
-    
+
   }
 
 }
