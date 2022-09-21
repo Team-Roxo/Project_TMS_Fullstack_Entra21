@@ -8,9 +8,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 @Entity
 @Table(name = "pessoa")
-public class Pessoa extends Login {
+public class Pessoa extends MaturidadeNivel3Richardson {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,13 +21,13 @@ public class Pessoa extends Login {
 	private String nome;
 	private String email;
 	private LocalDate birth;
-	private long document;
+	private String document;
 	
 	public Pessoa() {
 		super();
 	}
 
-	public Pessoa(Integer id, String nome, String email, LocalDate birth, long document) {
+	public Pessoa(Integer id, String nome, String email, LocalDate birth, String document) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -65,11 +68,11 @@ public class Pessoa extends Login {
 		this.birth = birth;
 	}
 
-	public long getDocument() {
+	public String getDocument() {
 		return document;
 	}
 
-	public void setDocument(long document) {
+	public void setDocument(String document) {
 		this.document = document;
 	}
 	

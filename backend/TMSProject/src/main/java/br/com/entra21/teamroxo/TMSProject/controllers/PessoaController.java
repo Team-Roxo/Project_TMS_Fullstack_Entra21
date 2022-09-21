@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import br.com.entra21.teamroxo.TMSProject.TmsProjectApplication;
 import br.com.entra21.teamroxo.TMSProject.interfaces.PessoaRepository;
@@ -60,6 +62,8 @@ public class PessoaController {
 		headers.add("Accept : application/json");
 		headers.add("Content-type : application/json");
 		ObjectMapper mapper = new ObjectMapper();
+		mapper.registerModule(new JavaTimeModule());
+		mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
 		mapper.setSerializationInclusion(Include.NON_NULL);
 
 		try {

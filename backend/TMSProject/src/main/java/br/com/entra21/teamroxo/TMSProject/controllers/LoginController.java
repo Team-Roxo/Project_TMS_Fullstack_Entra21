@@ -19,6 +19,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.entra21.teamroxo.TMSProject.TmsProjectApplication;
+import br.com.entra21.teamroxo.TMSProject.interfaces.LoginRepository;
 import br.com.entra21.teamroxo.TMSProject.interfaces.PessoaRepository;
 import br.com.entra21.teamroxo.TMSProject.template.ItemNivel3;
 import br.com.entra21.teamroxo.TMSProject.template.Login;
@@ -34,11 +35,14 @@ public class LoginController {
 	@Autowired
 	private PessoaRepository pessoaRepository;
 	
+	@Autowired
+	private LoginRepository loginRepository;
+	
 	@PostMapping()
 	@ResponseStatus(code = HttpStatus.OK)
 	public @ResponseBody List<Login> login(@RequestBody Login credentials){
 		
-		List<Login> response = new ArrayList<Login>(pessoaRepository.findAll()).stream()
+		List<Login> response = new ArrayList<Login>(loginRepository.findAll()).stream()
 				.filter(login -> (login.getUser().equals(credentials.getUser())) &&
 						login.getSenha().equals(credentials.getSenha()))
 				.toList();
