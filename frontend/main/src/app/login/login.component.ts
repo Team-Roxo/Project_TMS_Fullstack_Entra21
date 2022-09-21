@@ -28,13 +28,16 @@ export class LoginComponent implements OnInit {
   submit():void{
     if(this.user != null && this.password != null){
       this.loginService.logging(this.user, this.password)
-      .pipe(
-        catchError((error)=>{
-          return of([error])
-        })
-      )
-      .subscribe((response)=>{
-        console.log('Running...', response);
+      .pipe()
+      .subscribe((response:any)=>{
+        console.log('Running...', response)
+        if(response == ""){
+          this.loginService.progress = false;
+          alert("USUARIO OU SENHA ERRADOS")
+        }else{
+          this.loginService.succeed = true
+          this.gotoHome()
+        }
       });
     }else{
       alert('DIGITE TODOS OS CAMPOS OBRIGATÓRIOS!')

@@ -17,18 +17,20 @@ public class Login extends MaturidadeNivel3Richardson {
 	private String senha;
 	private boolean admin;
 	private boolean enterprise;
+	private Integer pessoa_id;
 	
 	public Login() {
 		super();
 	}
 
-	public Login(Integer id, String user, String senha, boolean admin, boolean enterprise) {
+	public Login(Integer id, String user, String senha, boolean admin, boolean enterprise, Integer pessoa_id) {
 		super();
 		this.id = id;
 		this.user = user;
 		this.senha = senha;
 		this.admin = admin;
 		this.enterprise = enterprise;
+		this.pessoa_id = pessoa_id;
 	}
 	
 	public Integer getId() {
@@ -69,6 +71,14 @@ public class Login extends MaturidadeNivel3Richardson {
 
 	public void setEnterprise(boolean enterprise) {
 		this.enterprise = enterprise;
+	}
+
+	public Integer getPessoa_id() {
+		return pessoa_id;
+	}
+
+	public void setPessoa_id(Integer pessoa_id) {
+		this.pessoa_id = pessoa_id;
 	}	
 	
 }
