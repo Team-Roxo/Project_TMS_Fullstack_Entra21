@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
 
   emailReg!:string
   nameReg!:string
+  userReg!:string
   passwordReg!:string
 
   user!:string
@@ -27,13 +28,16 @@ export class LoginComponent implements OnInit {
   submit():void{
     if(this.user != null && this.password != null){
       this.loginService.logging(this.user, this.password)
-      .pipe(
-        catchError((error)=>{
-          return of([error])
-        })
-      )
-      .subscribe((response)=>{
-        console.log('Running...', response);
+      .pipe()
+      .subscribe((response:any)=>{
+        console.log('Running...', response)
+        if(response == ""){
+          this.loginService.progress = false;
+          alert("USUARIO OU SENHA ERRADOS")
+        }else{
+          this.loginService.succeed = true
+          this.gotoHome()
+        }
       });
     }else{
       alert('DIGITE TODOS OS CAMPOS OBRIGATÓRIOS!')
@@ -47,14 +51,14 @@ export class LoginComponent implements OnInit {
 
   register(){
     if(this.nameReg != null && this.emailReg != null && this.passwordReg != null){
-      this.loginService.registering(this.nameReg, this.emailReg, this.passwordReg)
+      this.loginService.registering(this.nameReg, this.userReg , this.emailReg, this.passwordReg)
       .pipe(
         catchError((error)=>{
-          return of(['Deu erro parcero é isso', 'tu não vai encontrar detalhe aqui','pode sair já...', error, 'só pq sou teu amigo vou deixar esse error ai'])
+          return of(['Error!', error])
         })
       )
-      .subscribe((response)=>{
-        console.log('Running...', response);
+      .subscribe((response:any)=>{
+        console.log('Successful Login!');
       });
     }else{
       alert('DIGITE TODOS OS CAMPOS OBRIGATÓRIOS!')

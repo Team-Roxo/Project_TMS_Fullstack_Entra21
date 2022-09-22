@@ -37,6 +37,11 @@
                       <i class="input-icon uil uil-user"></i>
                     </div>
                     <div class="form-group mt-2">
+                      <input type="text" name="loguser" class="form-style" placeholder="Your User" id="user"
+                        autocomplete="on" [(ngModel)]="userReg" required (keyup.enter)="register()" [disabled]="loginService.progress">
+                      <i class="input-icon uil uil-user"></i>
+                    </div>
+                    <div class="form-group mt-2">
                       <input type="email" name="logemail" class="form-style" placeholder="Your Email" id="email"
                         autocomplete="on" [(ngModel)]="emailReg" required (keyup.enter)="register()" [disabled]="loginService.progress">
                       <i class="input-icon uil uil-at"></i>

@@ -1,8 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { InjectSetupWrapper } from '@angular/core/testing';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 import { LoginComponent } from './login/login.component';
 
 @Injectable({
@@ -11,50 +11,62 @@ import { LoginComponent } from './login/login.component';
 export class LoginserviceService implements CanActivate {
 
   user!: string
-  TMSLoginAPI: string = "https://randomuser.me/api/?results=1"
+  TMSLoginAPI: string = "http://localhost:8080"
   succeed!: boolean
   progress: boolean = false
 
   constructor(private router: Router, private http: HttpClient) { }
 
   logging(user: string, password: string) {
-    this.progress = true
-    fetch(this.TMSLoginAPI)
-      .then((resp) => resp.json())
-      .then((data) => {
-        let ranUsers = data.results;
-        return ranUsers.map((ranUser: any) => {
-          this.user = `${ranUser.name.first}`
-          this.succeed = true
-          new LoginComponent(this.router, this).gotoHome()
-        })
-      })
-      .catch((error) => {
-        console.log(error);
-        this.progress = false
-      })
 
-    return this.http.get<any>(this.TMSLoginAPI + '/' + user + '/' + password)
+    this.progress = true
+
+    let build:any = {
+      'user':user,
+      'senha':password
+    }
+
+    this.http.post(this.TMSLoginAPI +'/login', build)
+    .pipe(
+      catchError((error)=>{
+        this.progress = false
+        return error
+      })
+    )
+    .subscribe((response:any)=>{
+      this.http.get(this.TMSLoginAPI+'/user/'+response[0].pessoa_id)
+      .subscribe((resp:any) =>{
+        console.log(resp);
+        this.user = resp.nome
+      })
+      return response
+    })
+
+    return this.http.post(this.TMSLoginAPI +'/login', build)
   }
 
-  registering(user: string, password: string, email: string) {
-    this.progress = true
-    fetch(this.TMSLoginAPI)
-      .then((resp) => resp.json())
-      .then((data) => {
-        let ranUsers = data.results;
-        return ranUsers.map((ranUser: any) => {
-          this.user = `${ranUser.name.first}`
-          this.succeed = true
-          new LoginComponent(this.router, this).gotoHome()
-        })
-      })
-      .catch((error) => {
-        console.log(error);
-        this.progress = false
-      })
+  registering(name:string ,user: string, password: string, email: string) {
 
-    return this.http.get<any>(this.TMSLoginAPI + '/' + user + '/' + password)
+    this.progress = true
+
+    let build:any = {
+      'name':name,
+      'user':user,
+      'password':password,
+      'email':email
+    }
+
+    this.http.post(this.TMSLoginAPI+'/register', build)
+    .pipe(
+      catchError((error)=>{
+        return error
+      })
+    )
+    .subscribe((response)=>{
+      return response
+    })
+
+    return build
 
   }
 
