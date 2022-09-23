@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
   }
 
   register(){
-    if(this.nameReg != null && this.emailReg != null && this.passwordReg != null){
+    if(this.nameReg != null && this.emailReg != null && this.passwordReg != null && this.userReg != null){
       this.loginService.registering(this.nameReg, this.userReg , this.emailReg, this.passwordReg)
       .pipe(
         catchError((error)=>{
@@ -58,7 +58,16 @@ export class LoginComponent implements OnInit {
         })
       )
       .subscribe((response:any)=>{
+        console.log(response);
+
         console.log('Successful Login!');
+        if(response == ""){
+          this.loginService.progress = false;
+          alert("ERRO!")
+        }else{
+          this.loginService.succeed = true
+          this.gotoHome()
+        }
       });
     }else{
       alert('DIGITE TODOS OS CAMPOS OBRIGATÓRIOS!')

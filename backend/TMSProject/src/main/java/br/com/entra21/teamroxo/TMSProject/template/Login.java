@@ -1,5 +1,6 @@
 package br.com.entra21.teamroxo.TMSProject.template;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,7 @@ public class Login extends MaturidadeNivel3Richardson {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(unique = true)
 	private String user;
 	private String senha;
 	private boolean admin;
