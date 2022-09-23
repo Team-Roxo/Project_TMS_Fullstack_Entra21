@@ -49,19 +49,14 @@ export class LoginserviceService implements CanActivate {
 
     this.progress = true
 
-    let userId!:number;
-
     let build:any = {
+      'nome':name,
       'user':user,
+      'email':email,
       'senha':password
     }
 
-    let buildPessoa:any = {
-      'nome':name,
-      'email':email
-    }
-
-    this.http.post(this.TMSLoginAPI+'/register', buildPessoa)
+    this.http.post(this.TMSLoginAPI+'/register', build)
     .pipe(
       catchError((error)=>{
         return error
@@ -71,33 +66,7 @@ export class LoginserviceService implements CanActivate {
       return response
     })
 
-    this.http.get(this.TMSLoginAPI +'/user/last')
-    .subscribe((response:any)=>{
-      console.log(response);
-
-      userId = response.id
-    })
-
-    let buildLogin:any = {
-      'user':user,
-      'senha':password,
-      'admin': 0,
-      'enterprise': 0,
-      'pessoa_id': userId
-    }
-
-    this.http.post(this.TMSLoginAPI+'/register/login', buildLogin)
-    .pipe(
-      catchError((error)=>{
-        return error
-      })
-    )
-    .subscribe((response)=>{
-      this.user = name
-      return response
-    })
-
-    return this.http.post(this.TMSLoginAPI +'/login', build)
+    return this.http.get(this.TMSLoginAPI +'/login', build)
 
   }
 

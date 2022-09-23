@@ -16,13 +16,12 @@ import br.com.entra21.teamroxo.TMSProject.interfaces.LoginRepository;
 import br.com.entra21.teamroxo.TMSProject.interfaces.PessoaRepository;
 import br.com.entra21.teamroxo.TMSProject.template.Login;
 import br.com.entra21.teamroxo.TMSProject.template.Pessoa;
+import br.com.entra21.teamroxo.TMSProject.template.Register;
 
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/register")
 public class RegisterController {
-
-	private final String PATH = "http://localhost:8080/register";
 	
 	@Autowired
 	private PessoaRepository pessoaRepository;
@@ -32,17 +31,17 @@ public class RegisterController {
 	
 	@PostMapping()
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public @ResponseBody Pessoa register(@RequestBody Pessoa credentials){
+	public @ResponseBody Login register(@RequestBody Register credentials){
 		
-		return pessoaRepository.save(credentials);
+		Pessoa pessoa = new Pessoa();
+		Login login = new Login();
 		
-	}
-	
-	@PostMapping("/login")
-	@ResponseStatus(code = HttpStatus.CREATED)
-	public Login registerLogin(@RequestBody Login credentials) {
-		
-		return loginRepository.save(credentials);
+		pessoa.setNome(credentials.getNome());
+		pessoa.setEmail(credentials.getEmail());
+		login.setPessoa_id(pessoaRepository.save(pessoa).getId());
+		login.setUser(credentials.getUser());
+		login.setSenha(credentials.getSenha());
+		return loginRepository.save(login);
 		
 	}
 	
