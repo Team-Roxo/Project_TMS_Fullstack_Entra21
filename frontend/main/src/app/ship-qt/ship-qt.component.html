@@ -1,49 +1,48 @@
 <table class="table table-bordered">
-    <thead>
-        <th>CEP de origem</th>
-        <th>CEP de destino</th>
-        <th>Comprimento (cm)</th>
-        <th>Largura (cm)</th>
-        <th>Altura (cm)</th>
-        <th>Peso (kg)</th>
-    </thead>
-    <tbody>
-        <tr>
-            <td><input type="number" [(ngModel)]="cepOrigem"></td>
-            <td><input type="number" [(ngModel)]="cepDestino"></td>
-            <td><input type="number" [(ngModel)]="comprimento"></td>
-            <td><input type="number" [(ngModel)]="largura"></td>
-            <td><input type="number" [(ngModel)]="altura"></td>
-            <td><input type="number" [(ngModel)]="peso"></td>
-        </tr>
-    </tbody>
+  <thead>
+      <th>CEP de origem</th>
+      <th>CEP de destino</th>
+      <th>Comprimento (cm)</th>
+      <th>Largura (cm)</th>
+      <th>Altura (cm)</th>
+      <th>Peso (kg)</th>
+  </thead>
+  <tbody>
+      <tr>
+          <td><input type="number" [(ngModel)]="cepOrigem"></td>
+          <td><input type="number" [(ngModel)]="cepDestino"></td>
+          <td><input type="number" [(ngModel)]="comprimento"></td>
+          <td><input type="number" [(ngModel)]="largura"></td>
+          <td><input type="number" [(ngModel)]="altura"></td>
+          <td><input type="number" [(ngModel)]="peso"></td>
+      </tr>
+  </tbody>
 </table>
+
 <button class="btn btn-success" (click)="quote()">Quote</button>
 <br>
 <hr>
 <table class="table table-bordered">
-    <thead>
-        <th>ID</th>
-        <th>Preço do frete</th>
-        <th>Prazo</th>    
-        <th>Origem</th>
-        <th>Destino</th>
-        <th>Comprimento (cm)</th>
-        <th>Largura (cm)</th>
-        <th>Altura (cm)</th>
-        <th>Peso (kg)</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let quote of quotes;let i = index;">
-            <td>{{i}}</td>
-            <td>R${{quote.precoFrete}}</td>
-            <td>{{quote.durationTime}} dias úteis</td>
-            <td>{{quote.startAdress}}</td>
-            <td>{{quote.endAdress}}</td>
-            <td>{{quote.comprimento}}</td>
-            <td>{{quote.largura}}</td>
-            <td>{{quote.altura}}</td>
-            <td>{{quote.peso}}</td>
-        </tr>
-    </tbody>
+  <thead>
+      <th>ID</th>
+      <th>Preço do frete</th>
+      <th>Prazo</th>
+      <th>Origem</th>
+      <th>Destino</th>
+      <th>Transportadora</th>
+      <th>Peso cubado</th>
+
+  </thead>
+  <tbody>
+      <tr *ngFor="let quote of quotes;let i = index;">
+          <td>{{i}}</td>
+          <td>R${{quote.precoFrete}}</td>
+          <td>{{quote.tempo}} dias úteis</td>
+          <td>{{quote.start_adress}}</td>
+          <td>{{quote.end_address}}</td>
+          <td>{{quote.carrier}}</td>
+          <td>{{quote.cubagem}} kg</td>
+
+      </tr>
+  </tbody>
 </table>

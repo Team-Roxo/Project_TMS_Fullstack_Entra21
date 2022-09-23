@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import br.com.entra21.teamroxo.TMSProject.TmsProjectApplication;
 import br.com.entra21.teamroxo.TMSProject.interfaces.LoginRepository;
@@ -38,6 +41,11 @@ public class LoginController {
 	@Autowired
 	private LoginRepository loginRepository;
 	
+	@GetMapping
+	public List<Login> listAll() {
+		return loginRepository.findAll();
+	}
+	
 	@PostMapping()
 	@ResponseStatus(code = HttpStatus.OK)
 	public @ResponseBody List<Login> login(@RequestBody Login credentials){
@@ -53,12 +61,6 @@ public class LoginController {
 		return response;
 		
 	}
-	
-	@PostMapping("/register")
-	@ResponseStatus(code = HttpStatus.CREATED)
-	public @ResponseBody Pessoa register(@RequestBody Pessoa credentials){
-		return pessoaRepository.save(credentials);
-	}
 
 	private void setMaturidadeLvl3(Login pessoa) {
 		
@@ -70,7 +72,8 @@ public class LoginController {
 			));
 		
 		ObjectMapper mapper = new ObjectMapper();
-		
+		mapper.registerModule(new JavaTimeModule());
+		mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
 		mapper.setSerializationInclusion(Include.NON_NULL);
 		
 		pessoa.setLinks(null);

@@ -45,15 +45,15 @@ export class LoginserviceService implements CanActivate {
     return this.http.post(this.TMSLoginAPI +'/login', build)
   }
 
-  registering(name:string ,user: string, password: string, email: string) {
+  registering(name:string ,user: string, email: string, password: string) {
 
     this.progress = true
 
     let build:any = {
-      'name':name,
+      'nome':name,
       'user':user,
-      'password':password,
-      'email':email
+      'email':email,
+      'senha':password
     }
 
     this.http.post(this.TMSLoginAPI+'/register', build)
@@ -62,11 +62,11 @@ export class LoginserviceService implements CanActivate {
         return error
       })
     )
-    .subscribe((response)=>{
+    .subscribe((response:any)=>{
       return response
     })
 
-    return build
+    return this.http.get(this.TMSLoginAPI +'/login', build)
 
   }
 

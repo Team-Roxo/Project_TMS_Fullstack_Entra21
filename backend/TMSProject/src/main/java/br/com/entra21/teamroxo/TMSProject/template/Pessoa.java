@@ -2,6 +2,7 @@ package br.com.entra21.teamroxo.TMSProject.template;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,8 +20,10 @@ public class Pessoa extends MaturidadeNivel3Richardson {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
+	@Column(unique = true)
 	private String email;
 	private LocalDate birth;
+	@Column(unique = true)
 	private String document;
 	
 	public Pessoa() {
