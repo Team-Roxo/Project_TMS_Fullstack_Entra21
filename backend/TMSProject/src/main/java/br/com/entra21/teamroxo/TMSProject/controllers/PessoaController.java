@@ -50,12 +50,6 @@ public class PessoaController {
 		
 	}
 	
-	@GetMapping("/last")
-	public List<Pessoa> lastUser() {
-		
-		return pessoaRepository.findAll();
-	}
-	
 	@PostMapping()
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Pessoa register(@RequestBody Pessoa dados) {
