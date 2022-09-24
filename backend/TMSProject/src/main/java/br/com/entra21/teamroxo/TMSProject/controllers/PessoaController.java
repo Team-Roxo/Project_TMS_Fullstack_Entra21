@@ -45,9 +45,12 @@ public class PessoaController {
 	
 	@GetMapping("/{id}")
 	public Optional<Pessoa> list(@PathVariable int id){
-		
 		return pessoaRepository.findById(id);
-		
+	}
+	
+	@GetMapping("/count")
+	public long numberClients() {
+		return pessoaRepository.count();
 	}
 	
 	@PostMapping()
