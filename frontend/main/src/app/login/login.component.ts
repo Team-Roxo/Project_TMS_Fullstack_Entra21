@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { waitForDebugger } from 'inspector';
 import { catchError, of } from 'rxjs';
 import { LoginserviceService } from '../loginservice.service';
 
@@ -10,6 +12,8 @@ import { LoginserviceService } from '../loginservice.service';
 })
 export class LoginComponent implements OnInit {
 
+  readonly TMSLoginAPI: string = "http://localhost:8080"
+
   emailReg!:string
   nameReg!:string
   userReg!:string
@@ -18,7 +22,7 @@ export class LoginComponent implements OnInit {
   user!:string
   password!:string
 
-  constructor(private router:Router, public loginService:LoginserviceService) { }
+  constructor(private router:Router, public loginService:LoginserviceService, private http:HttpClient) { }
 
   ngOnInit(): void {
     this.loginService.succeed = false
@@ -50,28 +54,58 @@ export class LoginComponent implements OnInit {
   }
 
   register(){
-    if(this.nameReg != null && this.emailReg != null && this.passwordReg != null && this.userReg != null){
-      this.loginService.registering(this.nameReg, this.userReg , this.emailReg, this.passwordReg)
-      .pipe(
-        catchError((error)=>{
-          return of(['Error!', error])
-        })
-      )
+
+    let email:boolean
+    let user:boolean
+
+    if(this.emailReg.match('@')){
+      email = true
+    }else{
+      email = false
+      console.log('FORMAÇÃO DE EMAIL ERRADO');
+    }
+
+    if(this.nameReg != null && email && this.passwordReg != null && this.userReg != null){
+
+      let response:any = this.loginService.registering(this.nameReg, this.userReg , this.emailReg, this.passwordReg)
+
+      console.log(response);
+
+      let ID!:number;
+
+      setTimeout(() =>{
+        this.http.post(this.TMSLoginAPI+'/login', response)
       .subscribe((response:any)=>{
         console.log(response);
 
-        console.log('Successful Login!');
         if(response == ""){
           this.loginService.progress = false;
-          alert("ERRO!")
-        }else{
+          alert("USUARIO OU SENHA ERRADOS")
+        }else if(response.status == '500'){
+          this.loginService.progress = false;
+          console.log('Erro no Servidor! Por favor aguarde!');
+        }
+        else{
+          ID = response[0].pessoa_id
           this.loginService.succeed = true
           this.gotoHome()
         }
-      });
+      })
+      setTimeout(()=>{
+        this.http.get(this.TMSLoginAPI+'/user/'+ID)
+        .subscribe((response:any)=>{
+          console.log(response);
+          this.loginService.user = response.nome
+        })
+      },500)
+
+      },1500)
+
     }else{
+
       alert('DIGITE TODOS OS CAMPOS OBRIGATÓRIOS!')
       this.loginService.progress = false
+
     }
   }
 

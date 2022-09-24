@@ -36,9 +36,6 @@ public class LoginController {
 	private final String PATH = "http://localhost:8080/login";
 	
 	@Autowired
-	private PessoaRepository pessoaRepository;
-	
-	@Autowired
 	private LoginRepository loginRepository;
 	
 	@GetMapping
