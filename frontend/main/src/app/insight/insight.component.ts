@@ -25,15 +25,15 @@ export class InsightComponent implements OnInit {
   }
 
   
-  public get countVisitors() : any {
-    return this.countVisitors
-  }
+  // public get countVisitors() : any {
+  //   return this.countVisitors
+  // }
 
-  contador(){
-    this.countVisitors
-    console.log(this.countVisitors);
+  // contador(){
+  //   this.countVisitors
+  //   console.log(this.countVisitors);
     
-  }
+  // }
   
   
 
