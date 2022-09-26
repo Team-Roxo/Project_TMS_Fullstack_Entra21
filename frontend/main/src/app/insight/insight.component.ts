@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RctQtComponent } from '../rct-qt/rct-qt.component';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-insight',
@@ -9,11 +10,31 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./insight.component.css']
 })
 export class InsightComponent implements OnInit {
-  count: any;
 
-  constructor(private router:Router) { }
+  readonly TMSLoginAPI: string = "http://localhost:8080/user/countClients"
+
+  readonly apiURL:string = "http://localhost:8080/user/countVisitors"
+
+  countClient!: number
+  countVisitors!: number
+
+  constructor(private router:Router, private http:HttpClient) { 
+   
+  }
 
   ngOnInit(): void {
+
+     this.http.get(this.TMSLoginAPI)
+     .subscribe((resultado:any) => {
+      this.countClient=resultado
+     });
+
+     this.http.get(this.apiURL)
+     .subscribe((resultado:any) => {
+      this.countVisitors=resultado
+     });
+
+
   }
 
   register(){
@@ -24,21 +45,13 @@ export class InsightComponent implements OnInit {
     this.router.navigateByUrl('users')
   }
 
+  // countClients() {
+  // this.http.get(`${this.TMSLoginAPI}/countClients`).subscribe(resultado => console.log(resultado));
+  // return ;
   
-  // public get countVisitors() : any {
-  //   return this.countVisitors
   // }
-
-  // contador(){
-  //   this.countVisitors
-  //   console.log(this.countVisitors);
-    
+  // countVisitors(){
+  //   this.http.get(`${this.apiURL}/countVisitors`).subscribe(resultado => console.log(resultado));
   // }
-  
-  
-
-
-
-
 
 }
