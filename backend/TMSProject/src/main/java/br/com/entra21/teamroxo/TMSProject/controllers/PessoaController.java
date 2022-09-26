@@ -23,6 +23,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import br.com.entra21.teamroxo.TMSProject.TmsProjectApplication;
+import br.com.entra21.teamroxo.TMSProject.interfaces.CountVisitorsRepository;
 import br.com.entra21.teamroxo.TMSProject.interfaces.PessoaRepository;
 import br.com.entra21.teamroxo.TMSProject.template.ItemNivel3;
 import br.com.entra21.teamroxo.TMSProject.template.Pessoa;
@@ -32,10 +33,13 @@ import br.com.entra21.teamroxo.TMSProject.template.Pessoa;
 @RequestMapping("/user")
 public class PessoaController {
 
-	private final String PATH = "http://localhost:8080/users";
+	private final String PATH = "http://localhost:8080/user";
 	
 	@Autowired
 	private PessoaRepository pessoaRepository;
+	
+	@Autowired
+	private CountVisitorsRepository countVisitorsRepository;
 	
 	@GetMapping()
 	@ResponseStatus(code = HttpStatus.OK)
@@ -45,9 +49,17 @@ public class PessoaController {
 	
 	@GetMapping("/{id}")
 	public Optional<Pessoa> list(@PathVariable int id){
-		
 		return pessoaRepository.findById(id);
-		
+	}
+	
+	@GetMapping("/countClients")
+	public long numberClients() {
+		return pessoaRepository.count();
+	}
+	
+	@GetMapping("/countVisitors")
+	public long numberVisitors() {
+		return countVisitorsRepository.count();
 	}
 	
 	@PostMapping()

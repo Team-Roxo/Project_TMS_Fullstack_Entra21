@@ -1,5 +1,7 @@
 package br.com.entra21.teamroxo.TMSProject.controllers;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -22,8 +24,10 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import br.com.entra21.teamroxo.TMSProject.TmsProjectApplication;
+import br.com.entra21.teamroxo.TMSProject.interfaces.CountVisitorsRepository;
 import br.com.entra21.teamroxo.TMSProject.interfaces.LoginRepository;
 import br.com.entra21.teamroxo.TMSProject.interfaces.PessoaRepository;
+import br.com.entra21.teamroxo.TMSProject.template.CountVisitors;
 import br.com.entra21.teamroxo.TMSProject.template.ItemNivel3;
 import br.com.entra21.teamroxo.TMSProject.template.Login;
 import br.com.entra21.teamroxo.TMSProject.template.Pessoa;
@@ -36,10 +40,10 @@ public class LoginController {
 	private final String PATH = "http://localhost:8080/login";
 	
 	@Autowired
-	private PessoaRepository pessoaRepository;
+	private LoginRepository loginRepository;
 	
 	@Autowired
-	private LoginRepository loginRepository;
+	private CountVisitorsRepository countVisitorsRepository;
 	
 	@GetMapping
 	public List<Login> listAll() {
@@ -57,6 +61,14 @@ public class LoginController {
 		response.forEach(pessoa -> {
 			setMaturidadeLvl3(pessoa);
 		});
+		
+		if(!response.isEmpty()) {
+			CountVisitors count = new CountVisitors();
+			count.setUser(credentials.getUser());
+			count.setTime(LocalTime.now());
+			count.setDate(LocalDate.now());
+			countVisitorsRepository.save(count);
+		}
 		
 		return response;
 		

@@ -11,9 +11,11 @@ import { LoginComponent } from './login/login.component';
 export class LoginserviceService implements CanActivate {
 
   user!: string
-  TMSLoginAPI: string = "http://localhost:8080"
+  readonly TMSLoginAPI: string = "http://localhost:8080"
   succeed!: boolean
   progress: boolean = false
+  admin:boolean = false
+  enterprise:boolean = false
 
   constructor(private router: Router, private http: HttpClient) { }
 
@@ -38,6 +40,8 @@ export class LoginserviceService implements CanActivate {
       .subscribe((resp:any) =>{
         console.log(resp);
         this.user = resp.nome
+        this.admin = resp.admin
+        this.enterprise = resp.enterprise
       })
       return response
     })
@@ -56,17 +60,23 @@ export class LoginserviceService implements CanActivate {
       'senha':password
     }
 
+    let buildLogin:any = {
+      'user':user,
+      'senha':password
+    }
+
     this.http.post(this.TMSLoginAPI+'/register', build)
     .pipe(
       catchError((error)=>{
         return error
       })
     )
-    .subscribe((response:any)=>{
-      return response
+    .subscribe((response)=>{
+       buildLogin = response
+       return buildLogin
     })
 
-    return this.http.get(this.TMSLoginAPI +'/login', build)
+    return buildLogin
 
   }
 
