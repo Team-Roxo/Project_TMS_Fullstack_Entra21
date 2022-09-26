@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
+
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/ship")
@@ -24,7 +26,7 @@ public class ShipController {
 	final String GOOGLE = "https://maps.googleapis.com/maps/api/directions/json?origin=";
 	
 	@GetMapping("/{cepOrigem}/{cepDestino}")
-	public ArrayList<String> getGoogleAPI(@PathVariable ("cepOrigem") int param1, @PathVariable ("cepDestino") int param2 ){
+	public JSONPObject getGoogleAPI(@PathVariable ("cepOrigem") int param1, @PathVariable ("cepDestino") int param2 ){
 		
 		try {
 			
@@ -37,7 +39,9 @@ public class ShipController {
 			
 			String jsonEmString = converteJsonEmString(response);
 			
-			return jsonEmString;
+			JSONPObject obj = new JSONPObject(jsonEmString, null);
+			
+			return obj;
 			
 		}catch (Exception e) {
 			
@@ -50,11 +54,11 @@ public class ShipController {
 	public static String converteJsonEmString(BufferedReader buffereReader) throws IOException {
 		
         String resposta;
-        ArrayList<String> json = new ArrayList<>();
+        String json = "";
         
         while ((resposta = buffereReader.readLine()) != null) {
             
-        	json.add(resposta);
+        	json += (resposta);
             
         }
         
