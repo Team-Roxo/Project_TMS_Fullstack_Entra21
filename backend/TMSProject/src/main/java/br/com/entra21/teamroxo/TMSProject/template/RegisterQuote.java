@@ -1,5 +1,6 @@
 package br.com.entra21.teamroxo.TMSProject.template;
 
+import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +16,7 @@ public class RegisterQuote {
 	private Integer id;
 	private float price;
 	private byte await;
+	private LocalDate post;
 	private String origin;
 	private String destiny;
 	private byte carrier_id;
@@ -25,8 +27,7 @@ public class RegisterQuote {
 		super();
 	}
 
-	public RegisterQuote(Integer id, float price, byte await, String origin, String destiny, byte carrier_id,
-			float cub_height, int pessoa_id) {
+	public RegisterQuote(Integer id, float price, byte await, String origin, String destiny, byte carrier_id, float cub_height, int pessoa_id) {
 		super();
 		this.id = id;
 		this.price = price;
@@ -100,6 +101,14 @@ public class RegisterQuote {
 
 	public void setPessoa_id(int pessoa_id) {
 		this.pessoa_id = pessoa_id;
+	}
+
+	public LocalDate getPost() {
+		return post;
+	}
+
+	public void setPost(LocalDate post) {
+		this.post = post;
 	}
 
 }

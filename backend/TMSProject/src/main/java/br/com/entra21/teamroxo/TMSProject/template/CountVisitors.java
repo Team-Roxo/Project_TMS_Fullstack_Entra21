@@ -1,5 +1,7 @@
 package br.com.entra21.teamroxo.TMSProject.template;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,23 +15,52 @@ public class CountVisitors {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private long count;
+	private String user;
+	private LocalDate date;
+	private LocalTime time;
 
 	public CountVisitors() {
 		super();
 	}
 
-	public CountVisitors(long count) {
+	public CountVisitors(Integer id, String user, LocalDate date, LocalTime time) {
 		super();
-		this.count = count;
+		this.id = id;
+		this.user = user;
+		this.date = date;
+		this.time = time;
 	}
 
-	public long getCount() {
-		return count;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setCount(long count) {
-		this.count = count;
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+
+	public LocalDate getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
+
+	public LocalTime getTime() {
+		return time;
+	}
+
+	public void setTime(LocalTime time) {
+		this.time = time;
 	}
 	
 }

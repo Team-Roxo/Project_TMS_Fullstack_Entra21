@@ -33,7 +33,7 @@ import br.com.entra21.teamroxo.TMSProject.template.Pessoa;
 @RequestMapping("/user")
 public class PessoaController {
 
-	private final String PATH = "http://localhost:8080/users";
+	private final String PATH = "http://localhost:8080/user";
 	
 	@Autowired
 	private PessoaRepository pessoaRepository;
