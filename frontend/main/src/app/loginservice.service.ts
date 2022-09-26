@@ -14,6 +14,8 @@ export class LoginserviceService implements CanActivate {
   readonly TMSLoginAPI: string = "http://localhost:8080"
   succeed!: boolean
   progress: boolean = false
+  admin:boolean = false
+  enterprise:boolean = false
 
   constructor(private router: Router, private http: HttpClient) { }
 
@@ -38,6 +40,8 @@ export class LoginserviceService implements CanActivate {
       .subscribe((resp:any) =>{
         console.log(resp);
         this.user = resp.nome
+        this.admin = resp.admin
+        this.enterprise = resp.enterprise
       })
       return response
     })
