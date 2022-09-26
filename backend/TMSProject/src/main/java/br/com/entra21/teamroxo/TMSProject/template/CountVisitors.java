@@ -2,7 +2,6 @@ package br.com.entra21.teamroxo.TMSProject.template;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
