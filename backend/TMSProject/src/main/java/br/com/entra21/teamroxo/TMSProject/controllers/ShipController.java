@@ -35,7 +35,7 @@ public class ShipController {
 			
 			BufferedReader response = new BufferedReader(new InputStreamReader(get.getInputStream()));
 			
-			ArrayList<String> jsonEmString = converteJsonEmString(response);
+			String jsonEmString = converteJsonEmString(response);
 			
 			return jsonEmString;
 			
@@ -47,7 +47,7 @@ public class ShipController {
 		
 	}
 	
-	public static ArrayList<String> converteJsonEmString(BufferedReader buffereReader) throws IOException {
+	public static String converteJsonEmString(BufferedReader buffereReader) throws IOException {
 		
         String resposta;
         ArrayList<String> json = new ArrayList<>();
