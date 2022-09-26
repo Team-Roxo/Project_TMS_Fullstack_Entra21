@@ -3,13 +3,9 @@
 
 
         <div class="small-box bg-gradient-success">
-            <div class="inner" >
-                
-                <p>10</p>
-                
-             
-                <p>New Registers Packages</p>
-                
+            <div class="inner">
+                <p>New packages</p>
+
             </div>
             <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -22,14 +18,15 @@
 
         <div class="small-box bg-gradient-yellow">
             <div class="inner">
-                <h1 teste></h1>
+                <h1></h1>
                 <h3>12<sup style="font-size: 20px">%</sup></h3>
                 <p>Bounce Rate</p>
+
             </div>
             <div class="icon">
                 <i class="ion ion-stats-bars"></i>
             </div>
-            <a class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a (click)="register()" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
 
@@ -37,8 +34,10 @@
 
         <div class="small-box bg-gradient-blue">
             <div class="inner">
-                <h3>4</h3>
-                <p>User Registrations</p>
+
+                <h3>{{countClient}}</h3>
+                <p>Registered Users</p>
+
             </div>
             <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -51,13 +50,13 @@
 
         <div class="small-box bg-gradient-primary">
             <div class="inner">
-                <h3>40</h3>
+                <h3>{{countVisitors/2}}</h3>
                 <p>Visitors</p>
             </div>
             <div class="icon">
                 <i class="ion ion-pie-graph"></i>
             </div>
-            <a class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a (click)="register()" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
 
@@ -82,6 +81,7 @@
         </div>
 
     </div>
+
 
     <div class="card-body pt-0">
 
@@ -152,7 +152,8 @@
                                             <td data-action="selectDay" data-day="09/21/2022" class="day">21</td>
                                             <td data-action="selectDay" data-day="09/22/2022" class="day">22</td>
                                             <td data-action="selectDay" data-day="09/23/2022" class="day">23</td>
-                                            <td data-action="selectDay active" data-day="09/24/2022" class="day weekend">24
+                                            <td data-action="selectDay active" data-day="09/24/2022"
+                                                class="day weekend">24
                                             </td>
                                         </tr>
                                         <tr>
