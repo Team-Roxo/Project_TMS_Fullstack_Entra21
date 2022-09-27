@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,6 +25,13 @@ public class CarriersControllers {
 	public List<Carriers> listCarriers(){
 		
 		return carriersRepository.findAll();
+		
+	}
+	
+	@PostMapping()
+	public Carriers postCarrier(@RequestBody Carriers carrier) {
+		
+		return carriersRepository.save(carrier);
 		
 	}
 	
