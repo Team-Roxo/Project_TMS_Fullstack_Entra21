@@ -10,25 +10,22 @@
 >
 ><b>2. ORGANIZAÇÃO DO PROJETO</b>
 >
->><b>2.1. Fluxograma</b>
+>><b>2.1. <a href="#org_geral"> Visão Geral</b></a>
+>>
+>><b>2.2. <a href="#org_fluxograma"> Fluxograma</b></a>
 >
 ><b>3. SOFTWARE</b>
 >
->><b>3.1. GOOGLE CLOUD</b>
+>><b>3.1. <a href="#soft_google"> GOOGLE CLOUD</b></a>
 >>
 >>><b>3.1.1. Google API</b>
 >>>
 >>>><b>3.1.1.1. Directions API</b>
->>>>>
->>>>><b>3.1.1.1.1. Visão Geral</b>
->>>>>
+>>>>
 >>>><b>3.1.1.2. Distance Matrix API</b>
 >>>>
->>>>><b>3.1.1.2.1. Visão Geral</b>
 >>>>
 >>>><b>3.1.1.3. Compute Engine API</b>
->>>>>
->>>>><b>3.1.1.3.1. Visão Geral</b>
 >>>
 >>><b>3.1.2. Instâncias Virtuais</b>
 >>>
@@ -42,8 +39,47 @@
 >>>>
 >>>><b>3.1.3.2 Instalação e Implementação</b>
 >>>
->>
 >><b>3.2. FRONTEND</b>
+>>
+>>><b>3.2.1. Componentes</b>
+>>>>
+>>>><b>3.2.1.1. Login</b>
+>>>>>
+>>>>><b>3.2.1.1.1. CanActivate
+>>>>>
+>>>>><b>3.2.1.1.2. HttpClient
+>>>>
+>>>><b>3.2.1.2. Home</b>
+>>>>
+>>>><b>3.2.1.3. Dashboard</b>
+>>>>>
+>>>>><b>3.2.1.3.1. Contador de Clientes e Visitantes</b>
+>>>>>
+>>>>><b>3.2.1.3.2. Registro de Pacotes</b>
+>>>>>
+>>>>><b>3.2.1.3.3. Bounce Rate</b>
+>>>>
+>>>><b>3.2.1.4. Users</b>
+>>>>
+>>>><b>3.2.1.5. Pacotes</b>
+>>>>>
+>>>>><b>3.2.1.5.1. Recent Quote
+>>>>>
+>>>>><b>3.2.1.5.2. Register Quote
+>>>>>
+>>>>><b>3.2.1.5.3. Tracking Package
+>>>
+>>><b>3.2.2. Services</b>
+>>>>
+>>>><b>3.2.2.1. Login Service</b>
+>>>>
+>>>><b>3.2.2.2. Quote Service</b>
+>>>
+>>><b>3.2.3. Segurança (A analisar)
+>>>>
+>>>><b>3.2.3.1. Dados do Login
+>>>>
+>>>><b>3.2.3.2. Encriptação dos Dados
 >>
 >><b>3.3. BACKEND</b>
 >>>
@@ -73,7 +109,7 @@
 
 ## 1 - RESUMO
 
-<details open id="resume">
+<details id="resume">
  <summary> <b>1.1 - Da Licença, Disponibilidade e Finalidade </b> </summary>
 
 #### &nbsp;&nbsp;&nbsp;&nbsp; Esse projeto foi desenvolvido pelo grupo Roxo da Turma Java Noturno de 2022, composto por <b>Bruno Roberto, Cristian Schauffert, Kalil Fakhouri e Mateus Felipe</b> com a mentoria do <b> professor Oliota</b>, visando apenas a demonstração dos conhecimentos técnicos adquiridos durante o curso e a apresentação da etapa final à empresas.
@@ -86,7 +122,7 @@
 
 </details>
 
-<details open id="stack">
+<details id="stack">
  <summary> <b>1.2 - Das Tecnologias Utilizadas</b> </summary>
 
 #### &nbsp;&nbsp;&nbsp;&nbsp; Durante o curso foi utilizado diversas tecnologias, métodos ágeis e ferramentas de desenvolvimento tais como:
@@ -112,3 +148,36 @@
 > #### Metodologia:
 >> * ##### <img align=center alt=kaka-vscode height=25 width=40 src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/trello/trello-plain.svg" /> Trello - Kanban
 
+</details>
+<br/><br/>
+
+# 2 - ORGANIZAÇÃO DO PROJETO
+
+<details open id="org_geral">
+<summary><b>2.1 - Visão Geral</b></summary>
+
+#### &nbsp;&nbsp;&nbsp;&nbsp;
+
+</details>
+
+<details open id="org_fluxograma">
+<summary><b>2.2 - Fluxograma</b></summary>
+
+
+
+</details>
+
+<br/><br/>
+
+# 3 - SOFTWARE
+
+<details open id="soft_google">
+<summary><b>3.1 - GOOGLE CLOUD</b></summary>
+<br>
+
+>## <b>3.1.1 - Google API
+>>### <b>3.1.1.1 - Directions API </b>
+>>
+>>#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Directions API
+
+</summary>
