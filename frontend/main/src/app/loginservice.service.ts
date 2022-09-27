@@ -16,6 +16,7 @@ export class LoginserviceService implements CanActivate {
   progress: boolean = false
   admin:boolean = false
   enterprise:boolean = false
+  pessoaID!:number
 
   constructor(private router: Router, private http: HttpClient) { }
 
@@ -42,6 +43,7 @@ export class LoginserviceService implements CanActivate {
         this.user = resp.nome
         this.admin = resp.admin
         this.enterprise = resp.enterprise
+        this.pessoaID = response[0].pessoa_id
       })
       return response
     })

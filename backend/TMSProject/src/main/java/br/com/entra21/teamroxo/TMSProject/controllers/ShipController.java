@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 
 @RestController
@@ -26,28 +29,29 @@ public class ShipController {
 	final String GOOGLE = "https://maps.googleapis.com/maps/api/directions/json?origin=";
 	
 	@GetMapping("/{cepOrigem}/{cepDestino}")
-	public JSONPObject getGoogleAPI(@PathVariable ("cepOrigem") int param1, @PathVariable ("cepDestino") int param2 ){
+	public JsonNode getGoogleAPI(@PathVariable ("cepOrigem") int param1, @PathVariable ("cepDestino") int param2 ){
 		
 		try {
-			
-			String APIUrl = GOOGLE+param1+"&destination="+param2+"&key=AIzaSyCKNjLUI0d01M0SfoDjIov4vZlR3DprotM"; 
-			
-			URL url = new URL(APIUrl);
-			HttpsURLConnection get = (HttpsURLConnection) url.openConnection();
-			
-			BufferedReader response = new BufferedReader(new InputStreamReader(get.getInputStream()));
-			
-			String jsonEmString = converteJsonEmString(response);
-			
-			JSONPObject obj = new JSONPObject(jsonEmString, null);
-			
-			return obj;
-			
-		}catch (Exception e) {
-			
-			return null;
-			
-		}
+
+            String APIUrl = GOOGLE+param1+"&destination="+param2+"&key=AIzaSyCKNjLUI0d01M0SfoDjIov4vZlR3DprotM"; 
+
+            URL url = new URL(APIUrl);
+            HttpsURLConnection get = (HttpsURLConnection) url.openConnection();
+
+            BufferedReader response = new BufferedReader(new InputStreamReader(get.getInputStream()));
+
+            String jsonEmString = converteJsonEmString(response);
+
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode node = mapper.readTree(jsonEmString);
+
+            return node;
+
+        }catch (Exception e) {
+
+            return null;
+
+        }
 		
 	}
 	
