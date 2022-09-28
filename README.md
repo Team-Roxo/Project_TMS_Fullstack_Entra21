@@ -18,11 +18,11 @@
 >
 >><b>3.1. <a href="#soft_google"> GOOGLE CLOUD</b></a>
 >>
->>><b>3.1.1. Google API</b>
+>>><b>3.1.1. <a href="#google_api"> Google API </a></b>
 >>>
->>>><b>3.1.1.1. Directions API</b>
+>>>><b>3.1.1.1. <a href="#directions"> Directions API </a></b>
 >>>>
->>>><b>3.1.1.2. Distance Matrix API</b>
+>>>><b>3.1.1.2. <a href="#distance"> Distance Matrix API </a></b>
 >>>>
 >>>>
 >>>><b>3.1.1.3. Compute Engine API</b>
@@ -109,7 +109,7 @@
 
 ## 1 - RESUMO
 
-<details id="resume">
+<details open id="resume">
  <summary> <b>1.1 - Da Licença, Disponibilidade e Finalidade </b> </summary>
 
 #### &nbsp;&nbsp;&nbsp;&nbsp; Esse projeto foi desenvolvido pelo grupo Roxo da Turma Java Noturno de 2022, composto por <b>Bruno Roberto, Cristian Schauffert, Kalil Fakhouri e Mateus Felipe</b> com a mentoria do <b> professor Oliota</b>, visando apenas a demonstração dos conhecimentos técnicos adquiridos durante o curso e a apresentação da etapa final à empresas.
@@ -122,7 +122,7 @@
 
 </details>
 
-<details id="stack">
+<details open id="stack">
  <summary> <b>1.2 - Das Tecnologias Utilizadas</b> </summary>
 
 #### &nbsp;&nbsp;&nbsp;&nbsp; Durante o curso foi utilizado diversas tecnologias, métodos ágeis e ferramentas de desenvolvimento tais como:
@@ -156,7 +156,7 @@
 <details open id="org_geral">
 <summary><b>2.1 - Visão Geral</b></summary>
 
-#### &nbsp;&nbsp;&nbsp;&nbsp;
+#### &nbsp;&nbsp;&nbsp;&nbsp; 
 
 </details>
 
@@ -175,9 +175,32 @@
 <summary><b>3.1 - GOOGLE CLOUD</b></summary>
 <br>
 
->## <b>3.1.1 - Google API
->>### <b>3.1.1.1 - Directions API </b>
->>
->>#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Directions API
+<a href="#">Clique aqui para aprender a configurar o Google Cloud</a>
 
-</summary>
+>## <b id="google_api"> 3.1.1 - Google API </b>
+>>### <b id="directions"> 3.1.1.1 - Directions API </b>
+>>
+>>#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A API Directions é um serviço da Web que usa uma solicitação HTTP para retornar rotas no formato JSON ou XML entre os locais. As rotas estão disponíveis de várias maneiras: 
+>>
+>> * #### como uma API independente.
+>> * #### como parte da API Maps JavaScript do lado do cliente.
+>> * #### para uso do servidor como parte das bibliotecas de cliente dos Serviços da Web do Google Maps.
+>>
+>> #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Esta API aceita tanto endereços do tipo texto como também latitudes e longitudes previamente formatadas de acordo com o padrão estabelecido.
+>>
+>>### <b id="distance">3.1.1.2 - Distance Matrix API </b>
+>>
+>>#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A API Distance Matrix fornece a distância e o tempo de viagem de uma matriz de origens e destinos e consiste em linhas que contêm os valores duration e distance para cada par. A Distance Matrix está disponível de várias formas:
+>>
+>> * #### como uma API independente.
+>> * #### como parte da API Maps JavaScript do lado do cliente.
+>> * #### para uso do servidor como parte das bibliotecas de cliente dos Serviços da Web do Google Maps.
+>>
+>> #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A API retorna informações com base na rota recomendada entre os pontos inicial e final. Você pode solicitar dados de distância para diferentes meios de transporte, solicitar dados de distância em diferentes unidades, como quilômetros ou milhas, e estimar o tempo de viagem no trânsito.
+>>
+>>### <b id="compute"> 3.1.1.3 - Compute Engine API </b>
+>>
+>> #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Cria e executa máquinas virtuais no Google Cloud Platform. O Google Compute Engine oferece máquinas virtuais que são executadas nos data centers do Google conectados à rede de fibra óptica global. As ferramentas e o fluxo de trabalho oferecidos permitem o escalonamento de instâncias únicas para computação em nuvem com balanceamento de carga global.
+>> #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Essas VMs são inicializadas rapidamente, vêm com armazenamento em disco permanente e proporcionam desempenho consistente. As máquinas estão disponíveis em muitas configurações, incluindo tamanhos predefinidos e também podem ser criadas com tipos de máquinas personalizados de acordo com suas necessidades específicas.
+>>
+</details>
