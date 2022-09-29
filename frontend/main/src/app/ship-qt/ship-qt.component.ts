@@ -79,7 +79,8 @@ export class ShipQtComponent implements OnInit {
 
               console.log(this.priceFix + this.distance * response[i].taxa * this.cubagem);
 
-              this.precoFrete = this.priceFix + this.distance * response[i].taxa * this.cubagem;
+              this.precoFrete = (this.priceFix + this.distance * response[i].taxa * this.cubagem);
+              
 
               this.quotes.push({ precoFrete: this.precoFrete, tempo: this.tempo, start_adress: this.start_adress, end_address: this.end_address, carrier: response[i].razao, vol: this.vol, cubagem: this.cubagem, carrierID: response[i].id, pessoaID: this.loginService.pessoaID  });
 
