@@ -10,15 +10,15 @@ import { QuoteService } from '../quote.service';
   styleUrls: ['./carriers.component.css']
 })
 export class CarriersComponent implements OnInit {
-  
+
   carriers!: Array<any>
   cnpj!: string
   email!: string
   razao!: string
   taxa!: number
-  
+
     constructor(public carrierService: CarrierService, public quoteService: QuoteService, private router: Router, private http: HttpClient) { }
-  
+
     ngOnInit(): void {
       this.carriers = new Array()
       // this.carriers.push({name:"Total Express", email:"total@express.com", cnpj:"4564564566454655", taxValorFrete:0.081})
@@ -26,13 +26,13 @@ export class CarriersComponent implements OnInit {
       // this.carriers.push({name:"Braspress", email:"braspress@braspress.com", cnpj:"1231323132312", taxValorFrete:0.089})
       // this.carriers.push({name:"Correios", email:"correios@correios.com", cnpj:"7897987899789", taxValorFrete:0.078})
 
-              
+
        this.carrierService.listCarrier().pipe().subscribe((response: any) => {
 
         console.log(response);
 
-        
-        
+
+
         var count = Object.keys(response).length;
 
         for (let i = 0; i < count; i++) {
@@ -41,7 +41,7 @@ export class CarriersComponent implements OnInit {
           this.taxa = response[i].taxa;
           this.email = response[i].email;
           this.cnpj = response[i].cnpj;
-      
+
           this.carriers.push({ razao: this.razao, taxa: this.taxa, email: this.email, cnpj: this.cnpj});
 
         }
@@ -52,23 +52,23 @@ export class CarriersComponent implements OnInit {
           this.cnpj = "";
 
       })
-      
+
     }
-  
+
     adicionar(razao: string, taxa: number, email: string, cnpj: string) {
-   
+
 
       let build ={
         "razao":razao,
         "taxa":taxa,
         "email":email,
         "cnpj":cnpj
-       
+
       }
-  
+
       this.carrierService.adicionar(build)
-  
+
       this.carriers.push({razao:this.razao, taxa:this.taxa, email:this.email, cnpj:this.cnpj});
     }
-  
+
   }
