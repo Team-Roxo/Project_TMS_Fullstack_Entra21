@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { type } from 'os';
 import { catchError } from 'rxjs';
 import { ShipQtComponent } from './ship-qt/ship-qt.component';
 
@@ -8,14 +10,35 @@ import { ShipQtComponent } from './ship-qt/ship-qt.component';
 })
 export class QuoteService {
 
-   apiURL:string = 'https://maps.googleapis.com/maps/api/directions/json?origin='
+   apiURL:string = 'http://localhost:8080/ship'
+   apiURL2:string = 'http://localhost:8080/quote'
 
-  constructor(private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) { }
 
   quote(cepOrigem:string, cepDestino:string):any{
 
-    return this.http.get<any>(this.apiURL+cepOrigem+'&destination='+cepDestino+'&key=AIzaSyCKNjLUI0d01M0SfoDjIov4vZlR3DprotM')
+    return this.http.get(this.apiURL+'/'+cepOrigem+'/'+cepDestino)
 
   }
+
+  recQuote():any{
+
+    return this.http.get(this.apiURL)
+
+  }
+
+  regRecentQuotes(object:any){
+    this.http.post(this.apiURL2+'/recent',object)
+    .subscribe((response)=>{
+
+      
+      console.log(response);
+      
+    })
+
+
+  }
+
+
 
 }
