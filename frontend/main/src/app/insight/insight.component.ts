@@ -11,29 +11,36 @@ import { Observable } from 'rxjs';
 })
 export class InsightComponent implements OnInit {
 
-  readonly TMSLoginAPI: string = "http://localhost:8080/user/countClients"
+  readonly APICountUsers: string = "http://localhost:8080/user/countClients"
 
-  readonly apiURL:string = "http://localhost:8080/user/countVisitors"
+  readonly APICountVisits:string = "http://localhost:8080/user/countVisitors"
+
+  readonly APICountPackages:string = "http://localhost:8080/quote/go"
 
   countClient!: number
   countVisitors!: number
+  countPackages!:number
 
-  constructor(private router:Router, private http:HttpClient) { 
-   
+  constructor(private router:Router, private http:HttpClient) {
+
   }
 
   ngOnInit(): void {
 
-     this.http.get(this.TMSLoginAPI)
+     this.http.get(this.APICountUsers)
      .subscribe((resultado:any) => {
       this.countClient=resultado
      });
 
-     this.http.get(this.apiURL)
+     this.http.get(this.APICountVisits)
      .subscribe((resultado:any) => {
       this.countVisitors=resultado
      });
 
+     this.http.get(this.APICountPackages)
+     .subscribe((response:any)=>{
+      this.countPackages=response
+     })
 
   }
 
@@ -48,7 +55,7 @@ export class InsightComponent implements OnInit {
   // countClients() {
   // this.http.get(`${this.TMSLoginAPI}/countClients`).subscribe(resultado => console.log(resultado));
   // return ;
-  
+
   // }
   // countVisitors(){
   //   this.http.get(`${this.apiURL}/countVisitors`).subscribe(resultado => console.log(resultado));
