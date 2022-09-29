@@ -54,10 +54,8 @@ public class LoginController {
 	@ResponseStatus(code = HttpStatus.OK)
 	public @ResponseBody List<Login> login(@RequestBody Login credentials){
 		
-		List<Login> response = new ArrayList<Login>(loginRepository.findAll()).stream()
-				.filter(login -> (login.getUser().equals(credentials.getUser())) &&
-						login.getSenha().equals(credentials.getSenha()))
-				.toList();
+		List<Login> response = loginRepository.findLogin(credentials.getUser(), credentials.getSenha()).stream().toList();
+				
 		response.forEach(pessoa -> {
 			setMaturidadeLvl3(pessoa);
 		});

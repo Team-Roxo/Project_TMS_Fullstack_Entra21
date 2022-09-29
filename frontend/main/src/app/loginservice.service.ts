@@ -10,12 +10,12 @@ import { LoginComponent } from './login/login.component';
 })
 export class LoginserviceService implements CanActivate {
 
-  user!: string
   readonly TMSLoginAPI: string = "http://localhost:8080"
+  user!: string
   succeed!: boolean
-  progress: boolean = false
-  admin:boolean = false
-  enterprise:boolean = false
+  progress!: boolean
+  admin!:boolean
+  enterprise!:boolean
   pessoaID!:number
 
   constructor(private router: Router, private http: HttpClient) { }
@@ -37,12 +37,13 @@ export class LoginserviceService implements CanActivate {
       })
     )
     .subscribe((response:any)=>{
+      this.admin = response.admin
+      this.enterprise = response.enterprise
+
       this.http.get(this.TMSLoginAPI+'/user/'+response[0].pessoa_id)
       .subscribe((resp:any) =>{
         console.log(resp);
         this.user = resp.nome
-        this.admin = resp.admin
-        this.enterprise = resp.enterprise
         this.pessoaID = response[0].pessoa_id
       })
       return response
