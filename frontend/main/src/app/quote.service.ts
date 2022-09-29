@@ -21,6 +21,12 @@ export class QuoteService {
 
   }
 
+  recQuote():any{
+
+    return this.http.get(this.apiURL)
+
+  }
+
   regRecentQuotes(object:any){
     this.http.post(this.apiURL2+'/recent',object)
     .subscribe((response)=>{
