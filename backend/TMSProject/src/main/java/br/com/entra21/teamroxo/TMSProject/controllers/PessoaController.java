@@ -1,15 +1,18 @@
 package br.com.entra21.teamroxo.TMSProject.controllers;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,8 +28,10 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import br.com.entra21.teamroxo.TMSProject.TmsProjectApplication;
 import br.com.entra21.teamroxo.TMSProject.interfaces.CountVisitorsRepository;
 import br.com.entra21.teamroxo.TMSProject.interfaces.PessoaRepository;
+import br.com.entra21.teamroxo.TMSProject.template.CountVisitors;
 import br.com.entra21.teamroxo.TMSProject.template.ItemNivel3;
 import br.com.entra21.teamroxo.TMSProject.template.Pessoa;
+import br.com.entra21.teamroxo.TMSProject.template.RegisterQuote;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -62,12 +67,26 @@ public class PessoaController {
 		return countVisitorsRepository.count();
 	}
 	
+	@GetMapping("/bounce")
+	public float bounceRate() {
+		List<CountVisitors> bounce = new ArrayList<CountVisitors>(countVisitorsRepository.findAll().stream()
+				.filter(count -> count.getBounceRate() == true)
+				.toList());
+		
+		return (bounce.size()*100)/countVisitorsRepository.count();
+		
+	}
+	
+	@PostMapping("/disbounce/{id}")
+	public boolean disBounce(@PathVariable("id") int id) {
+		countVisitorsRepository.updateBounce(id);
+		return false;
+	}
+	
 	@PostMapping()
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Pessoa register(@RequestBody Pessoa dados) {
-		
 		return pessoaRepository.save(dados);
-		
 	}
 
 	private List<Pessoa> obterListaCompleta() {

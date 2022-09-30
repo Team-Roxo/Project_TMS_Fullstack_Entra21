@@ -11,12 +11,19 @@ import { LoginComponent } from './login/login.component';
 export class LoginserviceService implements CanActivate {
 
   readonly TMSLoginAPI: string = "http://localhost:8080"
+  readonly APIBounceInit:string = "http://localhost:8080/login/init"
+
   user!: string
   succeed!: boolean
   progress!: boolean
   admin!:boolean
   enterprise!:boolean
   pessoaID!:number
+
+  idBounce!:number
+  userBounce!:string
+  dateBounce!:string
+  timeBounce!:string
 
   constructor(private router: Router, private http: HttpClient) { }
 
@@ -37,8 +44,17 @@ export class LoginserviceService implements CanActivate {
       })
     )
     .subscribe((response:any)=>{
+
       this.admin = response.admin
       this.enterprise = response.enterprise
+
+      if(response == ""){
+        this.progress = false;
+        alert("USUARIO OU SENHA ERRADOS")
+      }else{
+        this.succeed = true
+        new LoginComponent(this.router, this, this.http).gotoHome();
+      }
 
       this.http.get(this.TMSLoginAPI+'/user/'+response[0].pessoa_id)
       .subscribe((resp:any) =>{
@@ -46,10 +62,21 @@ export class LoginserviceService implements CanActivate {
         this.user = resp.nome
         this.pessoaID = response[0].pessoa_id
       })
-      return response
-    })
 
-    return this.http.post(this.TMSLoginAPI +'/login', build)
+      let bounce:any = {
+        "user":response[0].user
+      }
+
+      this.http.post(this.APIBounceInit, bounce)
+      .subscribe((response:any)=>{
+        console.log(response);
+        this.idBounce = response.id
+        this.userBounce = response.user
+        this.dateBounce = response.date
+        this.timeBounce = response.time
+      })
+
+    })
   }
 
   registering(name:string ,user: string, email: string, password: string) {

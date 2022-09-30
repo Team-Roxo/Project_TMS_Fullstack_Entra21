@@ -35,6 +35,9 @@ export class ShipQtComponent implements OnInit {
   distance!: number
   carrierData = [];
 
+  APIBouncePut:string = "http://localhost:8080/user/disbounce/"
+  newBounce!:any
+
 
   constructor(public loginService: LoginserviceService, public carrierService: CarrierService, public quoteService: QuoteService, private router: Router, private http: HttpClient) { }
 
@@ -46,6 +49,22 @@ export class ShipQtComponent implements OnInit {
   }
 
   quote() {
+
+    //ATUALIZA BOUNCE
+    new LoginserviceService(this.router, this.http)
+
+    this.newBounce = {
+      "id":this.loginService.idBounce,
+      "user":this.loginService.userBounce,
+      "date":this.loginService.dateBounce,
+      "time":this.loginService.timeBounce,
+      "bounce_rate":false
+    }
+
+    console.log(this.newBounce);
+
+    this.http.post(this.APIBouncePut+this.loginService.idBounce, this.newBounce)
+    //FIM DO BOUNCE
 
     if (this.cepOrigem != null && this.cepDestino != null && this.comprimento != null, this.altura != null, this.largura != null, this.peso != null) {
       this.quoteService.quote(this.cepOrigem, this.cepDestino)
@@ -64,11 +83,11 @@ export class ShipQtComponent implements OnInit {
           this.distance = (response.routes[0].legs[0].distance.value);
 
           //cálculos
-          this.vol = (this.comprimento * this.altura * this.largura) / 1000000; //conversão em m³          
+          this.vol = (this.comprimento * this.altura * this.largura) / 1000000; //conversão em m³
           this.cubagem = this.vol * this.fatorCub;
           this.tempo = Math.ceil((((this.distance) / 1000) / 80) / 7); //dividido por 1000 para converter, /80 velocidade med, /7 horas diárias
 
-          //dados da transportadora       
+          //dados da transportadora
           this.carrierService.listCarrier().pipe().subscribe((response: any) => {
 
             var count = Object.keys(response).length;
@@ -80,7 +99,7 @@ export class ShipQtComponent implements OnInit {
               console.log(this.priceFix + this.distance * response[i].taxa * this.cubagem);
 
               this.precoFrete = (this.priceFix + this.distance * response[i].taxa * this.cubagem);
-              
+
 
               this.quotes.push({ precoFrete: this.precoFrete, tempo: this.tempo, start_adress: this.start_adress, end_address: this.end_address, carrier: response[i].razao, vol: this.vol, cubagem: this.cubagem, carrierID: response[i].id, pessoaID: this.loginService.pessoaID  });
 
@@ -106,7 +125,7 @@ export class ShipQtComponent implements OnInit {
   }
 
   regRecentQuotes(priceQuote: number, prazo: number, origem: string, destino: string, carrierID: number, cubagem: number, pessoaID:number) {
-   
+
     let build ={
       "price":priceQuote,
       "await":prazo,
@@ -118,7 +137,7 @@ export class ShipQtComponent implements OnInit {
     }
 
     this.quoteService.regRecentQuotes(build)
-    
+
 
 
   }
