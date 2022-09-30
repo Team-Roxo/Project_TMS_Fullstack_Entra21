@@ -60,18 +60,22 @@ public class LoginController {
 			setMaturidadeLvl3(pessoa);
 		});
 		
-		if(!response.isEmpty()) {
-			CountVisitors count = new CountVisitors();
-			count.setUser(credentials.getUser());
-			count.setTime(LocalTime.now());
-			count.setDate(LocalDate.now());
-			countVisitorsRepository.save(count);
-		}
-		
 		return response;
 		
 	}
 
+	@PostMapping("/init")
+	public CountVisitors bounce(@RequestBody CountVisitors visitor) {
+		
+		CountVisitors count = new CountVisitors();
+		count.setUser(visitor.getUser());
+		count.setTime(LocalTime.now());
+		count.setDate(LocalDate.now());
+		count.setBounceRate(true);
+		return countVisitorsRepository.save(count);
+		
+	}
+	
 	private void setMaturidadeLvl3(Login pessoa) {
 		
 		ArrayList<String> headers = new ArrayList<>(Arrays.asList(
