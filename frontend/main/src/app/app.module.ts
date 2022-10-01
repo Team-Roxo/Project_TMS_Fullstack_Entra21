@@ -23,6 +23,7 @@ import { EditComponent } from './edit/edit.component';
 import { AboutComponent } from './about/about.component';
 import { HttpClientModule } from "@angular/common/http";
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { UserClientComponent } from './user-client/user-client.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     RctQtComponent,
     EditComponent,
     AboutComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    UserClientComponent
   ],
   imports: [
     BrowserModule,

@@ -111,7 +111,7 @@
             </p>
           </a>
         </li>
-        <li class="nav-item" [hidden]="loginService.admin">
+        <li class="nav-item" [hidden]="!loginService.admin">
           <a href="" routerLink="dashboard" class="nav-link">
             <i class="nav-icon fas fa-chart-bar"></i>
             <p>Dashboard</p>
@@ -125,16 +125,22 @@
             </p>
           </a>
           <ul class="nav nav-treeview">
-            <li class="nav-item">
+            <li class="nav-item" [hidden]="!loginService.admin">
               <a routerLink="users" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Clients</p>
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" [hidden]="!loginService.admin">
               <a routerLink="carriers" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Carriers</p>
+              </a>
+            </li>
+            <li class="nav-item" [hidden]="loginService.admin">
+              <a routerLink="user-client" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Clients</p>
               </a>
             </li>
           </ul>
@@ -176,7 +182,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a href="" routerLink="finance" class="nav-link">
+          <a href="" routerLink="finance" class="nav-link" [hidden]="!loginService.adminEnter">
             <i class="nav-icon fas fa-dollar-sign"></i>
             <p>Finance
             </p>
@@ -195,6 +201,6 @@
   </div>
   <div style="padding-left: 20px;">
     <div class="small">Logged in as:</div>
-    <span>{{loginService.user}}<br><a routerLink="" (click)="sair()" class="small" style="color: red;">Sair</a>&nbsp;&nbsp;&nbsp;&nbsp;<a routerLink="edit" class="small">Edit</a> </span>
+    <span>{{loginService.nome}}<br><a routerLink="" (click)="sair()" class="small" style="color: red;">Sair</a>&nbsp;&nbsp;&nbsp;&nbsp;<a routerLink="edit" class="small">Edit</a> </span>
   </div>
 </aside>

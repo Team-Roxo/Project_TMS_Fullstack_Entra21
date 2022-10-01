@@ -13,11 +13,12 @@ export class LoginserviceService implements CanActivate {
   readonly TMSLoginAPI: string = "http://localhost:8080"
   readonly APIBounceInit:string = "http://localhost:8080/login/init"
 
-  user!: string
+  nome!: string
   succeed!: boolean
   progress!: boolean
   admin!:boolean
   enterprise!:boolean
+  adminEnter:boolean = false
   pessoaID!:number
 
   idBounce!:number
@@ -45,8 +46,15 @@ export class LoginserviceService implements CanActivate {
     )
     .subscribe((response:any)=>{
 
-      this.admin = response.admin
-      this.enterprise = response.enterprise
+      this.admin = response[0].admin
+      this.enterprise = response[0].enterprise
+
+      if(this.admin == true){
+        this.adminEnter = true;
+        if(this.enterprise == true){
+          this.adminEnter = true
+        }
+      }
 
       if(response == ""){
         this.progress = false;
@@ -59,7 +67,7 @@ export class LoginserviceService implements CanActivate {
       this.http.get(this.TMSLoginAPI+'/user/'+response[0].pessoa_id)
       .subscribe((resp:any) =>{
         console.log(resp);
-        this.user = resp.nome
+        this.nome = resp.nome
         this.pessoaID = response[0].pessoa_id
       })
 
