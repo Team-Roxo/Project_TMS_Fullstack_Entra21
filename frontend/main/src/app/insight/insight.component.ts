@@ -16,10 +16,13 @@ export class InsightComponent implements OnInit {
   readonly APICountVisits:string = "http://localhost:8080/user/countVisitors"
 
   readonly APICountPackages:string = "http://localhost:8080/quote/go"
+  
+  readonly APICountBounce:string = "http://localhost:8080/user/bounce"
 
   countClient!: number
   countVisitors!: number
   countPackages!:number
+  countBounce!:number
 
   constructor(private router:Router, private http:HttpClient) {
 
@@ -42,6 +45,12 @@ export class InsightComponent implements OnInit {
       this.countPackages=response
      })
 
+     this.http.get(this.APICountBounce)
+     .subscribe((response:any)=>{
+      this.countBounce=response
+     })
+
+
   }
 
   register(){
@@ -52,13 +61,5 @@ export class InsightComponent implements OnInit {
     this.router.navigateByUrl('users')
   }
 
-  // countClients() {
-  // this.http.get(`${this.TMSLoginAPI}/countClients`).subscribe(resultado => console.log(resultado));
-  // return ;
-
-  // }
-  // countVisitors(){
-  //   this.http.get(`${this.apiURL}/countVisitors`).subscribe(resultado => console.log(resultado));
-  // }
 
 }
