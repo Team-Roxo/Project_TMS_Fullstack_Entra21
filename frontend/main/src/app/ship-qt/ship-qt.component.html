@@ -37,7 +37,7 @@
     <tbody>
         <tr *ngFor="let quote of quotes;let i = index;">
             <td class="align-items-center"><button class="btn btn-primary" (click)="regRecentQuotes(this.quote.precoFrete, this.quote.tempo, this.quote.start_adress, this.quote.end_address, this.quote.carrierID, this.quote.cubagem, this.quote.pessoaID    )">Save</button></td>
-            <td>{{i}}</td>
+            <td>{{i+1}}</td>
             <td>R${{quote.precoFrete}}</td>
             <td>{{quote.tempo}} dias úteis</td>
             <td>{{quote.start_adress}}</td>
