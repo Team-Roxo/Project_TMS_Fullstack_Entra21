@@ -24,6 +24,7 @@ export class LoginserviceService implements CanActivate {
   admin!: boolean
   enterprise!: boolean
   pessoaID!: number
+  adminEnter:boolean = false
 
   idBounce!: number
   userBounce!: string
@@ -41,39 +42,45 @@ export class LoginserviceService implements CanActivate {
       'senha': password
     }
 
-    this.http.post(this.TMSLoginAPI + '/login', build)
-      .pipe(
-        catchError((error) => {
-          this.progress = false
-          return error
-        })
-      )
-      .subscribe((response: any) => {
-        this.user = user
-        this.admin = response.admin
-        this.enterprise = response.enterprise
+    this.http.post(this.TMSLoginAPI +'/login', build)
+    .pipe(
+      catchError((error)=>{
+        this.progress = false
+        return error
+      })
+    )
+    .subscribe((response:any)=>{
 
-        if (response == "") {
-          this.progress = false;
-          alert("USUARIO OU SENHA ERRADOS")
-        } else {
-          this.succeed = true
-          new LoginComponent(this.router, this, this.http).gotoHome();
+      this.admin = response[0].admin
+      this.enterprise = response[0].enterprise
+
+      if(this.admin == true){
+        this.adminEnter = true;
+        if(this.enterprise == true){
+          this.adminEnter = true
         }
+      }
 
-        this.http.get(this.TMSLoginAPI + '/user/' + response[0].pessoa_id)
-          .subscribe((resp: any) => {
-            console.log(resp);
-            this.nome = resp.nome
-            this.pessoaID = response[0].pessoa_id
-            this.birth = resp.birth
-            this.document = resp.document
-            this.email = resp.email
-            this.password = response[0].senha
+      if(response == ""){
+        this.progress = false;
+        alert("USUARIO OU SENHA ERRADOS")
+      }else{
+        this.succeed = true
+        new LoginComponent(this.router, this, this.http).gotoHome();
+      }
 
-          })
-
-        let bounce: any = {
+      this.http.get(this.TMSLoginAPI+'/user/'+response[0].pessoa_id)
+      .subscribe((resp:any) =>{
+        console.log(resp);
+        this.nome = resp.nome
+        this.pessoaID = response[0].pessoa_id
+        this.birth = resp.birth
+        this.document = resp.document
+        this.email = resp.email
+        this.password = response[0].senha
+      })
+      
+      let bounce: any = {
           "user": response[0].user
         }
 
@@ -85,7 +92,6 @@ export class LoginserviceService implements CanActivate {
             this.dateBounce = response.date
             this.timeBounce = response.time
           })
-
       })
   }
 

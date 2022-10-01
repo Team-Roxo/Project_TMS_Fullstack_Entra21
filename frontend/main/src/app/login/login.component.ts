@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
 
       alert('DIGITE TODOS OS CAMPOS OBRIGATÓRIOS!')
       this.loginService.progress = false
-      
+
     }
   }
 

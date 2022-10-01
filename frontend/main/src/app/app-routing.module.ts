@@ -16,6 +16,7 @@ import { PacktrackComponent } from './packtrack/packtrack.component';
 import { RctQtComponent } from './rct-qt/rct-qt.component';
 import { ReceiptComponent } from './receipt/receipt.component';
 import { ShipQtComponent } from './ship-qt/ship-qt.component';
+import { UserClientComponent } from './user-client/user-client.component';
 import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
@@ -34,7 +35,8 @@ const routes: Routes = [
   { path: 'recent-quote', component:RctQtComponent, canActivate:[LoginserviceService]},
   { path: 'edit', component:EditComponent, canActivate:[LoginserviceService]},
   { path: 'about', component:AboutComponent, canActivate:[LoginserviceService]},
-  { path: 'forgetPassword', component:ForgetPasswordComponent}
+  { path: 'forgetPassword', component:ForgetPasswordComponent},
+  { path: "user-client", component:UserClientComponent, canActivate:[LoginserviceService]}
 ];
 
 @NgModule({

@@ -1,6 +1,8 @@
 package br.com.entra21.teamroxo.TMSProject.controllers;
 
 import java.time.LocalDate;
+import java.time.temporal.TemporalAdjuster;
+import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -65,6 +67,17 @@ public class PessoaController {
 	@GetMapping("/countVisitors")
 	public long numberVisitors() {
 		return countVisitorsRepository.count();
+	}
+	
+	@GetMapping("/birthnow")
+	public List<Pessoa> birthNow(){
+		return pessoaRepository.findBirth(LocalDate.now());
+	}
+	
+	@GetMapping("/birthmonth")
+	public List<Pessoa> birthMonth(){
+		return pessoaRepository.findBirthMonth(LocalDate.now().withMonth(LocalDate.now().getMonthValue()).with(TemporalAdjusters.firstDayOfMonth()), 
+				LocalDate.now().withMonth(LocalDate.now().getMonthValue()).with(TemporalAdjusters.lastDayOfMonth()));
 	}
 	
 	@GetMapping("/bounce")
