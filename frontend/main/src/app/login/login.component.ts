@@ -89,7 +89,7 @@ export class LoginComponent implements OnInit {
         this.http.get(this.TMSLoginAPI+'/user/'+ID)
         .subscribe((response:any)=>{
           console.log(response);
-          this.loginService.user = response.nome
+          this.loginService.nome = response.nome
         })
       },500)
 
