@@ -7,36 +7,36 @@
 
         <label for="Name">Name:</label>
         <div class="input-group">
-            <input type="text" class="form-control" name="Name" id="name" placeholder="Name" required>
+            <input value={{name}} type="text" class="form-control" name="Name" id="name" placeholder="Name" required>
 
         </div>
 
         <label for="User">User:</label>
         <div class="input-group">
-            <input type="text" class="form-control" name="User" id="user" placeholder="User" required>
+            <input value={{user}} type="text" class="form-control" name="User" id="user" placeholder="User" required>
 
         </div>
 
         <label for="nascimento">Birthday:</label>
-        <div> <input type="date" class="form-control" name="birthday" id="birthday" placeholder="Birthday" required>
+        <div> <input value={{birth}} type="date" class="form-control" name="birthday" id="birthday" placeholder="Birthday" required>
         </div>
 
         <label for="documento">Document:</label>
         <div>
-            <input type="number" class="form-control" name="Document" id="document" placeholder="Document" required>
+            <input value={{document}} type="number" class="form-control" name="Document" id="document" placeholder="Document" required>
 
         </div>
 
 
         <div>
             <label for="email">Email:</label>
-            <input required type="email" name="email" id="email" placeholder="Email:" class="form-control">
+            <input value={{email}} required type="email" name="email" id="email" placeholder="Email" class="form-control">
 
         </div>
 
         <div>
-            <label for="senha">Senha:</label>
-            <input value="" required type="password" name="password" id="password" placeholder="Password:"
+            <label for="senha">Password:</label>
+            <input value={{password}} required type="password" name="password" id="password" placeholder="Password"
                 class="form-control">
 
 
@@ -46,6 +46,6 @@
 
 
     <div class="card-footer">
-     <!-- <button class="btn btn-primary mr-2" (click)="alterar()">Alterar</button> -->
+      <button class="btn btn-primary mr-2" (click)="alterar()">Alterar</button>
     </div>
 </div>

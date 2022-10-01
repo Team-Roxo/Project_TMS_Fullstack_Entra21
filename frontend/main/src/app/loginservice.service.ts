@@ -11,20 +11,25 @@ import { LoginComponent } from './login/login.component';
 export class LoginserviceService implements CanActivate {
 
   readonly TMSLoginAPI: string = "http://localhost:8080"
-  readonly APIBounceInit:string = "http://localhost:8080/login/init"
+  readonly APIBounceInit: string = "http://localhost:8080/login/init"
 
   nome!: string
+  user!: string
+  email!: string
+  password!: string
+  birth!: Date
+  document!: string
   succeed!: boolean
   progress!: boolean
-  admin!:boolean
-  enterprise!:boolean
+  admin!: boolean
+  enterprise!: boolean
+  pessoaID!: number
   adminEnter:boolean = false
-  pessoaID!:number
 
-  idBounce!:number
-  userBounce!:string
-  dateBounce!:string
-  timeBounce!:string
+  idBounce!: number
+  userBounce!: string
+  dateBounce!: string
+  timeBounce!: string
 
   constructor(private router: Router, private http: HttpClient) { }
 
@@ -32,9 +37,9 @@ export class LoginserviceService implements CanActivate {
 
     this.progress = true
 
-    let build:any = {
-      'user':user,
-      'senha':password
+    let build: any = {
+      'user': user,
+      'senha': password
     }
 
     this.http.post(this.TMSLoginAPI +'/login', build)
@@ -69,50 +74,53 @@ export class LoginserviceService implements CanActivate {
         console.log(resp);
         this.nome = resp.nome
         this.pessoaID = response[0].pessoa_id
+        this.birth = resp.birth
+        this.document = resp.document
+        this.email = resp.email
+        this.password = response[0].senha
       })
+      
+      let bounce: any = {
+          "user": response[0].user
+        }
 
-      let bounce:any = {
-        "user":response[0].user
-      }
-
-      this.http.post(this.APIBounceInit, bounce)
-      .subscribe((response:any)=>{
-        console.log(response);
-        this.idBounce = response.id
-        this.userBounce = response.user
-        this.dateBounce = response.date
-        this.timeBounce = response.time
+        this.http.post(this.APIBounceInit, bounce)
+          .subscribe((response: any) => {
+            console.log(response);
+            this.idBounce = response.id
+            this.userBounce = response.user
+            this.dateBounce = response.date
+            this.timeBounce = response.time
+          })
       })
-
-    })
   }
 
-  registering(name:string ,user: string, email: string, password: string) {
+  registering(name: string, user: string, email: string, password: string) {
 
     this.progress = true
 
-    let build:any = {
-      'nome':name,
-      'user':user,
-      'email':email,
-      'senha':password
+    let build: any = {
+      'nome': name,
+      'user': user,
+      'email': email,
+      'senha': password
     }
 
-    let buildLogin:any = {
-      'user':user,
-      'senha':password
+    let buildLogin: any = {
+      'user': user,
+      'senha': password
     }
 
-    this.http.post(this.TMSLoginAPI+'/register', build)
-    .pipe(
-      catchError((error)=>{
-        return error
+    this.http.post(this.TMSLoginAPI + '/register', build)
+      .pipe(
+        catchError((error) => {
+          return error
+        })
+      )
+      .subscribe((response) => {
+        buildLogin = response
+        return buildLogin
       })
-    )
-    .subscribe((response)=>{
-       buildLogin = response
-       return buildLogin
-    })
 
     return buildLogin
 
