@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CarrierService } from '../carrier.service';
+import { LoginserviceService } from '../loginservice.service';
 import { QuoteService } from '../quote.service';
 
 @Component({
@@ -23,28 +24,36 @@ export class RctQtComponent implements OnInit {
   pessoa_id!: number
   nomePessoa!: string
   razaoTransportadora!: string
+  
 
 
-  constructor(public quoteService: QuoteService, private router: Router, private http: HttpClient) { }
+  constructor(private loginService: LoginserviceService, public quoteService: QuoteService, private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.recQuotes = new Array()
 
      this.quoteService.recQuote().pipe().subscribe((response: any) => {
 
+      console.log(response);
+      
       var count = Object.keys(response).length;
 
       for (let i = 0; i < count; i++) {
 
-        this.id = response[i].id
+         this.id = response[i].id
          this.price = response[i].price
          this.await = response[i].await
          this.origin = response[i].origin
          this.destiny = response[i].destiny
          this.cub_height = response[i].cub_height
 
-        
+         this.recQuotes.push({id: this.id, price: this.price, await: this.await, origin: this.origin, destiny: this.destiny, cub_height: this.cub_height, razaoTransportadora: "ABC", nomePessoa: "Mateus"})
+         
 
       }
+
+      console.log();
+      
 
      }) 
   }
@@ -54,7 +63,7 @@ export class RctQtComponent implements OnInit {
 
     let build = {
       "price": price,
-      "time": time,
+      "await": time,
       "origin": origin,
       "destiny": destiny,
       "carrier_id": carrier_id,
@@ -62,6 +71,8 @@ export class RctQtComponent implements OnInit {
       "pessoa_id": pessoa_id
     }
 
+    console.log(build);
+    
     this.quoteService.regPackage(build)
 
 
