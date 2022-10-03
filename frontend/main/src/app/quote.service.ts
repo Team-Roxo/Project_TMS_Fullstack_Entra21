@@ -12,6 +12,7 @@ export class QuoteService {
 
    apiURL:string = 'http://localhost:8080/ship'
    apiURL2:string = 'http://localhost:8080/quote'
+   apiURL3:string = 'http://localhost:8080/'
 
   constructor(private router: Router, private http: HttpClient) { }
 
@@ -39,6 +40,15 @@ export class QuoteService {
 
   }
 
+  regPackage(object:any){
+    this.http.post(this.apiURL3+'/register',object)
+    .subscribe((response)=>{
+
+      
+      console.log(response);
 
 
+
+})
+  }
 }
