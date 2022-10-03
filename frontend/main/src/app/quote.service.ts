@@ -62,7 +62,7 @@ export class QuoteService {
     this.http.post(this.APIBouncePut+this.login.idBounce, this.newBounce)
     //FIM DO BOUNCE
 
-    return this.http.get(this.apiURL)
+    return this.http.get(this.apiURL2+`/recent`)
 
   }
 

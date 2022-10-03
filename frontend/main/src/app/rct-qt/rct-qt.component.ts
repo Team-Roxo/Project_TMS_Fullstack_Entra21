@@ -29,24 +29,24 @@ export class RctQtComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.quoteService.recQuote().pipe().subscribe((response: any) => {
+     this.quoteService.recQuote().pipe().subscribe((response: any) => {
 
-    //   var count = Object.keys(response).length;
+      var count = Object.keys(response).length;
 
-    //   for (let i = 0; i < count; i++) {
+      for (let i = 0; i < count; i++) {
 
-    //     this.id = response[i].id
-    //     this.price = response[i].price
-    //     this.await = response[i].await
-    //     this.origin = response[i].origin
-    //     this.destiny = response[i].destiny
-    //     this.cub_height = response[i].cub_height
+        this.id = response[i].id
+         this.price = response[i].price
+         this.await = response[i].await
+         this.origin = response[i].origin
+         this.destiny = response[i].destiny
+         this.cub_height = response[i].cub_height
 
         
 
-    //   }
+      }
 
-    // }) 
+     }) 
   }
 
 

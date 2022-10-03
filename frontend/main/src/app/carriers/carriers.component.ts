@@ -71,4 +71,13 @@ export class CarriersComponent implements OnInit {
       this.carriers.push({razao:this.razao, taxa:this.taxa, email:this.email, cnpj:this.cnpj});
     }
 
+    deletar(){
+      
+    
+    }
+  
+    alterar(){
+      
+    }
+
   }
