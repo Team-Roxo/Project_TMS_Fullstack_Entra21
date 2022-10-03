@@ -8,17 +8,21 @@ import { LoginComponent } from './login/login.component';
 @Injectable({
   providedIn: 'root'
 })
+
 export class LoginserviceService implements CanActivate {
 
   readonly TMSLoginAPI: string = "http://localhost:8080"
   readonly APIBounceInit: string = "http://localhost:8080/login/init"
 
+  //DADOS BÁSICOS
   nome!: string
   user!: string
   email!: string
   password!: string
   birth!: Date
   document!: string
+
+  //DADOS DE CONTROLE
   succeed!: boolean
   progress!: boolean
   admin!: boolean
@@ -26,6 +30,7 @@ export class LoginserviceService implements CanActivate {
   pessoaID!: number
   adminEnter:boolean = false
 
+  //DADOS ESTATÍSTICOS
   idBounce!: number
   userBounce!: string
   dateBounce!: string
@@ -79,7 +84,7 @@ export class LoginserviceService implements CanActivate {
         this.email = resp.email
         this.password = response[0].senha
       })
-      
+
       let bounce: any = {
           "user": response[0].user
         }
