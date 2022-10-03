@@ -18,17 +18,19 @@ public class CountVisitors {
 	private String user;
 	private LocalDate date;
 	private LocalTime time;
+	private boolean bounceRate;
 
 	public CountVisitors() {
 		super();
 	}
 
-	public CountVisitors(Integer id, String user, LocalDate date, LocalTime time) {
+	public CountVisitors(Integer id, String user, LocalDate date, LocalTime time, boolean bounceRate) {
 		super();
 		this.id = id;
 		this.user = user;
 		this.date = date;
 		this.time = time;
+		this.bounceRate = bounceRate;
 	}
 
 	public Integer getId() {
@@ -61,6 +63,14 @@ public class CountVisitors {
 
 	public void setTime(LocalTime time) {
 		this.time = time;
+	}
+
+	public boolean getBounceRate() {
+		return bounceRate;
+	}
+
+	public void setBounceRate(boolean bounceRate) {
+		this.bounceRate = bounceRate;
 	}
 	
 }

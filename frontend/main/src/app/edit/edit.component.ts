@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginserviceService } from '../loginservice.service';
 
 @Component({
   selector: 'app-edit',
@@ -18,15 +19,25 @@ password!:string
 
 
   constructor(
-    private router:Router
+    private router:Router,
+  private login: LoginserviceService
     
   ) { }
 
   ngOnInit(): void {
+
+this.user= this.login.user
+this.name= this.login.nome
+this.birth= this.login.birth
+this.document= this.login.document
+this.email= this.login.email
+this.password = this.login.password
+
   }
 
 
-  alterar(index:number){
+  alterar(){
+    alert("Funcionou!!!")
     //this.edit.splice()
   }
 
