@@ -13,7 +13,7 @@
     </thead>
     <tbody>
             <tr *ngFor="let recQuote of recQuotes;let i = index;">
-            <td class="align-items-center"><button class="btn btn-primary" >Criar pacote</button></td>
+            <td class="align-items-center"><button class="btn btn-primary" (click)="regPackage(this.recQuote.price, this.recQuote.await, this.recQuote.origin, this.recQuote.destiny, this.recQuote.carrier_id, this.recQuote.cub_height, this.recQuote.pessoa_id)">Criar pacote</button></td>
             <td>{{id}}</td>
             <td>R${{recQuote.price}}</td>
             <td>{{recQuote.await}} dias úteis</td>
@@ -21,7 +21,7 @@
             <td>{{recQuote.origin}}</td>
             <td>{{recQuote.destiny}}</td>
             <td>{{recQuote.cub_height}} kg</td> 
-            <td>{{recQuote.nomePessoa}} kg</td> 
+            <td>{{recQuote.nomePessoa}}</td> 
 
       
 
