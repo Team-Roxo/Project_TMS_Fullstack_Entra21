@@ -36,6 +36,7 @@ public class QuoteController {
 	
 	@PostMapping("/register")
 	public RegisterQuote registerPackage(@RequestBody RegisterQuote quote) {
+		quote.setPost(LocalDate.now());
 		return registerQuoteRepository.save(quote);
 	}
 	
