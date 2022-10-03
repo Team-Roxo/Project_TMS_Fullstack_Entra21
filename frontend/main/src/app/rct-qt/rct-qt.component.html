@@ -4,23 +4,27 @@
         <th>ID</th>
         <th>Preço do frete</th>
         <th>Prazo</th>
+        <th>Transportadora</th>
         <th>Origem</th>
         <th>Destino</th>
-        <th>Transportadora</th>
         <th>Peso cubado</th>
+        <th>Usuário</th>
 
     </thead>
     <tbody>
-        <!-- <tr *ngFor="let recQuote of recQuotes;let i = index;">
-            <td class="align-items-center"><button class="btn btn-primary" (click)="regPackage(this.quote.precoFrete, this.quote.tempo, this.quote.start_adress, this.quote.end_address, this.quote.carrierID, this.quote.cubagem, this.quote.pessoaID    )">Save</button></td>
-            <td>{{i}}</td>
-            <td>R${{quote.precoFrete}}</td>
-            <td>{{quote.tempo}} dias úteis</td>
-            <td>{{quote.start_adress}}</td>
-            <td>{{quote.end_address}}</td>
-            <td>{{quote.carrier}}</td>
-            <td>{{quote.cubagem}} kg</td> 
+            <tr *ngFor="let recQuote of recQuotes;let i = index;">
+            <td class="align-items-center"><button class="btn btn-primary" >Criar pacote</button></td>
+            <td>{{id}}</td>
+            <td>R${{recQuote.price}}</td>
+            <td>{{recQuote.await}} dias úteis</td>
+            <td>{{recQuote.razaoTransportadora}}</td>
+            <td>{{recQuote.origin}}</td>
+            <td>{{recQuote.destiny}}</td>
+            <td>{{recQuote.cub_height}} kg</td> 
+            <td>{{recQuote.nomePessoa}} kg</td> 
 
-        </tr>-->
+      
+
+        </tr>
     </tbody>
 </table>

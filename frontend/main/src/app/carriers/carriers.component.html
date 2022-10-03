@@ -34,18 +34,22 @@
         <th>Taxa</th>
         <th>E-mail</th>
         <th>Cnpj</th>
+        <th>Ação</th>
         
 
     </thead>
     <tbody>
         <tr *ngFor="let carrier of carriers;let i = index;">
             
-            <td>{{i}}</td>
+            <td>{{i+1}}</td>
             <td>{{carrier.razao}}</td>
             <td>{{carrier.taxa}}</td>
             <td>{{carrier.email}}</td>
             <td>{{carrier.cnpj}}</td>
-          
+            <td>
+                <button class="btn btn-danger mr-2" (click)="deletar()">Deletar</button>
+                <button class="btn btn-primary mr-2" (click)="alterar()">Alterar</button>
+            </td>
 
         </tr>
     </tbody>

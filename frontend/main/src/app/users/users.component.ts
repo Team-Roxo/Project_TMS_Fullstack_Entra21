@@ -31,6 +31,7 @@ birth!:string
         this.email = response[i].email;
         this.document = response[i].document;
         this.birth = response[i].birth;
+        
     
         this.users.push({name:this.name, email:this.email, document:this.document, birth:this.birth});
 
