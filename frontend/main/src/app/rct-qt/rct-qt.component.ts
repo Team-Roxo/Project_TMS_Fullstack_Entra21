@@ -47,8 +47,15 @@ export class RctQtComponent implements OnInit {
          this.destiny = response[i].destiny
          this.cub_height = response[i].cub_height
 
-         this.recQuotes.push({id: this.id, price: this.price, await: this.await, origin: this.origin, destiny: this.destiny, cub_height: this.cub_height, razaoTransportadora: "ABC", nomePessoa: "Mateus"})
+
+        
+
+
+
+
+         this.recQuotes.push({id: this.id, price: this.price, await: this.await, origin: this.origin, destiny: this.destiny, cub_height: this.cub_height, razaoTransportadora: "ABC", nomePessoa: this.loginService.nome})
          
+
 
       }
 
