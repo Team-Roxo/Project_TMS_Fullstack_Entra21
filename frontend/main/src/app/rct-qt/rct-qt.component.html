@@ -1,7 +1,7 @@
 <table class="table table-bordered">
     <thead>
         <th>Ação</th>
-        <th>ID</th>
+        
         <th>Preço do frete</th>
         <th>Prazo</th>
         <th>Transportadora</th>
@@ -13,8 +13,8 @@
     </thead>
     <tbody>
             <tr *ngFor="let recQuote of recQuotes;let i = index;">
-            <td class="align-items-center"><button class="btn btn-primary" (click)="regPackage(this.recQuote.price, this.recQuote.await, this.recQuote.origin, this.recQuote.destiny, this.recQuote.carrier_id, this.recQuote.cub_height, this.recQuote.pessoa_id)">Criar pacote</button></td>
-            <td>{{id}}</td>
+            <td class="align-items-center"><button class="btn btn-primary" (click)="regPackage(this.recQuote.price, this.recQuote.await, this.recQuote.origin, this.recQuote.destiny, this.recQuote.carrier_id, this.recQuote.cub_height)">Criar pacote</button></td>
+            
             <td>R${{recQuote.price}}</td>
             <td>{{recQuote.await}} dias úteis</td>
             <td>{{recQuote.razaoTransportadora}}</td>
