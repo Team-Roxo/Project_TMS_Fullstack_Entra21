@@ -28,4 +28,14 @@ export class CarrierService {
 
 
   }
+
+  findName(id: number):any{
+
+    return this.http.get(this.apiURL+'/'+id)
+
+     
+     
+
+  }
+
 }

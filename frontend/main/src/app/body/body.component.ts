@@ -38,8 +38,6 @@ export class BodyComponent implements OnInit {
      this.birthmonth=resultado
     });
 
-
-
   }
 
   sair(){
