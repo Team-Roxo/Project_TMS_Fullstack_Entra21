@@ -27,7 +27,7 @@ export class RctQtComponent implements OnInit {
   
 
 
-  constructor(private loginService: LoginserviceService, public quoteService: QuoteService, private router: Router, private http: HttpClient) { }
+  constructor(private carrierService: CarrierService, private loginService: LoginserviceService, public quoteService: QuoteService, private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.recQuotes = new Array()
@@ -46,14 +46,11 @@ export class RctQtComponent implements OnInit {
          this.origin = response[i].origin
          this.destiny = response[i].destiny
          this.cub_height = response[i].cub_height
-
-
+ 
         
+        this.razaoTransportadora = this.carrierService.findName(response.carrier_id);
 
-
-
-
-         this.recQuotes.push({id: this.id, price: this.price, await: this.await, origin: this.origin, destiny: this.destiny, cub_height: this.cub_height, razaoTransportadora: "ABC", nomePessoa: this.loginService.nome})
+        this.recQuotes.push({id: this.id, price: this.price, await: this.await, origin: this.origin, destiny: this.destiny, cub_height: this.cub_height, razaoTransportadora: this.razaoTransportadora, carrier_id: response.carrier_id, nomePessoa: this.loginService.nome})
          
 
 
@@ -66,7 +63,9 @@ export class RctQtComponent implements OnInit {
   }
 
 
-  regPackage(price: number, time: number, origin: string, destiny: string, carrier_id: number, cub_height: number, pessoa_id: number) {
+  regPackage(price: number, time: number, origin: string, destiny: string, carrier_id: string, cub_height: number) {
+
+   
 
     let build = {
       "price": price,
@@ -75,7 +74,7 @@ export class RctQtComponent implements OnInit {
       "destiny": destiny,
       "carrier_id": carrier_id,
       "cub_height": cub_height,
-      "pessoa_id": pessoa_id
+      "pessoa_id": this.loginService.pessoaID
     }
 
     console.log(build);
