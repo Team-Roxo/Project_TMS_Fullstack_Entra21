@@ -1,1 +1,30 @@
-<p>rct-qt works!</p>
+<table class="table table-bordered">
+    <thead>
+        <th>Ação</th>
+        
+        <th>Preço do frete</th>
+        <th>Prazo</th>
+        <th>Transportadora</th>
+        <th>Origem</th>
+        <th>Destino</th>
+        <th>Peso cubado</th>
+        <th>Usuário</th>
+
+    </thead>
+    <tbody>
+            <tr *ngFor="let recQuote of recQuotes;let i = index;">
+            <td class="align-items-center"><button class="btn btn-primary" (click)="regPackage(this.recQuote.price, this.recQuote.await, this.recQuote.origin, this.recQuote.destiny, this.recQuote.carrier_id, this.recQuote.cub_height)">Criar pacote</button></td>
+            
+            <td>R${{recQuote.price}}</td>
+            <td>{{recQuote.await}} dias úteis</td>
+            <td>{{recQuote.razaoTransportadora}}</td>
+            <td>{{recQuote.origin}}</td>
+            <td>{{recQuote.destiny}}</td>
+            <td>{{recQuote.cub_height}} kg</td> 
+            <td>{{recQuote.nomePessoa}}</td> 
+
+      
+
+        </tr>
+    </tbody>
+</table>

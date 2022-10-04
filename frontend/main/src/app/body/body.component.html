@@ -67,7 +67,7 @@
     <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">
         <i class="far fa-bell"></i>
-        <span class="badge badge-warning navbar-badge">15</span>
+        <span class="badge badge-warning navbar-badge">3</span>
       </a>
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         <span class="dropdown-item dropdown-header">15 Notifications</span>
@@ -111,7 +111,7 @@
             </p>
           </a>
         </li>
-        <li class="nav-item" [hidden]="">
+        <li class="nav-item" [hidden]="!loginService.admin">
           <a href="" routerLink="dashboard" class="nav-link">
             <i class="nav-icon fas fa-chart-bar"></i>
             <p>Dashboard</p>
@@ -125,16 +125,22 @@
             </p>
           </a>
           <ul class="nav nav-treeview">
-            <li class="nav-item">
+            <li class="nav-item" [hidden]="!loginService.admin">
               <a routerLink="users" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Clients</p>
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" [hidden]="!loginService.admin">
               <a routerLink="carriers" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Carriers</p>
+              </a>
+            </li>
+            <li class="nav-item" [hidden]="loginService.admin">
+              <a routerLink="user-client" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Clients</p>
               </a>
             </li>
           </ul>
@@ -143,56 +149,6 @@
           <a href="" class="nav-link">
             <i class="nav-icon fas fa-box"></i>
             <p>Packages
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a routerLink="pack-register" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Register</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a routerLink="pack-track" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Tracking</p>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a href="" routerLink="finance" class="nav-link">
-            <i class="nav-icon fas fa-dollar-sign"></i>
-            <p>Finance
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a routerLink="receipt" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Receipt</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a routerLink="cost" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Cost</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a routerLink="balance" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Balance</p>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a href="" class="nav-link">
-            <i class="nav-icon fas fa-truck"></i>
-            <p>Quotes
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
@@ -210,6 +166,27 @@
               </a>
             </li>
           </ul>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a routerLink="pack-register" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Register</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="pack-track" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Tracking</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="" routerLink="finance" class="nav-link" [hidden]="!loginService.adminEnter">
+            <i class="nav-icon fas fa-dollar-sign"></i>
+            <p>Finance
+            </p>
+          </a>
         </li>
         <li class="nav-item">
           <a href="#" routerLink="about" class="nav-link">
@@ -224,6 +201,6 @@
   </div>
   <div style="padding-left: 20px;">
     <div class="small">Logged in as:</div>
-    <span>{{loginService.user}}<br><a routerLink="" (click)="sair()" class="small" style="color: red;">Sair</a>&nbsp;&nbsp;&nbsp;&nbsp;<a routerLink="edit" class="small">Edit</a> </span>
+    <span>{{loginService.nome}}<br><a routerLink="" (click)="sair()" class="small" style="color: red;">Sair</a>&nbsp;&nbsp;&nbsp;&nbsp;<a routerLink="edit" class="small">Edit</a> </span>
   </div>
 </aside>

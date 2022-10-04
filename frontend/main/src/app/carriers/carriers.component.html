@@ -1,43 +1,56 @@
 <table class="table table-bordered">
     <thead>
         <th>Razão social</th>
+        <th>Taxa</th>
         <th>E-mail</th>
-        <th>CNPJ</th>
-        <th>Taxa - Tabela de frete</th>
+        <th>Cnpj</th>
+
     </thead>
     <tbody>
         <tr>
-            <td><input type="text" [(ngModel)]="name"></td>
+
+            <td><input type="text" [(ngModel)]="razao"></td>
+            <td><input type="text" [(ngModel)]="taxa"></td>
             <td><input type="text" [(ngModel)]="email"></td>
             <td><input type="text" [(ngModel)]="cnpj"></td>
-            <td><input type="text" [(ngModel)]="taxValorFrete"></td>
+
         </tr>
     </tbody>
 </table>
 
-<button class="btn btn-success" (click)="adicionar()">Add</button>
+
+
+
+
+<button class="btn btn-success" (click)="adicionar(this.razao, this.taxa, this.email, this.cnpj)">Add</button>
 <br>
 <hr>
+
 <table class="table table-bordered">
     <thead>
+        
         <th>ID</th>
         <th>Razão social</th>
+        <th>Taxa</th>
         <th>E-mail</th>
-        <th>CNPJ</th>
-        <th>Taxa - Tabela de frete</th>
-        <th>Ações</th>
+        <th>Cnpj</th>
+        <th>Ação</th>
+        
+
     </thead>
     <tbody>
         <tr *ngFor="let carrier of carriers;let i = index;">
-            <td>{{i}}</td>
-            <td>{{carrier.name}}</td>
+            
+            <td>{{i+1}}</td>
+            <td>{{carrier.razao}}</td>
+            <td>{{carrier.taxa}}</td>
             <td>{{carrier.email}}</td>
             <td>{{carrier.cnpj}}</td>
-            <td>{{carrier.taxValorFrete}}</td>
             <td>
-            <button class="btn btn-danger mr-2" (click)="deletar(i)">Deletar</button>
-            <button class="btn btn-primary mr-2" (click)="alterar(i)">Alterar</button>
+                <button class="btn btn-danger mr-2" (click)="deletar()">Deletar</button>
+                <button class="btn btn-primary mr-2" (click)="alterar()">Alterar</button>
             </td>
+
         </tr>
     </tbody>
 </table>

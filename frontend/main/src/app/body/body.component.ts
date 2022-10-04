@@ -12,6 +12,9 @@ export class BodyComponent implements OnInit {
   constructor(public loginService:LoginserviceService) { }
 
   ngOnInit(): void {
+
+    
+
   }
 
   sair(){

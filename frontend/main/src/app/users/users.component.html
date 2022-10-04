@@ -3,6 +3,7 @@
         <th>Nome</th>
         <th>E-mail</th>
         <th>CPF</th>
+        <th>Data nascimento</th>
 
     </thead>
     <tbody>
@@ -10,7 +11,8 @@
 
             <td><input type="text" [(ngModel)]="name"></td>
             <td><input type="text" [(ngModel)]="email"></td>
-            <td><input type="text" [(ngModel)]="cpf"></td>
+            <td><input type="text" [(ngModel)]="document"></td>
+            <td><input type="text" [(ngModel)]="birth"></td>
 
         </tr>
     </tbody>
@@ -19,7 +21,7 @@
 
 
 
-<button class="btn btn-success" (click)="adicionar()">Add</button>
+<button class="btn btn-success" (click)="adicionar(this.name, this.email, this.document, this.birth)">Add</button>
 <br>
 <hr>
 <table class="table table-bordered">
@@ -28,17 +30,19 @@
         <th>Nome</th>
         <th>E-mail</th>
         <th>CPF</th>
-        <th>Ações</th>
+        <th>Data nascimento</th>
+        <th>Ação</th>
     </thead>
     <tbody>
         <tr *ngFor="let user of users;let i = index;">
-            <td>{{i}}</td>
+            <td>{{i+1}}</td>
             <td>{{user.name}}</td>
             <td>{{user.email}}</td>
-            <td>{{user.cpf}}</td>
+            <td>{{user.document}}</td>
+            <td>{{user.birth}}</td>
             <td>
-                <button class="btn btn-danger mr-2" (click)="deletar(i)">Deletar</button>
-                <button class="btn btn-primary mr-2" (click)="alterar(i)">Alterar</button>
+                <button class="btn btn-danger mr-2" (click)="deletar()">Deletar</button>
+                <button class="btn btn-primary mr-2" (click)="alterar()">Alterar</button>
             </td>
         </tr>
     </tbody>

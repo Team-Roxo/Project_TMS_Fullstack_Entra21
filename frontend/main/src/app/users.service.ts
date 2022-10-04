@@ -5,13 +5,13 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class CarrierService {
+export class UsersService {
 
-  apiURL:string = 'http://localhost:8080/carriers'
+  apiURL:string = 'http://localhost:8080/user'
 
   constructor(private router: Router, private http: HttpClient) { }
 
-  listCarrier():any{
+  listUsers():any{
 
     return this.http.get(this.apiURL)
 
@@ -25,16 +25,5 @@ export class CarrierService {
       console.log(response);
       
     })
-
-
-  }
-
-  findName(id: number):any{
-
-    this.http.get(this.apiURL+`/`+id).subscribe((response)=>{
-      return response
-    })
-
-  }
-
+}
 }

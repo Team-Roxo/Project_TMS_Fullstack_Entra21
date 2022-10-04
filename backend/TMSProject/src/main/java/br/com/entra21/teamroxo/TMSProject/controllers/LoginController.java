@@ -54,26 +54,28 @@ public class LoginController {
 	@ResponseStatus(code = HttpStatus.OK)
 	public @ResponseBody List<Login> login(@RequestBody Login credentials){
 		
-		List<Login> response = new ArrayList<Login>(loginRepository.findAll()).stream()
-				.filter(login -> (login.getUser().equals(credentials.getUser())) &&
-						login.getSenha().equals(credentials.getSenha()))
-				.toList();
+		List<Login> response = loginRepository.findLogin(credentials.getUser(), credentials.getSenha()).stream().toList();
+				
 		response.forEach(pessoa -> {
 			setMaturidadeLvl3(pessoa);
 		});
-		
-		if(!response.isEmpty()) {
-			CountVisitors count = new CountVisitors();
-			count.setUser(credentials.getUser());
-			count.setTime(LocalTime.now());
-			count.setDate(LocalDate.now());
-			countVisitorsRepository.save(count);
-		}
 		
 		return response;
 		
 	}
 
+	@PostMapping("/init")
+	public CountVisitors bounce(@RequestBody CountVisitors visitor) {
+		
+		CountVisitors count = new CountVisitors();
+		count.setUser(visitor.getUser());
+		count.setTime(LocalTime.now());
+		count.setDate(LocalDate.now());
+		count.setBounceRate(true);
+		return countVisitorsRepository.save(count);
+		
+	}
+	
 	private void setMaturidadeLvl3(Login pessoa) {
 		
 		ArrayList<String> headers = new ArrayList<>(Arrays.asList(
