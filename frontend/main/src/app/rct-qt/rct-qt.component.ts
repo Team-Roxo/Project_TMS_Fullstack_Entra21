@@ -24,6 +24,7 @@ export class RctQtComponent implements OnInit {
   pessoa_id!: number
   nomePessoa!: string
   razaoTransportadora!: string
+  carrier!: any
   
 
 
@@ -48,10 +49,21 @@ export class RctQtComponent implements OnInit {
          this.cub_height = response[i].cub_height
  
         
-        this.razaoTransportadora = this.carrierService.findName(response.carrier_id);
-
-        this.recQuotes.push({id: this.id, price: this.price, await: this.await, origin: this.origin, destiny: this.destiny, cub_height: this.cub_height, razaoTransportadora: this.razaoTransportadora, carrier_id: response.carrier_id, nomePessoa: this.loginService.nome})
          
+
+        this.carrierService.findName(response[i].carrier_id).subscribe((response:any) => {     
+          
+        this.recQuotes.push({id: this.id, price: this.price, await: this.await, origin: this.origin, destiny: this.destiny, cub_height: this.cub_height, razaoTransportadora: response.razao, carrier_id: response.id, nomePessoa: this.loginService.nome})
+      
+        
+         })
+
+         
+         
+         
+
+
+           
 
 
       }
