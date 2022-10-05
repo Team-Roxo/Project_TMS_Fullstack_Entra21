@@ -12,7 +12,8 @@ import { QuoteService } from '../quote.service';
 })
 export class RctQtComponent implements OnInit {
 
-
+  progress!:boolean
+  succeed:boolean = false
   recQuotes!: Array<any>
   id!: number
   price!: number
@@ -24,8 +25,7 @@ export class RctQtComponent implements OnInit {
   pessoa_id!: number
   nomePessoa!: string
   razaoTransportadora!: string
-  
-
+  carrier!: any
 
   constructor(private carrierService: CarrierService, private loginService: LoginserviceService, public quoteService: QuoteService, private router: Router, private http: HttpClient) { }
 
@@ -35,37 +35,34 @@ export class RctQtComponent implements OnInit {
      this.quoteService.recQuote().pipe().subscribe((response: any) => {
 
       console.log(response);
-      
+
       var count = Object.keys(response).length;
 
       for (let i = 0; i < count; i++) {
 
-         this.id = response[i].id
-         this.price = response[i].price
-         this.await = response[i].await
-         this.origin = response[i].origin
-         this.destiny = response[i].destiny
-         this.cub_height = response[i].cub_height
- 
-        
-        this.razaoTransportadora = this.carrierService.findName(response.carrier_id);
+        //  this.id = response[i].id
+        //  this.price = response[i].price
+        //  this.await = response[i].await
+        //  this.origin = response[i].origin
+        //  this.destiny = response[i].destiny
+        //  this.cub_height = response[i].cub_height
 
-        this.recQuotes.push({id: this.id, price: this.price, await: this.await, origin: this.origin, destiny: this.destiny, cub_height: this.cub_height, razaoTransportadora: this.razaoTransportadora, carrier_id: response.carrier_id, nomePessoa: this.loginService.nome})
-         
+        this.carrierService.findName(response[i].carrier_id).subscribe((resp:any) => {
 
+        this.recQuotes.push({id: response[i].id, price: response[i].price, await: response[i].await, origin: response[i].origin, destiny: response[i].destiny, cub_height: response[i].cub_height, razaoTransportadora: resp.razao, carrier_id: resp.id, nomePessoa: this.loginService.nome})
+
+         })
 
       }
 
       console.log();
-      
 
-     }) 
+     })
   }
-
 
   regPackage(price: number, time: number, origin: string, destiny: string, carrier_id: string, cub_height: number) {
 
-   
+    this.progress = true
 
     let build = {
       "price": price,
@@ -78,11 +75,12 @@ export class RctQtComponent implements OnInit {
     }
 
     console.log(build);
-    
+
     this.quoteService.regPackage(build)
 
-
-
+    setTimeout(()=>{
+      this.succeed = true
+    }, 1500)
 
   }
 

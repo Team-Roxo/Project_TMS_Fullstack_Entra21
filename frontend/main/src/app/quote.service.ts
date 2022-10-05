@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { type } from 'os';
 import { catchError } from 'rxjs';
 import { LoginserviceService } from './loginservice.service';
+import { RctQtComponent } from './rct-qt/rct-qt.component';
 import { ShipQtComponent } from './ship-qt/ship-qt.component';
 
 @Injectable({
@@ -82,26 +83,19 @@ export class QuoteService {
     this.http.post(this.APIBouncePut+this.login.idBounce, this.newBounce)
     //FIM DO BOUNCE
 
-
     this.http.post(this.apiURL2+'/recent',object)
     .subscribe((response)=>{
-
 
       console.log(response);
 
     })
-
 
   }
 
   regPackage(object:any){
     this.http.post(this.apiURL2+'/register',object)
     .subscribe((response)=>{
-
-      
       console.log(response);
-
-
 
 })
   }

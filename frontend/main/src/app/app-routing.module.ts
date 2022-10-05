@@ -18,6 +18,7 @@ import { ReceiptComponent } from './receipt/receipt.component';
 import { ShipQtComponent } from './ship-qt/ship-qt.component';
 import { UserClientComponent } from './user-client/user-client.component';
 import { UsersComponent } from './users/users.component';
+import { VisitsComponent } from './visits/visits.component';
 
 const routes: Routes = [
   { path: 'home', component:HomeComponent, canActivate:[LoginserviceService]},
@@ -36,7 +37,8 @@ const routes: Routes = [
   { path: 'edit', component:EditComponent, canActivate:[LoginserviceService]},
   { path: 'about', component:AboutComponent, canActivate:[LoginserviceService]},
   { path: 'forgetPassword', component:ForgetPasswordComponent},
-  { path: "user-client", component:UserClientComponent, canActivate:[LoginserviceService]}
+  { path: "user-client", component:UserClientComponent, canActivate:[LoginserviceService]},
+  { path: "visits", component:VisitsComponent, canActivate:[LoginserviceService]}
 ];
 
 @NgModule({

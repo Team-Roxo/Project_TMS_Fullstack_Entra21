@@ -1,0 +1,18 @@
+<table>
+    <thead>
+        <th>ID</th>
+        <th>Data</th>
+        <th>Time</th>
+        <th>User</th>
+        <th>Bounce Rate</th>
+    </thead>
+   <tbody>
+    <tr *ngFor = "let visit of visits; let i = index"> 
+        <td>{{visit.id}}</td>
+        <td>{{visit.date}}</td>
+        <td>{{visit.time}}</td>
+        <td>{{visit.user}}</td>
+        <td>{{visit.bounceRate}}</td>
+    </tr>
+   </tbody>
+</table>

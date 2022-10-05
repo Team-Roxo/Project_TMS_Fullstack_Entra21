@@ -1,7 +1,6 @@
 <table class="table table-bordered">
     <thead>
         <th>Ação</th>
-        
         <th>Preço do frete</th>
         <th>Prazo</th>
         <th>Transportadora</th>
@@ -9,21 +8,18 @@
         <th>Destino</th>
         <th>Peso cubado</th>
         <th>Usuário</th>
-
     </thead>
     <tbody>
-            <tr *ngFor="let recQuote of recQuotes;let i = index;">
-            <td class="align-items-center"><button class="btn btn-primary" (click)="regPackage(this.recQuote.price, this.recQuote.await, this.recQuote.origin, this.recQuote.destiny, this.recQuote.carrier_id, this.recQuote.cub_height)">Criar pacote</button></td>
-            
+          <tr *ngFor="let recQuote of recQuotes;let i = index;">
+            <td class="align-items-center"><button [hidden]="succeed" class="btn btn-primary" (click)="regPackage(this.recQuote.price, this.recQuote.await, this.recQuote.origin, this.recQuote.destiny, this.recQuote.carrier_id, this.recQuote.cub_height)"><i [ngClass]="{'fas fa-circle-notch fa-spin':progress}"></i> Criar pacote</button><button disabled [hidden]="!succeed" class="btn btn-success"><i class="fas fa-check"></i> Added!</button></td>
+
             <td>R${{recQuote.price}}</td>
             <td>{{recQuote.await}} dias úteis</td>
             <td>{{recQuote.razaoTransportadora}}</td>
             <td>{{recQuote.origin}}</td>
             <td>{{recQuote.destiny}}</td>
-            <td>{{recQuote.cub_height}} kg</td> 
-            <td>{{recQuote.nomePessoa}}</td> 
-
-      
+            <td>{{recQuote.cub_height}} kg</td>
+            <td>{{recQuote.nomePessoa}}</td>
 
         </tr>
     </tbody>

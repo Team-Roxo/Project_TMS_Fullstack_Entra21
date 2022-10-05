@@ -65,8 +65,8 @@ public class PessoaController {
 	}
 	
 	@GetMapping("/countVisitors")
-	public long numberVisitors() {
-		return countVisitorsRepository.count();
+	public List<CountVisitors> numberVisitors() {
+		return countVisitorsRepository.findAll();
 	}
 	
 	@GetMapping("/birthnow")

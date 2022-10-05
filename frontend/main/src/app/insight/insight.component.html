@@ -19,7 +19,7 @@
 
         <div class="small-box bg-gradient-yellow">
             <div class="inner">
-                <h3>12<sup style="font-size: 20px">%</sup></h3>
+                <h3>{{countBounce}}<sup style="font-size: 20px">%</sup></h3>
                 <p>Bounce Rate</p>
 
             </div>
@@ -51,12 +51,12 @@
         <div class="small-box bg-gradient-primary">
             <div class="inner">
                 <h3>{{countVisitors}}</h3>
-                <p>Visitors</p>
+                <p>Visits</p>
             </div>
             <div class="icon">
                 <i class="ion ion-pie-graph"></i>
             </div>
-            <a (click)="register()" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a (click)="visits()" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
 
@@ -288,3 +288,4 @@
     </div>
 
 </div>
+

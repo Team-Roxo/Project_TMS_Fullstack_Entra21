@@ -1,0 +1,46 @@
+#graph{
+  padding-bottom: 40px;
+  width: 600px;
+  height: 400px;
+}
+
+h2{
+  padding-top: 20px;
+}
+
+body {
+  font-family: 'open sans', sans-serif;
+  font-size: 3rem;
+  background-size: cover;
+  height: 100%;
+}
+
+svg {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  padding-top: 30px;
+}
+
+polyline {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 5s ease-in forwards;
+}
+
+@keyframes dash{
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+p {
+  font-size: 2rem;
+  text-align:center;
+  color: #efefef;
+}
+.name {
+  font-size: .8rem;
+  font-weight: light;
+}
