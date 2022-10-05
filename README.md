@@ -175,7 +175,7 @@
 <summary><b>3.1 - GOOGLE CLOUD</b></summary>
 <br>
 
-<a href="">Clique aqui para aprender a configurar o Google Cloud</a>
+<a href="https://github.com/Team-Roxo/Project_TMS_Fullstack_Entra21/blob/main/assets/README.md">Clique aqui para aprender a configurar o Google Cloud</a>
 
 >## <b id="google_api"> 3.1.1 - Google API </b>
 >>### <b id="directions"> 3.1.1.1 - Directions API </b>
