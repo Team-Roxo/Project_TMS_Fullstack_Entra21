@@ -19,12 +19,12 @@
           <div class="media">
             <div class="media-body">
               <h3 class="dropdown-item-title">
-                Relatório: Aniversantes do dia 
+                Relatório: Aniversantes do dia
                 <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
               </h3>
               <p class="text-sm">Parabéns:</p>
-              <p class="text-sm text-muted">
-                <i class="far fa-clock mr-1" *ngFor="let aniversariante of birthnow; let i = index;">{{aniversariante}}</i> 
+              <p class="text-sm text-muted" *ngFor="let aniversariante of aniversariantes; let i = index;">
+                <i class="fas fa-birthday-cake mr-1" ></i>{{aniversariante.nome}}
               </p>
             </div>
           </div>
@@ -37,9 +37,9 @@
                 Relatório: Aniversariantes do mês
                 <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
               </h3>
-              <p class="text-sm">{{birthmonth}}</p>
-              <p class="text-sm text-muted">
-                <i class="far fa-clock mr-1"></i> 
+              <p class="text-sm"></p>
+              <p class="text-sm text-muted" *ngFor="let aniversariante of aniversariantesMes; let i = index;">
+                <i class="fas fa-birthday-cake mr-1"></i>{{aniversariante.nome}}
               </p>
             </div>
           </div>
