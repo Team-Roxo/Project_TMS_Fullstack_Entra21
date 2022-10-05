@@ -95,7 +95,6 @@ export class QuoteService {
   regPackage(object:any){
     this.http.post(this.apiURL2+'/register',object)
     .subscribe((response)=>{
-      
       console.log(response);
 
 })

@@ -60,8 +60,8 @@ public class PessoaController {
 	}
 	
 	@GetMapping("/countClients")
-	public long numberClients() {
-		return pessoaRepository.count();
+	public List<Pessoa> numberClients() {
+		return pessoaRepository.findAll();
 	}
 	
 	@GetMapping("/countVisitors")
