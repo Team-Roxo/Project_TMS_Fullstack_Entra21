@@ -37,7 +37,8 @@ export class InsightComponent implements OnInit {
 
      this.http.get(this.APICountVisits)
      .subscribe((resultado:any) => {
-      this.countVisitors=resultado
+      var count = Object.keys(resultado).length
+      this.countVisitors = count
      });
 
      this.http.get(this.APICountPackages)
@@ -59,6 +60,10 @@ export class InsightComponent implements OnInit {
 
   clients(){
     this.router.navigateByUrl('users')
+  }
+
+  visits(){
+    this.router.navigateByUrl('visits')
   }
 
 
