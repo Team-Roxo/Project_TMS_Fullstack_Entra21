@@ -36,10 +36,10 @@ export class InsightComponent implements OnInit {
      });
 
      this.http.get(this.APICountVisits)
-     .subscribe((resultado:any) => {
-      var count = Object.keys(resultado).length
-      this.countVisitors = count
-     });
+    .subscribe((resultado:any) => {
+     var count = Object.keys(resultado).length
+     this.countVisitors = count
+    });
 
      this.http.get(this.APICountPackages)
      .subscribe((response:any)=>{
@@ -51,6 +51,7 @@ export class InsightComponent implements OnInit {
       this.countBounce=response
      })
 
+ 
 
   }
 
@@ -66,5 +67,27 @@ export class InsightComponent implements OnInit {
     this.router.navigateByUrl('visits')
   }
 
+ countVisits():number{
+    return this.countVisitors
+  }
+
+  countClients():number{
+    return this.countClient
+  }
+
+  countPacks():number {
+    return 1
+    // while(true){
+    //   setTimeout(() => {
+    //     return this.countPackages
+    //   }, 3000);
+      
+    // }
+    
+  }
+
+  countBounces(): number{
+    return this.countBounce
+  }
 
 }
