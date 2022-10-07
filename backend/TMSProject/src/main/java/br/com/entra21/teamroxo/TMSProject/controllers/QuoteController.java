@@ -35,12 +35,6 @@ public class QuoteController {
 		return recentQuoteRepository.save(quote);
 	}
 	
-	@PostMapping("/register")
-	public RegisterQuote registerPackage(@RequestBody RegisterQuote quote) {
-		quote.setPost(LocalDate.now());
-		return registerQuoteRepository.save(quote);
-	}
-	
 	@GetMapping("/recent/{id}")
 	public List<RecentQuote> recentQuote(@PathVariable("id") int id){
 		return recentQuoteRepository.findOwnQuote(id);
@@ -49,6 +43,32 @@ public class QuoteController {
 	@DeleteMapping("/recent/{id}")
 	public void deleteQuote(@PathVariable("id") int id){
 		recentQuoteRepository.deleteById(id);
+	}
+	
+	@PostMapping("/register")
+	public RegisterQuote registerPackage(@RequestBody RegisterQuote quote) {
+		quote.setPost(LocalDate.now());
+		return registerQuoteRepository.save(quote);
+	}
+	
+	@GetMapping("/packs/user/{id}")
+	public List<RegisterQuote> getAllMyPacks(@PathVariable("id") int id){
+		return registerQuoteRepository.findPackByUserId(id);
+	}
+	
+	@GetMapping("/packs/carrier/{id}")
+	public List<RegisterQuote> getAllCarrierPacks(@PathVariable("id") int id){
+		return registerQuoteRepository.findPackByCarrierId(id);
+	}
+	
+	@GetMapping("/packs/user/recent/{id}")
+	public List<RegisterQuote> getRecentUserPacks(@PathVariable("id") int id){
+		return registerQuoteRepository.findPackByUserIdRecent(id, LocalDate.now(), LocalDate.now().minusDays(7));
+	}
+	
+	@GetMapping("/packs/carrier/recent/{id}")
+	public List<RegisterQuote> getRecentCarrierPacks(@PathVariable("id") int id){
+		return registerQuoteRepository.findPackByCarrierIdRecent(id, LocalDate.now(), LocalDate.now().minusDays(7));
 	}
 	
 	@GetMapping("/go")

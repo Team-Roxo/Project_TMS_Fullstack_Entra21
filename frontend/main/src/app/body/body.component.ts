@@ -62,5 +62,6 @@ export class BodyComponent implements OnInit {
   }
 
   sair(){
-
-    this.loginService.succeed = false;}}
+    this.loginService.succeed = false;
+  }
+}
