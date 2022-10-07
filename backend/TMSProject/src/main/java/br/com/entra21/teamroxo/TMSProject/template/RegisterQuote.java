@@ -22,6 +22,7 @@ public class RegisterQuote {
 	private byte carrier_id;
 	private float cub_height;
 	private int pessoa_id;
+	private int pessoa_id_destiny;
 
 	public RegisterQuote() {
 		super();
@@ -109,6 +110,14 @@ public class RegisterQuote {
 
 	public void setPost(LocalDate post) {
 		this.post = post;
+	}
+
+	public int getPessoa_id_destiny() {
+		return pessoa_id_destiny;
+	}
+
+	public void setPessoa_id_destiny(int pessoa_id_destiny) {
+		this.pessoa_id_destiny = pessoa_id_destiny;
 	}
 
 }

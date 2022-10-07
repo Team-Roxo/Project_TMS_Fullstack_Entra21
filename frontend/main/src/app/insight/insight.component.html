@@ -4,7 +4,7 @@
 
         <div class="small-box bg-gradient-success">
             <div class="inner">
-              <h3>{{countPackages}}</h3>
+              <h3>{{countPacks()}}</h3>
                 <p>New packages</p>
 
             </div>
@@ -19,23 +19,24 @@
 
         <div class="small-box bg-gradient-yellow">
             <div class="inner">
-                <h3>{{countBounce}}<sup style="font-size: 20px">%</sup></h3>
+                <h3>{{countBounces()}}<sup style="font-size: 20px">%</sup></h3>
                 <p>Bounce Rate</p>
 
             </div>
             <div class="icon">
                 <i class="ion ion-stats-bars"></i>
             </div>
-            <a (click)="register()" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a  class="small-box-footer">Used Indicator <i class="fas fa-angle-left"></i></a>
         </div>
     </div>
 
+    
     <div class="col-lg-3 col-6">
 
         <div class="small-box bg-gradient-blue">
             <div class="inner">
 
-                <h3>{{countClient}}</h3>
+                <h3>{{countClients()}}</h3>
                 <p>Registered Users</p>
 
             </div>
@@ -49,8 +50,8 @@
     <div class="col-lg-3 col-6">
 
         <div class="small-box bg-gradient-primary">
-            <div class="inner">
-                <h3>{{countVisitors}}</h3>
+            <div class="inner" >
+                <h3>{{countVisits()}}</h3>
                 <p>Visits</p>
             </div>
             <div class="icon">
@@ -288,4 +289,5 @@
     </div>
 
 </div>
+
 

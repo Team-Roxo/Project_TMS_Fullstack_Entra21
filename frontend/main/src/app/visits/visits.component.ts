@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { VisitsService } from '../visits.service';
 
 @Component({
   selector: 'app-visits',
@@ -9,24 +10,50 @@ import { Router } from '@angular/router';
 })
 export class VisitsComponent implements OnInit {
 
-  readonly APICountVisits:string = "http://localhost:8080/user/countVisitors"
+  visits!: Array<any>
+  id!: number
+  date!: string
+  time!: number
+  user!: string
+  bounceRate!: boolean
+ 
+  
 
-  visits! : Array<any>
-
-  constructor(private router:Router, private http:HttpClient) { }
+  constructor(public visitsService: VisitsService, private router:Router, private http:HttpClient) { }
 
   ngOnInit(): void {
-    this.visits = new Array()
-    this.http.get(this.APICountVisits)
-    .subscribe((resultado:any)=>{
-      var count = Object.keys(resultado).length
-      for(let i = 0; i<count; i++){
 
-        this.visits.push({id: resultado[i].id, date: resultado[i].date, time: resultado[i].time, user: resultado[i].user, bounceRate: resultado[i].bounce_rate })
+    this.visits = new Array()
+
+    this.visitsService.listVisits().pipe().subscribe((response: any) => {
+
+      console.log(response);
+
+
+
+      var count = Object.keys(response).length;
+
+      for (let i = 0; i < count; i++) {
+
+        this.id = response[i].id;
+        this.date = response[i].date;
+        this.time = response[i].time;
+        this.user = response[i].user;
+        this.bounceRate = response[i].bounce_rate;   
         
+        console.log(this.id);
+        console.log(this.date);
+        console.log(this.time);
+        console.log(this.user);
+        console.log(this.bounceRate);
+        
+
+        this.visits.push({id: this.id, date: this.date, time: this.time, user: this.user, bounceRate: this.bounceRate })
+
       }
 
     })
+
 
   }
 

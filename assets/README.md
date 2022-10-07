@@ -76,16 +76,53 @@
 > ### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; As ativações e criações de serviço são feita de acordo com sua demanda, como exemplo, o Directions API, uma API do Google Maps que te retorna rotas, precisamos ativá-la e então configurar uma credencial chamada API KEY.
 ><br>
 ><br>
-><img src="">
+><img src="./img/cloud_activate.png">
+><br>
+><br>
 >
+> ### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Após ativar a API Desejada, você terá algumas abas abaixos como "Documentação", lá você poderá como utilizar os serviços nas tecnologias desejadas, como configurar, etc. No caso desta API, você verá na documentação que é necessária uma API KEY, que faremos agora na aba "Credenciais" em API.
+><br>
+><br>
+><img src="./img/cloud_cred.png">
+><br>
+><br>
 >
+> ### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Na seção das credenciais, na parte superior clique em "Criar Credencial", clique em "Chave de API".
+><br>
+><br>
+><img src="./img/cloud_key.png">
+><br>
+><br>
+>
+> ### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Após criar sua chave, ele irá ser mostrada e pedirá para que você configure restrições da chave API.
+><br>
+><br>
+><img src="./img/cloud_reg_key.png">
+><br>
+><br>
+>
+> ### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Você poderá restringir por Referenciadores HTTP, Endereços IP, Apps Android ou iOS. No nosso caso, preferimos não restringir, mas por questões de segurança e mal uso de sua chave, você poderá fazer isso. Caso tenha uma provedora de internet com IP Dinâmico, não esqueça de instalar um DDNS ou Fixar seu IP de onde sua requisição irá ser feita para evitar erros de restrição.
 
 <br>
 <br>
 
 ## <b>5 - CONFIGURAR BANCO SQL</b>
 
-
+> ### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Para configurarmos uma instância de Banco de Dados MySQL, deveremos primeiro criar e configurar nossa máquina virtual, não se preocupe, pois a questão da instalação, configuração do S.O. e do Serviço de Banco de Dados o próprio Google toma conta. Então primeiro passo, criaremos nossa instância virtual como a seguir.
+><br>
+><br>
+><img src="./img/cloud_sql_config.png">
+><br>
+><br>
+>
+> ### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Daremos um nome para nossa instância, criaremos a senha para o usuário raiz (root) e escolheremos a versão do nosso MySQL, na opção de Configuração Inicial, você pode decidir em Produção real (o que cria uma configuração para altas demandas) ou para Desenvolvimento (o que diminui a performance mas economiza nos custos), mais abaixo temos a disponibilidade por região, caso esteja criando o servidor no Brasil e deseja que haja menor latência de resposta e maior fidelidade de entrega de dados, escolha a região de São Paulo, possivelmente haverá duas alternativas, escolha a que melhor se encaixa com sua demanda.
+><br>
+><br>
+><img src="./img/cloud_sql_connect.png">
+><br>
+><br>
+>
+> ### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Após 
 
 <br>
 <br>

@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
   }
 
   gotoHome(){
-    this.router.navigateByUrl('home')
+    this.router.navigateByUrl('dashboard')
   }
 
   register(){

@@ -58,6 +58,7 @@ export class LoginserviceService implements CanActivate {
 
       this.admin = response[0].admin
       this.enterprise = response[0].enterprise
+      this.user = response[0].user
 
       if(this.admin == true){
         this.adminEnter = true;
