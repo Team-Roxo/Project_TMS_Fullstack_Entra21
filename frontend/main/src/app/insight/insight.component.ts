@@ -16,7 +16,7 @@ export class InsightComponent implements OnInit {
   readonly APICountVisits:string = "http://localhost:8080/user/countVisitors"
 
   readonly APICountPackages:string = "http://localhost:8080/quote/go"
-  
+
   readonly APICountBounce:string = "http://localhost:8080/user/bounce"
 
   countClient!: number
@@ -29,8 +29,8 @@ export class InsightComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-     this.http.get(this.APICountUsers)
+    
+      this.http.get(this.APICountUsers)
      .subscribe((resultado:any) => {
       this.countClient=resultado
      });
@@ -50,8 +50,6 @@ export class InsightComponent implements OnInit {
      .subscribe((response:any)=>{
       this.countBounce=response
      })
-
- 
 
   }
 
@@ -76,14 +74,7 @@ export class InsightComponent implements OnInit {
   }
 
   countPacks():number {
-    return 1
-    // while(true){
-    //   setTimeout(() => {
-    //     return this.countPackages
-    //   }, 3000);
-      
-    // }
-    
+    return this.countPackages
   }
 
   countBounces(): number{
