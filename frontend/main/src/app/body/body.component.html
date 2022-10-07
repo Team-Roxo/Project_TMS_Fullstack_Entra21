@@ -24,7 +24,7 @@
               </h3>
               <p class="text-sm">Parabéns:</p>
               <p class="text-sm text-muted" *ngFor="let aniversariante of aniversariantes; let i = index;">
-                <i class="fas fa-birthday-cake mr-1" ></i>{{aniversariante.nome}}
+                <i class="fas fa-birthday-cake mr-1"></i>{{aniversariante.nome}}
               </p>
             </div>
           </div>
@@ -63,15 +63,36 @@
         <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
       </div>
     </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link" data-toggle="dropdown" href="#">
+        <i class="far fa-bell"></i>
+        <span class="badge badge-warning navbar-badge" *ngIf="this.notificationCount != 0">{{this.notificationCount}}</span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+        <div *ngFor="let notify of notificacoes;let i = index">
+          <div class="dropdown-divider"></div>
+          <a href="#" routerLink={{notify.route}} class="dropdown-item">
+            <div class="media">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  {{notify.title}}
+                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">{{notify.text}}</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </li>
 
-    
+
   </ul>
 </nav>
 
 <aside class="main-sidebar sidebar-primary bg-light elevation-4">
   <a routerLink="/" class="brand-link">
-    <img src="./../favicon.ico" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-      style="opacity: 0.8" />
+    <img src="./../favicon.ico" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: 0.8" />
     <span class="brand-text font-weight-light">TMS Project</span>
   </a>
 
@@ -157,7 +178,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a href="" routerLink="finance" class="nav-link" [hidden]="!loginService.adminEnter">
+          <a href="" routerLink="finance" class="nav-link">
             <i class="nav-icon fas fa-dollar-sign"></i>
             <p>Finance
             </p>
@@ -184,6 +205,7 @@
   </div>
   <div style="padding-left: 20px;">
     <div class="small">Logged in as:</div>
-    <span>{{loginService.nome}}<br><a routerLink="" (click)="sair()" class="small" style="color: red;">Sair</a>&nbsp;&nbsp;&nbsp;&nbsp;<a routerLink="edit" class="small">Edit</a> </span>
+    <span>{{loginService.nome}}<br><a routerLink="" (click)="sair()" class="small"
+        style="color: red;">Sair</a>&nbsp;&nbsp;&nbsp;&nbsp;<a routerLink="edit" class="small">Edit</a> </span>
   </div>
 </aside>
