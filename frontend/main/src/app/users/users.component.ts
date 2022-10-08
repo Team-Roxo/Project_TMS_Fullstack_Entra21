@@ -61,14 +61,23 @@ id!: number
 
     this.usersService.adicionar(build)
 
-    this.users.push({name:this.name, email:this.email, document:this.document, birth:this.birth});
+    setTimeout(() => {
+      this.ngOnInit();
+    }, 500);
+
+  //  this.users.push({name:this.name, email:this.email, document:this.document, birth:this.birth});
   }
 
   deletar(id:number){
 
     console.log(id);
     
-    this.http.delete('http://localhost:8080/user/'+id);
+  this.http.delete('http://localhost:8080/user/'+id).subscribe();
+
+  setTimeout(() => {
+    this.ngOnInit();
+  }, 500);
+  
   }
 
   alterar(){
