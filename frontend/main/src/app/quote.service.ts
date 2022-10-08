@@ -99,4 +99,9 @@ export class QuoteService {
 
 })
   }
+
+  deleteRecentQuote(id:number){
+    this.http.delete(this.apiURL2+'/recent/'+id)
+  }
+
 }

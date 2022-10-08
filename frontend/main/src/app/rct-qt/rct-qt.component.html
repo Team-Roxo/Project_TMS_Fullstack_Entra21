@@ -11,7 +11,7 @@
     </thead>
     <tbody>
           <tr *ngFor="let recQuote of recQuotes;let i = index;">
-            <td class="align-items-center"><button [hidden]="succeed" class="btn btn-primary" (click)="regPackage(this.recQuote.price, this.recQuote.await, this.recQuote.origin, this.recQuote.destiny, this.recQuote.carrier_id, this.recQuote.cub_height)"><i [ngClass]="{'fas fa-circle-notch fa-spin':progress}"></i> Criar pacote</button><button disabled [hidden]="!succeed" class="btn btn-success"><i class="fas fa-check"></i> Added!</button></td>
+            <td class="align-items-center"><button [hidden]="succeed==this.recQuote.id" class="btn btn-primary" (click)="regPackage(this.recQuote.id ,this.recQuote.price, this.recQuote.await, this.recQuote.origin, this.recQuote.destiny, this.recQuote.carrier_id, this.recQuote.cub_height)"><i [ngClass]="{'fas fa-circle-notch fa-spin':progress==this.recQuote.id}"></i> Criar pacote</button><button disabled [hidden]="succeed!=this.recQuote.id" class="btn btn-success"><i class="fas fa-check"></i> Added!</button></td>
 
             <td>R${{recQuote.price}}</td>
             <td>{{recQuote.await}} dias úteis</td>
