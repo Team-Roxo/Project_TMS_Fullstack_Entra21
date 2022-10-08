@@ -54,7 +54,7 @@ export class InsightComponent implements OnInit {
   }
 
   register(){
-    this.router.navigateByUrl('pack-register')
+    this.router.navigateByUrl('pack-track')
   }
 
   clients(){
