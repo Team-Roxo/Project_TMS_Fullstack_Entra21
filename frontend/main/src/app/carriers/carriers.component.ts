@@ -15,7 +15,7 @@ export class CarriersComponent implements OnInit {
   cnpj!: string
   email!: string
   razao!: string
-  taxa!: number
+  taxa!: string
 
     constructor(public carrierService: CarrierService, public quoteService: QuoteService, private router: Router, private http: HttpClient) { }
 
@@ -46,16 +46,16 @@ export class CarriersComponent implements OnInit {
 
         }
 
-          this.razao = "";
-          this.taxa = 0;
-          this.email = "";
-          this.cnpj = "";
+           this.razao = "";
+           this.taxa = "";
+           this.email = "";
+           this.cnpj = "";
 
       })
 
     }
 
-    adicionar(razao: string, taxa: number, email: string, cnpj: string) {
+    adicionar(razao: string, taxa: string, email: string, cnpj: string) {
 
 
       let build ={
@@ -68,7 +68,11 @@ export class CarriersComponent implements OnInit {
 
       this.carrierService.adicionar(build)
 
-      this.carriers.push({razao:this.razao, taxa:this.taxa, email:this.email, cnpj:this.cnpj});
+      setTimeout(() => {
+        this.ngOnInit();
+      }, 500);
+
+     // this.carriers.push({razao:this.razao, taxa:this.taxa, email:this.email, cnpj:this.cnpj});
     }
 
     deletar(){
