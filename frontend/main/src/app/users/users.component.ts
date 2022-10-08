@@ -14,6 +14,7 @@ name!:string
 email!:string
 document!:string
 birth!:string
+id!: number
 
   constructor(public usersService: UsersService, private router: Router, private http: HttpClient) { }
 
@@ -27,13 +28,14 @@ birth!:string
 
       for (let i = 0; i < count; i++) {
 
+        this.id = response[i].id;
         this.name = response[i].nome;
         this.email = response[i].email;
         this.document = response[i].document;
         this.birth = response[i].birth;
         
     
-        this.users.push({name:this.name, email:this.email, document:this.document, birth:this.birth});
+        this.users.push({id: this.id, name:this.name, email:this.email, document:this.document, birth:this.birth});
 
       }
 
@@ -62,8 +64,11 @@ birth!:string
     this.users.push({name:this.name, email:this.email, document:this.document, birth:this.birth});
   }
 
-  deletar(){
+  deletar(id:number){
+
+    console.log(id);
     
+    this.http.delete('http://localhost:8080/user/'+id);
   }
 
   alterar(){
