@@ -84,13 +84,13 @@ export class RctQtComponent implements OnInit {
     console.log(id);
 
 
-    this.http.delete('http://localhost:8080/quote/recent/'+id)
+    this.http.delete('http://localhost:8080/quote/recent/'+id).subscribe();
 
     setTimeout(()=>{
       this.succeed = id
       setTimeout(() => {
         this.ngOnInit()
-      }, 2000);
+      }, 3000);
     }, 1500)
 
   }
