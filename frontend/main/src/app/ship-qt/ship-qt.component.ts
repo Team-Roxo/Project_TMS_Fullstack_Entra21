@@ -34,6 +34,9 @@ export class ShipQtComponent implements OnInit {
   fatorCub!: number
   distance!: number
   carrierData = [];
+  progress:number = -1
+  succeed:number = -1
+  id!: number
 
   APIBouncePut:string = "http://localhost:8080/user/disbounce/"
   newBounce!:any
@@ -42,6 +45,8 @@ export class ShipQtComponent implements OnInit {
   constructor(public loginService: LoginserviceService, public carrierService: CarrierService, public quoteService: QuoteService, private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
+
+    
 
     //this.quotes.push({ precoFrete: 45.50, tempo: 3, trackid: "BR23154546TR", cepOrigem: 88058086, cepDestino: 88058086, comprimento: 50, largura: 50, altura: 50, peso: 10 })
     //this.quotes.push({ precoFrete: 94.50, tempo: 6, trackid: "BR22315445TR", cepOrigem: 46513265, cepDestino: 65898454, comprimento: 100, largura: 200, altura: 10, peso: 25 })
@@ -101,10 +106,7 @@ export class ShipQtComponent implements OnInit {
 
               this.precoFrete = (this.priceFix + this.distance * response[i].taxa * this.cubagem);
 
-
               this.quotes.push({ precoFrete: this.precoFrete.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2}), tempo: this.tempo, start_adress: this.start_adress, end_address: this.end_address, carrier: response[i].razao, vol: this.vol, cubagem: this.cubagem, carrierID: response[i].id, pessoaID: this.loginService.pessoaID});
-
-
 
             }
 
@@ -125,7 +127,10 @@ export class ShipQtComponent implements OnInit {
 
   }
 
-  regRecentQuotes(priceQuote: number, prazo: number, origem: string, destino: string, carrierID: number, cubagem: number, pessoaID:number) {
+  regRecentQuotes(id:number, priceQuote: number, prazo: number, origem: string, destino: string, carrierID: number, cubagem: number, pessoaID:number) {
+
+    this.progress = -1
+    this.succeed = -1
 
     console.log(priceQuote);
 
@@ -140,6 +145,18 @@ export class ShipQtComponent implements OnInit {
     }
 
     this.quoteService.regRecentQuotes(build)
+
+    console.log(id);
+
+   // this.http.delete('http://localhost:8080/quote/recent/'+id).subscribe();
+
+    setTimeout(()=>{
+      this.succeed = id
+      setTimeout(() => {
+        this.ngOnInit()
+      }, 3000);
+    }, 1500)
+
   }
 
   openModal(){
