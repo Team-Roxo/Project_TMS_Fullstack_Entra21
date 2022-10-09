@@ -34,6 +34,8 @@ export class ShipQtComponent implements OnInit {
   fatorCub!: number
   distance!: number
   carrierData = [];
+  destinatario!: string;
+  
 
   APIBouncePut:string = "http://localhost:8080/user/disbounce/"
   newBounce!:any
@@ -117,6 +119,7 @@ export class ShipQtComponent implements OnInit {
           this.largura = 0
           this.altura = 0
           this.peso = 0
+          this.destinatario = ""
 
 
         })
