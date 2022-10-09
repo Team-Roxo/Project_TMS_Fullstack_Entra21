@@ -34,6 +34,7 @@ export class ShipQtComponent implements OnInit {
   fatorCub!: number
   distance!: number
   carrierData = [];
+  destinatario!: string;
   progress:number = -1
   succeed:number = -1
   id!: number
@@ -118,6 +119,7 @@ export class ShipQtComponent implements OnInit {
           this.largura = 0
           this.altura = 0
           this.peso = 0
+          this.destinatario = ""
 
 
         })
