@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { InjectSetupWrapper } from '@angular/core/testing';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { catchError, Observable } from 'rxjs';
+import { BodyComponent } from './body/body.component';
 import { LoginComponent } from './login/login.component';
+import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +21,7 @@ export class LoginserviceService implements CanActivate {
   user!: string
   email!: string
   password!: string
-  birth!: Date
+  birth!: string
   document!: string
 
   //DADOS DE CONTROLE
@@ -40,6 +42,8 @@ export class LoginserviceService implements CanActivate {
 
   logging(user: string, password: string) {
 
+    console.log('login service iniciado');
+
     this.progress = true
 
     let build: any = {
@@ -51,14 +55,30 @@ export class LoginserviceService implements CanActivate {
     .pipe(
       catchError((error)=>{
         this.progress = false
+        console.log(error);
         return error
+
       })
     )
     .subscribe((response:any)=>{
 
+      console.log('API works');
+      console.log(response);
+
       this.admin = response[0].admin
       this.enterprise = response[0].enterprise
       this.user = response[0].user
+      this.pessoaID = response[0].pessoa_id
+      this.password = response[0].senha
+
+      this.http.get(this.TMSLoginAPI+'/user/'+response[0].pessoa_id)
+      .subscribe((resp:any) =>{
+        console.log(resp);
+        this.nome = resp.nome
+        this.birth = resp.birth
+        this.document = resp.document
+        this.email = resp.email
+      })
 
       if(this.admin == true){
         this.adminEnter = true;
@@ -75,30 +95,19 @@ export class LoginserviceService implements CanActivate {
         new LoginComponent(this.router, this, this.http).gotoHome();
       }
 
-      this.http.get(this.TMSLoginAPI+'/user/'+response[0].pessoa_id)
-      .subscribe((resp:any) =>{
-        console.log(resp);
-        this.nome = resp.nome
-        this.pessoaID = response[0].pessoa_id
-        this.birth = resp.birth
-        this.document = resp.document
-        this.email = resp.email
-        this.password = response[0].senha
-      })
-
       let bounce: any = {
           "user": response[0].user
         }
 
         this.http.post(this.APIBounceInit, bounce)
           .subscribe((response: any) => {
-            console.log(response);
             this.idBounce = response.id
             this.userBounce = response.user
             this.dateBounce = response.date
             this.timeBounce = response.time
           })
       })
+
   }
 
   registering(name: string, user: string, email: string, password: string) {
