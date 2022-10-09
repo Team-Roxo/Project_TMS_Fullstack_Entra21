@@ -53,7 +53,6 @@ export class ShipQtComponent implements OnInit {
     this.quotes = new Array()
 
     //ATUALIZA BOUNCE
-    new LoginserviceService(this.router, this.http)
 
     this.newBounce = {
       "id":this.loginService.idBounce,

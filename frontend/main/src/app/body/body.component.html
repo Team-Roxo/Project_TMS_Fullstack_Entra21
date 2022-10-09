@@ -69,14 +69,14 @@
         <span class="badge badge-warning navbar-badge" *ngIf="this.notificationCount != 0">{{this.notificationCount}}</span>
       </a>
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-        <div *ngFor="let notify of notificacoes;let i = index">
+        <div *ngFor="let notify of this.notificacoes;let i = index">
           <div class="dropdown-divider"></div>
           <a href="#" routerLink={{notify.route}} class="dropdown-item">
             <div class="media">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   {{notify.title}}
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                  <span class="float-right text-sm text-warning"><i class="fas fa-bell"></i></span>
                 </h3>
                 <p class="text-sm">{{notify.text}}</p>
               </div>
