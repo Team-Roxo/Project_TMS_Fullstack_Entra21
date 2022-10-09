@@ -117,7 +117,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let quote of quotes;let i = index;">
-            <td class="align-items-center"><button class="btn btn-primary" (click)="regRecentQuotes(this.quote.precoFrete, this.quote.tempo, this.quote.start_adress, this.quote.end_address, this.quote.carrierID, this.quote.cubagem, this.quote.pessoaID    )">Save</button></td>
+            <td class="align-items-center"><button [hidden]="succeed==this.quote.id" class="btn btn-primary" (click)="regRecentQuotes(this.quote.id, this.quote.precoFrete, this.quote.tempo, this.quote.start_adress, this.quote.end_address, this.quote.carrierID, this.quote.cubagem, this.quote.pessoaID)"><i [ngClass]="{'fas fa-circle-notch fa-spin':progress==this.quote.id}"></i>  Save</button><button disabled [hidden]="succeed!=this.quote.id" class="btn btn-success"><i class="fas fa-check"></i> Added!</button></td>
             <td>{{i+1}}</td>
             <td>R${{quote.precoFrete}}</td>
             <td>{{quote.tempo}} dias úteis</td>
