@@ -16,6 +16,7 @@ export class CarriersComponent implements OnInit {
   email!: string
   razao!: string
   taxa!: string
+  id!: number
 
     constructor(public carrierService: CarrierService, public quoteService: QuoteService, private router: Router, private http: HttpClient) { }
 
@@ -37,12 +38,14 @@ export class CarriersComponent implements OnInit {
 
         for (let i = 0; i < count; i++) {
 
+
+          this.id = response[i].id;
           this.razao = response[i].razao;
           this.taxa = response[i].taxa;
           this.email = response[i].email;
           this.cnpj = response[i].cnpj;
 
-          this.carriers.push({ razao: this.razao, taxa: this.taxa, email: this.email, cnpj: this.cnpj});
+          this.carriers.push({id: this.id, razao: this.razao, taxa: this.taxa, email: this.email, cnpj: this.cnpj});
 
         }
 
@@ -56,7 +59,6 @@ export class CarriersComponent implements OnInit {
     }
 
     adicionar(razao: string, taxa: string, email: string, cnpj: string) {
-
 
       let build ={
         "razao":razao,
@@ -75,8 +77,15 @@ export class CarriersComponent implements OnInit {
      // this.carriers.push({razao:this.razao, taxa:this.taxa, email:this.email, cnpj:this.cnpj});
     }
 
-    deletar(){
+    deletar(id:number){
+
+      console.log(id);
       
+    this.http.delete('http://localhost:8080/carriers/'+id).subscribe();
+  
+    setTimeout(() => {
+      this.ngOnInit();
+    }, 500);
     
     }
   
@@ -106,5 +115,30 @@ export class CarriersComponent implements OnInit {
       },500)
   
     }
+
+
+    openModalEdit(){
+
+      var modal = document.getElementById('modal3')
+  
+      modal?.setAttribute('style', 'display:block;')
+  
+      modal?.setAttribute('class', 'portfolio-modal modal fade show')
+      modal?.removeAttribute('aria-hidden')
+  
+      modal?.setAttribute('arial-modal', 'true')
+  
+    }
+  
+    closeModalEdit(){
+      var modal = document.getElementById('modal3')
+  
+      modal?.setAttribute('class', 'portfolio-modal modal fade')
+      setTimeout(()=>{
+        modal?.setAttribute('style', 'display:none;')
+      },500)
+  
+    }
+ 
 
   }

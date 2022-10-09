@@ -1,11 +1,15 @@
 package br.com.entra21.teamroxo.TMSProject.controllers;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.SimpleFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -28,13 +32,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
-import br.com.entra21.teamroxo.TMSProject.TmsProjectApplication;
 import br.com.entra21.teamroxo.TMSProject.interfaces.CountVisitorsRepository;
 import br.com.entra21.teamroxo.TMSProject.interfaces.PessoaRepository;
 import br.com.entra21.teamroxo.TMSProject.template.CountVisitors;
 import br.com.entra21.teamroxo.TMSProject.template.ItemNivel3;
 import br.com.entra21.teamroxo.TMSProject.template.Pessoa;
-import br.com.entra21.teamroxo.TMSProject.template.RegisterQuote;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -77,8 +79,7 @@ public class PessoaController {
 	
 	@GetMapping("/birthmonth")
 	public List<Pessoa> birthMonth(){
-		return pessoaRepository.findBirthMonth(LocalDate.now().withMonth(LocalDate.now().getMonthValue()).with(TemporalAdjusters.firstDayOfMonth()), 
-				LocalDate.now().withMonth(LocalDate.now().getMonthValue()).with(TemporalAdjusters.lastDayOfMonth()));
+		return pessoaRepository.findBirthMonth(LocalDate.now());
 	}
 	
 	@GetMapping("/bounce")
@@ -107,6 +108,8 @@ public class PessoaController {
 	public void deletePessoa(@PathVariable("id") int id){
 		pessoaRepository.deleteById(id);
 	}
+	
+	
 
 	private List<Pessoa> obterListaCompleta() {
 
@@ -146,5 +149,7 @@ public class PessoaController {
 		}
 
 	}
+	
+	
 
 }
