@@ -102,7 +102,7 @@ export class ShipQtComponent implements OnInit {
               this.precoFrete = (this.priceFix + this.distance * response[i].taxa * this.cubagem);
 
 
-              this.quotes.push({ precoFrete: this.precoFrete, tempo: this.tempo, start_adress: this.start_adress, end_address: this.end_address, carrier: response[i].razao, vol: this.vol, cubagem: this.cubagem, carrierID: response[i].id, pessoaID: this.loginService.pessoaID  });
+              this.quotes.push({ precoFrete: this.precoFrete.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2}), tempo: this.tempo, start_adress: this.start_adress, end_address: this.end_address, carrier: response[i].razao, vol: this.vol, cubagem: this.cubagem, carrierID: response[i].id, pessoaID: this.loginService.pessoaID});
 
 
 
@@ -127,8 +127,10 @@ export class ShipQtComponent implements OnInit {
 
   regRecentQuotes(priceQuote: number, prazo: number, origem: string, destino: string, carrierID: number, cubagem: number, pessoaID:number) {
 
+    console.log(priceQuote);
+
     let build ={
-      "price":priceQuote,
+      "price":priceQuote.toLocaleString('en-US').replace('.','').replace(',','.'),
       "await":prazo,
       "origin":origem,
       "destiny":destino,
@@ -138,9 +140,6 @@ export class ShipQtComponent implements OnInit {
     }
 
     this.quoteService.regRecentQuotes(build)
-
-
-
   }
 
   openModal(){
