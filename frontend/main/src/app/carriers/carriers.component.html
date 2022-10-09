@@ -95,12 +95,12 @@
 <table class="table table-bordered">
     <thead>
         
-        <th>ID</th>
-        <th>Razão social</th>
-        <th>Taxa</th>
+        <th>Item</th>
+        <th>Carrier name</th>
+        <th>Tax of transport</th>
         <th>E-mail</th>
         <th>Cnpj</th>
-        <th>Ação</th>
+        <th>Action</th>
         
 
     </thead>
@@ -113,8 +113,8 @@
             <td>{{carrier.email}}</td>
             <td>{{carrier.cnpj}}</td>
             <td>
-                <button class="btn btn-danger mr-2" (click)="deletar()">Deletar</button>
-                <button class="btn btn-primary mr-2" (click)="alterar()">Alterar</button>
+                <button class="btn btn-danger mr-2" (click)="deletar(carrier.id)">Delet</button>
+                <button class="btn btn-primary mr-2" (click)="alterar()">Edit</button>
             </td>
 
         </tr>
