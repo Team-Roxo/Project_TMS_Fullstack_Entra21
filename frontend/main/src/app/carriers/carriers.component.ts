@@ -116,6 +116,29 @@ export class CarriersComponent implements OnInit {
   
     }
 
+
+    openModalEdit(){
+
+      var modal = document.getElementById('modal3')
+  
+      modal?.setAttribute('style', 'display:block;')
+  
+      modal?.setAttribute('class', 'portfolio-modal modal fade show')
+      modal?.removeAttribute('aria-hidden')
+  
+      modal?.setAttribute('arial-modal', 'true')
+  
+    }
+  
+    closeModalEdit(){
+      var modal = document.getElementById('modal3')
+  
+      modal?.setAttribute('class', 'portfolio-modal modal fade')
+      setTimeout(()=>{
+        modal?.setAttribute('style', 'display:none;')
+      },500)
+  
+    }
  
 
   }

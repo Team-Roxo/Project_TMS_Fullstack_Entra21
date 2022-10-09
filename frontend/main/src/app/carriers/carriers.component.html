@@ -94,19 +94,19 @@
 
 <table class="table table-bordered">
     <thead>
-        
+
         <th>Item</th>
         <th>Carrier name</th>
         <th>Tax of transport</th>
         <th>E-mail</th>
         <th>Cnpj</th>
         <th>Action</th>
-        
+
 
     </thead>
     <tbody>
         <tr *ngFor="let carrier of carriers;let i = index;">
-            
+
             <td>{{i+1}}</td>
             <td>{{carrier.razao}}</td>
             <td>{{carrier.taxa}}</td>
@@ -114,7 +114,74 @@
             <td>{{carrier.cnpj}}</td>
             <td>
                 <button class="btn btn-danger mr-2" (click)="deletar(carrier.id)">Delet</button>
-                <button class="btn btn-primary mr-2" (click)="alterar()">Edit</button>
+
+
+                <button class="btn btn-primary" (click)="openModalEdit()">Edit</button>
+
+                <div class="portfolio-modal modal fade show" id="modal3" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="close-modal" data-bs-dismiss="modal"><img src="" alt="" /></div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <div class="modal-body">
+                                            <h2 class="text-uppercase">Edit Carrier</h2>
+                                            <p class="item-intro text-muted">Change the information below!</p>
+                                            <!-- <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/2.jpg" alt="..." /> -->
+                                            <div class="input-group" style="width: 100%;">
+                                                <span class="input-group-text"
+                                                    style="border-radius: 5px; border-right: 10px;">🧑🏽‍💻</span>
+                                                <input type="text" [(ngModel)]="razao" class="form-control"
+                                                    razao="Razao"  required tabindex="1">
+                                            </div>
+                                            <br>
+                                            <div class="input-group" style="width: 100%;">
+                                                <span class="input-group-text"
+                                                    style="border-radius: 5px; border-right: 10px;">🧑🏽‍💻</span>
+                                                <input type="text" [(ngModel)]="taxa" class="form-control" taxa="Taxa"
+                                                     required tabindex="1">
+                                            </div>
+                                            <br>
+                                            <div class="input-group" style="width: 100%;">
+                                                <span class="input-group-text"
+                                                    style="border-radius: 5px; border-right: 10px;">🧑🏽‍💻</span>
+                                                <input type="text" [(ngModel)]="email" class="form-control"
+                                                    email="E-mail"  required tabindex="1">
+                                            </div>
+                                            <br>
+                                            <div class="input-group" style="width: 100%;">
+                                                <span class="input-group-text"
+                                                    style="border-radius: 5px; border-right: 10px;">🧑🏽‍💻</span>
+                                                <input type="text" [(ngModel)]="cnpj" class="form-control" cnpj="CNPJ"
+                                                     required tabindex="1">
+                                            </div>
+
+                                            <br>
+                                            <button class="btn btn-primary btn-xl text-uppercase"
+                                                data-bs-dismiss="modal" type="button" (click)="closeModalEdit()"
+                                                (click)="alterar()">
+                                                <i class="fas fa-xmark me-1"></i>
+                                                Save
+                                            </button>
+
+                                            <button class="btn btn-danger btn-xl text-uppercase "
+                                                data-bs-dismiss="modal" type="button" (click)="closeModalEdit()">
+                                                <i class="fas fa-xmark me-1"></i>
+                                                Close
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+               
             </td>
 
         </tr>
