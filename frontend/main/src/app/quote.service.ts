@@ -13,8 +13,8 @@ import { ShipQtComponent } from './ship-qt/ship-qt.component';
 })
 export class QuoteService {
 
-   apiURL:string = 'http://localhost:8080/ship'
-   apiURL2:string = 'http://localhost:8080/quote'
+   apiURL:string = 'http://35.199.78.13:8080/ship'
+   apiURL2:string = 'http://35.199.78.13:8080/quote'
 
    APIBouncePut:string = "http://localhost:8080/user/disbounce/"
    newBounce!:any

@@ -116,7 +116,11 @@
                 <button class="btn btn-danger mr-2" (click)="deletar(carrier.id)">Delet</button>
 
 
-                <button class="btn btn-primary" (click)="openModalEdit()">Edit</button>
+                <button class="btn btn-primary" (click)="openModalEdit(this.carrier.id, this.carrier.razao, this.carrier.taxa, this.carrier.email, this.carrier.cnpj)">Edit</button>
+              </td>
+
+            </tr>
+        </tbody>
 
                 <div class="portfolio-modal modal fade show" id="modal3" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog">
@@ -180,10 +184,4 @@
 
 
 
-
-               
-            </td>
-
-        </tr>
-    </tbody>
 </table>
