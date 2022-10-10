@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InsightComponent } from './insight/insight.component';
@@ -11,10 +10,8 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { UsersComponent } from './users/users.component';
 import { CarriersComponent } from './carriers/carriers.component';
-import { PackregComponent } from './packreg/packreg.component';
 import { PacktrackComponent } from './packtrack/packtrack.component';
 import { FinanceComponent } from './finance/finance.component';
-import { ReceiptComponent } from './receipt/receipt.component';
 import { ShipQtComponent } from './ship-qt/ship-qt.component';
 import { RctQtComponent } from './rct-qt/rct-qt.component';
 import { EditComponent } from './edit/edit.component';
@@ -34,10 +31,8 @@ import { VisitsComponent } from './visits/visits.component';
     LoginComponent,
     UsersComponent,
     CarriersComponent,
-    PackregComponent,
     PacktrackComponent,
     FinanceComponent,
-    ReceiptComponent,
     ShipQtComponent,
     RctQtComponent,
     EditComponent,

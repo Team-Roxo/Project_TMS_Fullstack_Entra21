@@ -11,13 +11,13 @@ import { Observable } from 'rxjs';
 })
 export class InsightComponent implements OnInit {
 
-  readonly APICountUsers: string = "http://localhost:8080/user/countClients"
+  readonly APICountUsers: string = "http://35.199.78.13:8080/user/countClients"
 
-  readonly APICountVisits:string = "http://localhost:8080/user/countVisitors"
+  readonly APICountVisits:string = "http://35.199.78.13:8080/user/countVisitors"
 
-  readonly APICountPackages:string = "http://localhost:8080/quote/go"
+  readonly APICountPackages:string = "http://35.199.78.13:8080/quote/go"
 
-  readonly APICountBounce:string = "http://localhost:8080/user/bounce"
+  readonly APICountBounce:string = "http://35.199.78.13:8080/user/bounce"
 
   countClient!: number
   countVisitors!: number

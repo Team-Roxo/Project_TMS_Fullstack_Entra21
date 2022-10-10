@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class VisitsService {
 
-  readonly APICountVisits:string = "http://localhost:8080/user/countVisitors"
+  readonly APICountVisits:string = "http://35.199.78.13:8080/user/countVisitors"
 
   constructor(private router: Router, private http: HttpClient) { }
 
