@@ -97,10 +97,11 @@ export class BodyComponent implements OnInit {
 
           for (let i = 0; i < count; i++) {
 
-            if (resultado[i].id === this.loginService.pessoaID) { //verificar qual ID a API tá retornando
-              this.notificacoes.push({ title: "Hoje é seu Aniversário!", text: "Parabéns, "+this.loginService.nome.split(' ').at(0)+"! Para comemorar temos algumas ofertas para você. Confira!", route: "ship-quote" })
+            if (resultado[i].id === this.loginService.pessoaID) {
+              this.notificacoes.push({ title: "Hoje é seu Aniversário!🥳🎉", text: "Parabéns, "+this.loginService.nome.split(' ').at(0)+"! Para comemorar temos algumas ofertas especiais para você. Confira!🤩", route: "ship-quote" })
             }
           }
+
         })
 
       setTimeout(() => {
