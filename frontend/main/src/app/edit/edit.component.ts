@@ -10,7 +10,7 @@ import { LoginserviceService } from '../loginservice.service';
 export class EditComponent implements OnInit {
 name!:string
 user!:string
-birth!:Date
+birth!:string
 document!:string
 email!:string
 password!:string
@@ -21,7 +21,7 @@ password!:string
   constructor(
     private router:Router,
   private login: LoginserviceService
-    
+
   ) { }
 
   ngOnInit(): void {

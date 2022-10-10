@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { catchError } from 'rxjs';
 import { VisitsService } from '../visits.service';
 
 @Component({
@@ -25,7 +26,12 @@ export class VisitsComponent implements OnInit {
 
     this.visits = new Array()
 
-    this.visitsService.listVisits().pipe().subscribe((response: any) => {
+    this.visitsService.listVisits().pipe(
+      catchError((error)=>{
+      return error
+      })
+     
+    ).subscribe((response: any) => {
 
       console.log(response);
 

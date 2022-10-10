@@ -15,10 +15,10 @@ import br.com.entra21.teamroxo.TMSProject.template.Pessoa;
 @EnableJpaRepositories
 public interface PessoaRepository extends JpaRepository<Pessoa, Integer> {
 
-	@Query("FROM Pessoa WHERE birth = :now")
+	@Query("FROM Pessoa WHERE MONTH(birth) = EXTRACT(MONTH FROM :now) AND DAY(birth) = EXTRACT(DAY FROM :now)")
 	List<Pessoa> findBirth (@Param("now") LocalDate now);
 	
-	@Query("FROM Pessoa WHERE birth BETWEEN :firstDay and :lastDay")
-	List<Pessoa> findBirthMonth (@Param("firstDay") LocalDate first, @Param("lastDay") LocalDate last);
+	@Query("FROM Pessoa WHERE MONTH(birth) = EXTRACT(MONTH FROM :now)")
+	List<Pessoa> findBirthMonth (@Param("now") LocalDate now);
 	
 }

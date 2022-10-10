@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { type } from 'os';
 import { catchError } from 'rxjs';
+import { BodyComponent } from './body/body.component';
 import { LoginserviceService } from './loginservice.service';
 import { RctQtComponent } from './rct-qt/rct-qt.component';
 import { ShipQtComponent } from './ship-qt/ship-qt.component';
@@ -24,7 +25,6 @@ export class QuoteService {
   quote(cepOrigem:string, cepDestino:string):any{
 
     //ATUALIZA BOUNCE
-    new LoginserviceService(this.router, this.http)
 
     this.newBounce = {
       "id":this.login.idBounce,
@@ -46,7 +46,6 @@ export class QuoteService {
   recQuote():any{
 
     //ATUALIZA BOUNCE
-     new LoginserviceService(this.router, this.http)
 
      this.newBounce = {
        "id":this.login.idBounce,
@@ -68,7 +67,6 @@ export class QuoteService {
   regRecentQuotes(object:any){
 
     //ATUALIZA BOUNCE
-    new LoginserviceService(this.router, this.http)
 
     this.newBounce = {
       "id":this.login.idBounce,
@@ -99,4 +97,9 @@ export class QuoteService {
 
 })
   }
+
+  deleteRecentQuote(id:number){
+    this.http.delete(this.apiURL2+'/recent/'+id)
+  }
+
 }

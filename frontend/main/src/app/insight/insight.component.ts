@@ -24,12 +24,12 @@ export class InsightComponent implements OnInit {
   countPackages!:number
   countBounce!:number
 
-  constructor(private router:Router, private http:HttpClient) {
-
-  }
+  constructor(private router:Router, private http:HttpClient) { }
 
   ngOnInit(): void {
-    
+
+    console.log('NO INIT');
+
       this.http.get(this.APICountUsers)
      .subscribe((resultado:any) => {
       this.countClient=resultado
@@ -51,10 +51,14 @@ export class InsightComponent implements OnInit {
       this.countBounce=response
      })
 
+     setTimeout(() => {
+      this.attData()
+     }, 1500);
+
   }
 
   register(){
-    this.router.navigateByUrl('pack-register')
+    this.router.navigateByUrl('pack-track')
   }
 
   clients(){
@@ -65,20 +69,14 @@ export class InsightComponent implements OnInit {
     this.router.navigateByUrl('visits')
   }
 
- countVisits():number{
-    return this.countVisitors
-  }
+  attData(){
 
-  countClients():number{
-    return this.countClient
-  }
+    console.log('NO ATT DATA');
 
-  countPacks():number {
-    return this.countPackages
-  }
 
-  countBounces(): number{
-    return this.countBounce
+    setTimeout(() => {
+      this.ngOnInit()
+    }, 1500);
   }
 
 }

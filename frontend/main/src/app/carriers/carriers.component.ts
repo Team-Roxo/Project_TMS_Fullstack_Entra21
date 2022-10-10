@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { catchError } from 'rxjs';
 import { CarrierService } from '../carrier.service';
 import { QuoteService } from '../quote.service';
 
@@ -15,7 +16,8 @@ export class CarriersComponent implements OnInit {
   cnpj!: string
   email!: string
   razao!: string
-  taxa!: number
+  taxa!: string
+  id!: number
 
     constructor(public carrierService: CarrierService, public quoteService: QuoteService, private router: Router, private http: HttpClient) { }
 
@@ -27,7 +29,12 @@ export class CarriersComponent implements OnInit {
       // this.carriers.push({name:"Correios", email:"correios@correios.com", cnpj:"7897987899789", taxValorFrete:0.078})
 
 
-       this.carrierService.listCarrier().pipe().subscribe((response: any) => {
+       this.carrierService.listCarrier().pipe(
+        catchError((error)=>{
+        return error
+        })
+       
+      ).subscribe((response: any) => {
 
         console.log(response);
 
@@ -37,26 +44,27 @@ export class CarriersComponent implements OnInit {
 
         for (let i = 0; i < count; i++) {
 
+
+          this.id = response[i].id;
           this.razao = response[i].razao;
           this.taxa = response[i].taxa;
           this.email = response[i].email;
           this.cnpj = response[i].cnpj;
 
-          this.carriers.push({ razao: this.razao, taxa: this.taxa, email: this.email, cnpj: this.cnpj});
+          this.carriers.push({id: this.id, razao: this.razao, taxa: this.taxa, email: this.email, cnpj: this.cnpj});
 
         }
 
-          this.razao = "";
-          this.taxa = 0;
-          this.email = "";
-          this.cnpj = "";
+           this.razao = "";
+           this.taxa = "";
+           this.email = "";
+           this.cnpj = "";
 
       })
 
     }
 
-    adicionar(razao: string, taxa: number, email: string, cnpj: string) {
-
+    adicionar(razao: string, taxa: string, email: string, cnpj: string) {
 
       let build ={
         "razao":razao,
@@ -68,16 +76,75 @@ export class CarriersComponent implements OnInit {
 
       this.carrierService.adicionar(build)
 
-      this.carriers.push({razao:this.razao, taxa:this.taxa, email:this.email, cnpj:this.cnpj});
+      setTimeout(() => {
+        this.ngOnInit();
+      }, 500);
+
+     // this.carriers.push({razao:this.razao, taxa:this.taxa, email:this.email, cnpj:this.cnpj});
     }
 
-    deletar(){
+    deletar(id:number){
+
+      console.log(id);
       
+    this.http.delete('http://localhost:8080/carriers/'+id).subscribe();
+  
+    setTimeout(() => {
+      this.ngOnInit();
+    }, 500);
     
     }
   
     alterar(){
       
     }
+
+    openModal(){
+
+      var modal = document.getElementById('modal2')
+  
+      modal?.setAttribute('style', 'display:block;')
+  
+      modal?.setAttribute('class', 'portfolio-modal modal fade show')
+      modal?.removeAttribute('aria-hidden')
+  
+      modal?.setAttribute('arial-modal', 'true')
+  
+    }
+  
+    closeModal(){
+      var modal = document.getElementById('modal2')
+  
+      modal?.setAttribute('class', 'portfolio-modal modal fade')
+      setTimeout(()=>{
+        modal?.setAttribute('style', 'display:none;')
+      },500)
+  
+    }
+
+
+    openModalEdit(){
+
+      var modal = document.getElementById('modal3')
+  
+      modal?.setAttribute('style', 'display:block;')
+  
+      modal?.setAttribute('class', 'portfolio-modal modal fade show')
+      modal?.removeAttribute('aria-hidden')
+  
+      modal?.setAttribute('arial-modal', 'true')
+  
+    }
+  
+    closeModalEdit(){
+      var modal = document.getElementById('modal3')
+  
+      modal?.setAttribute('class', 'portfolio-modal modal fade')
+      setTimeout(()=>{
+        modal?.setAttribute('style', 'display:none;')
+      },500)
+  
+    }
+ 
 
   }

@@ -12,8 +12,8 @@ import { QuoteService } from '../quote.service';
 })
 export class RctQtComponent implements OnInit {
 
-  progress!:boolean
-  succeed:boolean = false
+  progress:number = -1
+  succeed:number = -1
   recQuotes!: Array<any>
   id!: number
   price!: number
@@ -32,7 +32,12 @@ export class RctQtComponent implements OnInit {
   ngOnInit(): void {
     this.recQuotes = new Array()
 
-     this.quoteService.recQuote().pipe().subscribe((response: any) => {
+    this.progress = -1
+    this.succeed = -1
+
+     this.quoteService.recQuote()
+     .pipe()
+     .subscribe((response: any) => {
 
       console.log(response);
 
@@ -55,14 +60,13 @@ export class RctQtComponent implements OnInit {
 
       }
 
-      console.log();
-
      })
+
   }
 
-  regPackage(price: number, time: number, origin: string, destiny: string, carrier_id: string, cub_height: number) {
+  regPackage(id:number, price: number, time: number, origin: string, destiny: string, carrier_id: string, cub_height: number) {
 
-    this.progress = true
+    this.progress = id
 
     let build = {
       "price": price,
@@ -75,11 +79,18 @@ export class RctQtComponent implements OnInit {
     }
 
     console.log(build);
-
     this.quoteService.regPackage(build)
 
+    console.log(id);
+
+
+    this.http.delete('http://localhost:8080/quote/recent/'+id).subscribe();
+
     setTimeout(()=>{
-      this.succeed = true
+      this.succeed = id
+      setTimeout(() => {
+        this.ngOnInit()
+      }, 3000);
     }, 1500)
 
   }

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { catchError } from 'rxjs';
 import { UsersService } from '../users.service';
 
 @Component({
@@ -14,12 +15,18 @@ name!:string
 email!:string
 document!:string
 birth!:string
+id!: number
 
   constructor(public usersService: UsersService, private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.users = new Array()
-    this.usersService.listUsers().pipe().subscribe((response: any) => {
+    this.usersService.listUsers().pipe(
+      catchError((error)=>{
+      return error
+      })
+     
+    ).subscribe((response: any) => {
 
       console.log(response);  
       
@@ -27,13 +34,14 @@ birth!:string
 
       for (let i = 0; i < count; i++) {
 
+        this.id = response[i].id;
         this.name = response[i].nome;
         this.email = response[i].email;
         this.document = response[i].document;
         this.birth = response[i].birth;
         
     
-        this.users.push({name:this.name, email:this.email, document:this.document, birth:this.birth});
+        this.users.push({id: this.id, name:this.name, email:this.email, document:this.document, birth:this.birth});
 
       }
 
@@ -59,15 +67,73 @@ birth!:string
 
     this.usersService.adicionar(build)
 
-    this.users.push({name:this.name, email:this.email, document:this.document, birth:this.birth});
+    setTimeout(() => {
+      this.ngOnInit();
+    }, 500);
+
+  //  this.users.push({name:this.name, email:this.email, document:this.document, birth:this.birth});
   }
 
-  deletar(){
+  deletar(id:number){
+
+    console.log(id);
     
+  this.http.delete('http://localhost:8080/user/'+id).subscribe();
+
+  setTimeout(() => {
+    this.ngOnInit();
+  }, 500);
+  
   }
 
   alterar(){
     
+  }
+
+  openModal(){
+
+    var modal = document.getElementById('modal2')
+
+    modal?.setAttribute('style', 'display:block;')
+
+    modal?.setAttribute('class', 'portfolio-modal modal fade show')
+    modal?.removeAttribute('aria-hidden')
+
+    modal?.setAttribute('arial-modal', 'true')
+
+  }
+
+  closeModal(){
+    var modal = document.getElementById('modal2')
+
+    modal?.setAttribute('class', 'portfolio-modal modal fade')
+    setTimeout(()=>{
+      modal?.setAttribute('style', 'display:none;')
+    },500)
+
+  }
+
+  openModalEdit(){
+
+    var modal = document.getElementById('modal3')
+
+    modal?.setAttribute('style', 'display:block;')
+
+    modal?.setAttribute('class', 'portfolio-modal modal fade show')
+    modal?.removeAttribute('aria-hidden')
+
+    modal?.setAttribute('arial-modal', 'true')
+
+  }
+
+  closeModalEdit(){
+    var modal = document.getElementById('modal3')
+
+    modal?.setAttribute('class', 'portfolio-modal modal fade')
+    setTimeout(()=>{
+      modal?.setAttribute('style', 'display:none;')
+    },500)
+
   }
   
 
