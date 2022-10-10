@@ -104,13 +104,16 @@ public class PessoaController {
 		return pessoaRepository.save(dados);
 	}
 	
+	@PutMapping()
+	public Pessoa attPessoa(@RequestBody Pessoa body) {
+		return pessoaRepository.save(body);
+	}
+	
 	@DeleteMapping("/{id}")
 	public void deletePessoa(@PathVariable("id") int id){
 		pessoaRepository.deleteById(id);
 	}
 	
-	
-
 	private List<Pessoa> obterListaCompleta() {
 
 		List<Pessoa> response = pessoaRepository.findAll();
