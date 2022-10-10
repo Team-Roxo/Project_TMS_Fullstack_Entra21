@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { catchError } from 'rxjs';
 import { CarrierService } from '../carrier.service';
 import { QuoteService } from '../quote.service';
 
@@ -28,7 +29,12 @@ export class CarriersComponent implements OnInit {
       // this.carriers.push({name:"Correios", email:"correios@correios.com", cnpj:"7897987899789", taxValorFrete:0.078})
 
 
-       this.carrierService.listCarrier().pipe().subscribe((response: any) => {
+       this.carrierService.listCarrier().pipe(
+        catchError((error)=>{
+        return error
+        })
+       
+      ).subscribe((response: any) => {
 
         console.log(response);
 

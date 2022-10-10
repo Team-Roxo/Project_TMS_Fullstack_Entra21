@@ -75,7 +75,12 @@ export class ShipQtComponent implements OnInit {
 
     if (this.cepOrigem != null && this.cepDestino != null && this.comprimento != null, this.altura != null, this.largura != null, this.peso != null) {
       this.quoteService.quote(this.cepOrigem, this.cepDestino)
-        .pipe()
+        .pipe(
+          catchError((error)=>{
+          return error
+          })
+         
+        )
         .subscribe((response: any) => {
 
           console.log(response);

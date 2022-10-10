@@ -15,8 +15,6 @@ import { PackregComponent } from './packreg/packreg.component';
 import { PacktrackComponent } from './packtrack/packtrack.component';
 import { FinanceComponent } from './finance/finance.component';
 import { ReceiptComponent } from './receipt/receipt.component';
-import { CostComponent } from './cost/cost.component';
-import { BalanceComponent } from './balance/balance.component';
 import { ShipQtComponent } from './ship-qt/ship-qt.component';
 import { RctQtComponent } from './rct-qt/rct-qt.component';
 import { EditComponent } from './edit/edit.component';
@@ -40,8 +38,6 @@ import { VisitsComponent } from './visits/visits.component';
     PacktrackComponent,
     FinanceComponent,
     ReceiptComponent,
-    CostComponent,
-    BalanceComponent,
     ShipQtComponent,
     RctQtComponent,
     EditComponent,

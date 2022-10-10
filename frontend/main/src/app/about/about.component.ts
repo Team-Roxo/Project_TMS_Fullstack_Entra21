@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { catchError } from 'rxjs';
 import { AboutService } from '../about.service';
 
 @Component({
@@ -53,7 +54,12 @@ export class AboutComponent implements OnInit {
 
 this.abouts = new Array()
 
-this.aboutService.listAbout().pipe().subscribe((response: any) => {
+this.aboutService.listAbout().pipe(
+  catchError((error)=>{
+  return error
+  })
+ 
+).subscribe((response: any) => {
 console.log(response);
 
 var count = Object.keys(response).length
