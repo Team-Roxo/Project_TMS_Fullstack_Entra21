@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { catchError } from 'rxjs';
 import { UsersService } from '../users.service';
 
 @Component({
@@ -20,7 +21,12 @@ id!: number
 
   ngOnInit(): void {
     this.users = new Array()
-    this.usersService.listUsers().pipe().subscribe((response: any) => {
+    this.usersService.listUsers().pipe(
+      catchError((error)=>{
+      return error
+      })
+     
+    ).subscribe((response: any) => {
 
       console.log(response);  
       
