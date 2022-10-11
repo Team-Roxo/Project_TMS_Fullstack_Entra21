@@ -112,6 +112,10 @@ export class BodyComponent implements OnInit {
 
           this.aniversariantesMes.push({ id: resultado[i].id, nome: resultado[i].nome, email: resultado[i].email, birth: resultado[i].birth, document: resultado[i].document })
 
+          if (resultado[i].id === this.loginService.pessoaID) {
+            this.notificacoes.push({ title: "Seu aniversário é esse mês!🥳🎉", text: "Parabéns, "+this.loginService.nome.split(' ').at(0)+"! Esse mês você terá ofertas feitas apenas para você!🤑 Confira!🤩", route: "ship-quote" })
+          }
+
         }
 
       });
