@@ -10,9 +10,9 @@ import { LoginserviceService } from '../loginservice.service';
 })
 export class ForgetPasswordComponent implements OnInit {
 
-  readonly TMSLoginAPI: string = "http://localhost:8080"
+  readonly TMSLoginAPI: string = "http://35.199.78.13:8080"
 
-  
+
 
   user!:string
   password!:string

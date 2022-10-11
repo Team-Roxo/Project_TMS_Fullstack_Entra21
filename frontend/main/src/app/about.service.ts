@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class AboutService {
 
-  readonly API:string = "http://localhost:8080/aboutus"
+  readonly API:string = "http://35.199.78.13:8080/aboutus"
 
   constructor(private router: Router, private http: HttpClient) { }
 

@@ -17,7 +17,7 @@ export class UserClientComponent implements OnInit {
   document!:string
   birth!:string
   id!: number
-  
+
 
   constructor(public usersService: UsersService, private router: Router, private http: HttpClient) { }
 
@@ -27,11 +27,11 @@ export class UserClientComponent implements OnInit {
       catchError((error)=>{
       return error
       })
-     
+
     ).subscribe((response: any) => {
 
-      console.log(response);  
-      
+      console.log(response);
+
       var count = Object.keys(response).length;
 
       for (let i = 0; i < count; i++) {
@@ -41,8 +41,8 @@ export class UserClientComponent implements OnInit {
         this.email = response[i].email;
         this.document = response[i].document;
         this.birth = response[i].birth;
-        
-    
+
+
         this.users.push({id: this.id, name:this.name, email:this.email, document:this.document, birth:this.birth});
 
       }
@@ -53,18 +53,18 @@ export class UserClientComponent implements OnInit {
         this.birth = "";
 
     })
-    
+
   }
 
   adicionar(name: string, email: string, document: string, birth: string) {
-   
+
 
     let build ={
       "nome":name,
       "email":email,
       "document":document,
       // "birth":birth,
-     
+
     }
 
     this.usersService.adicionar(build)
@@ -79,17 +79,17 @@ export class UserClientComponent implements OnInit {
   deletar(id:number){
 
     console.log(id);
-    
-  this.http.delete('http://localhost:8080/user/'+id).subscribe();
+
+  this.http.delete('http://35.199.78.13:8080/user/'+id).subscribe();
 
   setTimeout(() => {
     this.ngOnInit();
   }, 500);
-  
+
   }
 
   alterar(){
-    
+
   }
 
   openModal(){
@@ -137,9 +137,8 @@ export class UserClientComponent implements OnInit {
     },500)
 
   }
-  
+
 
 }
 
-    
-  
+

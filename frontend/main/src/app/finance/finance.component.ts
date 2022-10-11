@@ -11,7 +11,7 @@ import { LoginserviceService } from '../loginservice.service';
 })
 export class FinanceComponent implements OnInit {
 
-  readonly packAPI: string = "http://localhost:8080/quote/packs/user/"
+  readonly packAPI: string = "http://35.199.78.13:8080/quote/packs/user/"
 
   totalCost: number = 0
   recentCost: number = 0

@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class UsersService {
 
-  apiURL:string = 'http://localhost:8080/user'
+  apiURL:string = 'http://35.199.78.13:8080/user'
 
   constructor(private router: Router, private http: HttpClient) { }
 
@@ -21,9 +21,9 @@ export class UsersService {
     this.http.post(this.apiURL,object)
     .subscribe((response)=>{
 
-      
+
       console.log(response);
-      
+
     })
 }
 }

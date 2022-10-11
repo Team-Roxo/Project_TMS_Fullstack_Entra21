@@ -4,7 +4,6 @@ import { LoginserviceService } from '../loginservice.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { catchError, Observable } from 'rxjs';
-import { NotificationService } from '../notification.service';
 
 @Component({
   selector: 'app-body',
@@ -13,9 +12,9 @@ import { NotificationService } from '../notification.service';
 })
 export class BodyComponent implements OnInit {
 
-  readonly APIBirthNow: string = "http://localhost:8080/user/birthnow"
+  readonly APIBirthNow: string = "http://35.199.78.13:8080/user/birthnow"
 
-  readonly APIBirthMonth: string = "http://localhost:8080/user/birthmonth"
+  readonly APIBirthMonth: string = "http://35.199.78.13:8080/user/birthmonth"
 
   birthnow!: string
   birthmonth!: string
@@ -29,7 +28,7 @@ export class BodyComponent implements OnInit {
   birth!: string
   document!: string
 
-  constructor(public loginService: LoginserviceService, private router: Router, private http: HttpClient, private notify: NotificationService) { }
+  constructor(public loginService: LoginserviceService, private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
 

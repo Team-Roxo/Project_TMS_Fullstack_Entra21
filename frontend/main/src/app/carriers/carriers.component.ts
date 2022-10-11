@@ -33,7 +33,7 @@ export class CarriersComponent implements OnInit {
         catchError((error)=>{
         return error
         })
-       
+
       ).subscribe((response: any) => {
 
         console.log(response);
@@ -86,65 +86,72 @@ export class CarriersComponent implements OnInit {
     deletar(id:number){
 
       console.log(id);
-      
-    this.http.delete('http://localhost:8080/carriers/'+id).subscribe();
-  
+
+    this.http.delete('http://35.199.78.13:8080/carriers/'+id).subscribe();
+
     setTimeout(() => {
       this.ngOnInit();
     }, 500);
-    
+
     }
-  
+
     alterar(){
-      
+
     }
 
     openModal(){
 
       var modal = document.getElementById('modal2')
-  
+
       modal?.setAttribute('style', 'display:block;')
-  
+
       modal?.setAttribute('class', 'portfolio-modal modal fade show')
       modal?.removeAttribute('aria-hidden')
-  
+
       modal?.setAttribute('arial-modal', 'true')
-  
+
     }
-  
+
     closeModal(){
       var modal = document.getElementById('modal2')
-  
+
       modal?.setAttribute('class', 'portfolio-modal modal fade')
       setTimeout(()=>{
         modal?.setAttribute('style', 'display:none;')
       },500)
-  
+
     }
 
 
-    openModalEdit(){
+    openModalEdit(id:number,razao:string, taxa:string, email:string, cnpj:string){
+
+      this.id = id
+      this.razao = razao
+      this.taxa = taxa
+      this.email = email
+      this.cnpj = cnpj
 
       var modal = document.getElementById('modal3')
-  
+
       modal?.setAttribute('style', 'display:block;')
-  
+
       modal?.setAttribute('class', 'portfolio-modal modal fade show')
       modal?.removeAttribute('aria-hidden')
-  
+
       modal?.setAttribute('arial-modal', 'true')
-  
+
     }
-  
+
     closeModalEdit(){
       var modal = document.getElementById('modal3')
-  
+
+
       modal?.setAttribute('class', 'portfolio-modal modal fade')
       setTimeout(()=>{
         modal?.setAttribute('style', 'display:none;')
       },500)
-  
+
     }
- 
+
 
   }

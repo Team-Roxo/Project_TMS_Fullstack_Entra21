@@ -5,7 +5,6 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { catchError, Observable } from 'rxjs';
 import { BodyComponent } from './body/body.component';
 import { LoginComponent } from './login/login.component';
-import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +12,8 @@ import { NotificationService } from './notification.service';
 
 export class LoginserviceService implements CanActivate {
 
-  readonly TMSLoginAPI: string = "http://localhost:8080"
-  readonly APIBounceInit: string = "http://localhost:8080/login/init"
+  readonly TMSLoginAPI: string = "http://35.199.78.13:8080"
+  readonly APIBounceInit: string = "http://35.199.78.13:8080/login/init"
 
   //DADOS BÁSICOS
   nome!: string
