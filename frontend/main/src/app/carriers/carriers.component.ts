@@ -38,13 +38,9 @@ export class CarriersComponent implements OnInit {
 
         console.log(response);
 
-
-
         var count = Object.keys(response).length;
 
         for (let i = 0; i < count; i++) {
-
-
           this.id = response[i].id;
           this.razao = response[i].razao;
           this.taxa = response[i].taxa;
@@ -52,7 +48,6 @@ export class CarriersComponent implements OnInit {
           this.cnpj = response[i].cnpj;
 
           this.carriers.push({id: this.id, razao: this.razao, taxa: this.taxa, email: this.email, cnpj: this.cnpj});
-
         }
 
            this.razao = "";
@@ -71,7 +66,6 @@ export class CarriersComponent implements OnInit {
         "taxa":taxa,
         "email":email,
         "cnpj":cnpj
-
       }
 
       this.carrierService.adicionar(build)
@@ -95,11 +89,36 @@ export class CarriersComponent implements OnInit {
 
     }
 
-    alterar(){
+    alterar(id:number, razao:string, taxa:string, email:string, cnpj:string){
+      console.log("É TETRA");
+      let build ={
+        "id": id,
+        "razao":razao,
+        "taxa":taxa,
+        "email":email,
+        "cnpj":cnpj
+      }
 
+      this.http.put('http://35.199.78.13:8080/carriers',build)
+    .subscribe((response)=>{
+
+
+      console.log(response);
+
+    })
+
+    setTimeout(() => {
+      this.ngOnInit();
+    }, 500);
+      
     }
 
     openModal(){
+
+      this.razao = "";
+      this.taxa = "";
+      this.email = "";
+      this.cnpj = "";
 
       var modal = document.getElementById('modal2')
 
