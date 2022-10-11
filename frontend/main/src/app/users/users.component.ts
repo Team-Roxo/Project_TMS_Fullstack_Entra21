@@ -86,11 +86,37 @@ id!: number
 
   }
 
-  alterar(){
+  alterar(id:number, name:string, email:string, document:string, birth:string){
+
+    console.log("É TETRA");
+      let build ={
+        "id": id,
+        "nome":name,
+        "email":email,
+        "document": document,
+        "birth": birth
+      }
+
+    this.http.put('http://35.199.78.13:8080/user',build)
+    .subscribe((response)=>{
+
+
+    console.log(response);
+
+    })
+
+    setTimeout(() => {
+      this.ngOnInit();
+    }, 500);
 
   }
 
   openModal(){
+
+    this.name = ""
+    this.email = ""
+    this.document = ""
+    this.birth = ""
 
     var modal = document.getElementById('modal2')
 
@@ -113,7 +139,13 @@ id!: number
 
   }
 
-  openModalEdit(){
+  openModalEdit(id:number, name:string, email:string, documents:string, birth:string){
+
+    this.id = id
+    this.name = name
+    this.email = email
+    this.document = documents
+    this.birth = birth
 
     var modal = document.getElementById('modal3')
 
