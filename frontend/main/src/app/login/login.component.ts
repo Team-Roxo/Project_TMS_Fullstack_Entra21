@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
 
   user!:string
   password!:string
+  
 
   constructor(private router:Router, public loginService:LoginserviceService, private http:HttpClient) { }
 

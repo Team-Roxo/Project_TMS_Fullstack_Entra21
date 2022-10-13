@@ -22,6 +22,7 @@ export class LoginserviceService implements CanActivate {
   password!: string
   birth!: string
   document!: string
+  // id!:number
 
   //DADOS DE CONTROLE
   succeed!: boolean
@@ -69,6 +70,7 @@ export class LoginserviceService implements CanActivate {
       this.user = response[0].user
       this.pessoaID = response[0].pessoa_id
       this.password = response[0].senha
+      // this.id = response[0].id
 
       this.http.get(this.TMSLoginAPI+'/user/'+response[0].pessoa_id)
       .subscribe((resp:any) =>{
