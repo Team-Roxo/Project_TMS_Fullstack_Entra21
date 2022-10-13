@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs';
+import { LoginserviceService } from '../loginservice.service';
 import { UsersService } from '../users.service';
 
 @Component({
@@ -10,59 +11,104 @@ import { UsersService } from '../users.service';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-users!:Array<any>
-name!:string
-email!:string
-document!:string
-birth!:string
-id!: number
+  users!: Array<any>
+  name!: string
+  email!: string
+  document!: string
+  birth!: string
+  id!: number
 
-  constructor(public usersService: UsersService, private router: Router, private http: HttpClient) { }
+  constructor(public usersService: UsersService, private router: Router, private http: HttpClient, private login: LoginserviceService) { }
 
   ngOnInit(): void {
     this.users = new Array()
-    this.usersService.listUsers().pipe(
-      catchError((error)=>{
-      return error
-      })
 
-    ).subscribe((response: any) => {
+    if (!this.login.admin) {
 
-      console.log(response);
+      this.usersService.getLinks()
+        .pipe(
+          catchError((error) => {
+            return error
+          })
 
-      var count = Object.keys(response).length;
+        ).subscribe((response: any) => {
 
-      for (let i = 0; i < count; i++) {
+          var count = Object.keys(response).length;
 
-        this.id = response[i].id;
-        this.name = response[i].nome;
-        this.email = response[i].email;
-        this.document = response[i].document;
-        this.birth = response[i].birth;
+          for (let i = 0; i < count; i++) {
 
+            this.usersService.listUsersByLink(response[i].receiver)
+              .subscribe((result:any) => {
 
-        this.users.push({id: this.id, name:this.name, email:this.email, document:this.document, birth:this.birth});
+                console.log(result);
 
-      }
+                this.id = result.id;
+                this.name = result.nome;
+                this.email = result.email;
+                this.document = result.document;
+                this.birth = result.birth;
 
-        this.name = "";
-        this.email = "";
-        this.document = "";
-        this.birth = "";
+                this.users.push({ id: this.id, name: this.name, email: this.email, document: this.document, birth: this.birth });
+              })
 
-    })
+          }
+
+          this.name = "";
+          this.email = "";
+          this.document = "";
+          this.birth = "";
+
+        })
+
+    } else {
+
+      this.usersService.listUsers()
+        .pipe(
+          catchError((error) => {
+            return error
+          })
+
+        ).subscribe((response: any) => {
+
+          console.log(response);
+
+          var count = Object.keys(response).length;
+
+          for (let i = 0; i < count; i++) {
+
+            this.id = response[i].id;
+            this.name = response[i].nome;
+            this.email = response[i].email;
+            this.document = response[i].document;
+            this.birth = response[i].birth;
+
+            this.users.push({ id: this.id, name: this.name, email: this.email, document: this.document, birth: this.birth });
+
+          }
+
+          this.name = "";
+          this.email = "";
+          this.document = "";
+          this.birth = "";
+
+        })
+
+    }
 
   }
 
   adicionar(name: string, email: string, document: string, birth: string) {
 
+    this.http.put('http://localhost:8080/user/disbounce/' + this.login.idBounce, null)
+      .subscribe((response) => {
+        console.log(response);
+      })
 
-    let build ={
-      "nome":name,
-      "email":email,
-      "document":document,
-      // "birth":birth,
-
+    let build = {
+      "nome": name,
+      "email": email,
+      "document": document,
+      "birth":birth
     }
 
     this.usersService.adicionar(build)
@@ -71,39 +117,19 @@ id!: number
       this.ngOnInit();
     }, 500);
 
-  //  this.users.push({name:this.name, email:this.email, document:this.document, birth:this.birth});
+    //  this.users.push({name:this.name, email:this.email, document:this.document, birth:this.birth});
   }
 
-  deletar(id:number){
+  deletar(id: number) {
 
-    console.log(id);
+    this.http.put('http://localhost:8080/user/disbounce/' + this.login.idBounce, null)
+      .subscribe((response) => {
+        console.log(response);
+      })
 
-  this.http.delete('http://35.199.78.13:8080/user/'+id).subscribe();
+    this.http.delete('http://localhost:8080/user/links/'+id).subscribe();
 
-  setTimeout(() => {
-    this.ngOnInit();
-  }, 500);
-
-  }
-
-  alterar(id:number, name:string, email:string, document:string, birth:string){
-
-    console.log("É TETRA");
-      let build ={
-        "id": id,
-        "nome":name,
-        "email":email,
-        "document": document,
-        "birth": birth
-      }
-
-    this.http.put('http://35.199.78.13:8080/user',build)
-    .subscribe((response)=>{
-
-
-    console.log(response);
-
-    })
+    this.http.delete('http://35.199.78.13:8080/user/' + id).subscribe();
 
     setTimeout(() => {
       this.ngOnInit();
@@ -111,7 +137,35 @@ id!: number
 
   }
 
-  openModal(){
+  alterar(id: number, name: string, email: string, document: string, birth: string) {
+
+    this.http.put('http://localhost:8080/user/disbounce/' + this.login.idBounce, null)
+      .subscribe((response) => {
+        console.log(response);
+      })
+
+    let build = {
+      "id": id,
+      "nome": name,
+      "email": email,
+      "document": document,
+      "birth": birth
+    }
+
+    this.http.put('http://35.199.78.13:8080/user', build)
+      .subscribe((response) => {
+
+        console.log(response);
+
+      })
+
+    setTimeout(() => {
+      this.ngOnInit();
+    }, 500);
+
+  }
+
+  openModal() {
 
     this.name = ""
     this.email = ""
@@ -129,17 +183,17 @@ id!: number
 
   }
 
-  closeModal(){
+  closeModal() {
     var modal = document.getElementById('modal2')
 
     modal?.setAttribute('class', 'portfolio-modal modal fade')
-    setTimeout(()=>{
+    setTimeout(() => {
       modal?.setAttribute('style', 'display:none;')
-    },500)
+    }, 500)
 
   }
 
-  openModalEdit(id:number, name:string, email:string, documents:string, birth:string){
+  openModalEdit(id: number, name: string, email: string, documents: string, birth: string) {
 
     this.id = id
     this.name = name
@@ -158,13 +212,13 @@ id!: number
 
   }
 
-  closeModalEdit(){
+  closeModalEdit() {
     var modal = document.getElementById('modal3')
 
     modal?.setAttribute('class', 'portfolio-modal modal fade')
-    setTimeout(()=>{
+    setTimeout(() => {
       modal?.setAttribute('style', 'display:none;')
-    },500)
+    }, 500)
 
   }
 

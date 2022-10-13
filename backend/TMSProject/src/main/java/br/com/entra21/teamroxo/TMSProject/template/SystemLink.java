@@ -14,9 +14,9 @@ public class SystemLink {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	private int client;
+	private int sender;
 	
-	private int enterprise;
+	private int receiver;
 
 	public SystemLink() {
 		super();
@@ -25,8 +25,8 @@ public class SystemLink {
 	public SystemLink(Integer id, int client, int enterprise) {
 		super();
 		this.id = id;
-		this.client = client;
-		this.enterprise = enterprise;
+		this.sender = client;
+		this.receiver = enterprise;
 	}
 
 	public Integer getId() {
@@ -37,20 +37,20 @@ public class SystemLink {
 		this.id = id;
 	}
 
-	public int getClient() {
-		return client;
+	public int getSender() {
+		return sender;
 	}
 
-	public void setClient(int client) {
-		this.client = client;
+	public void setSender(int client) {
+		this.sender = client;
 	}
 
-	public int getEnterprise() {
-		return enterprise;
+	public int getReceiver() {
+		return receiver;
 	}
 
-	public void setEnterprise(int enterprise) {
-		this.enterprise = enterprise;
+	public void setReceiver(int enterprise) {
+		this.receiver = enterprise;
 	}
 	
 }

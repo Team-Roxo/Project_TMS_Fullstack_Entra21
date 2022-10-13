@@ -25,18 +25,10 @@ export class QuoteService {
   quote(cepOrigem:string, cepDestino:string):any{
 
     //ATUALIZA BOUNCE
-
-    this.newBounce = {
-      "id":this.login.idBounce,
-      "user":this.login.userBounce,
-      "date":this.login.dateBounce,
-      "time":this.login.timeBounce,
-      "bounce_rate":false
-    }
-
-    console.log(this.newBounce);
-
-    this.http.post(this.APIBouncePut+this.login.idBounce, this.newBounce)
+    this.http.put(this.APIBouncePut+this.login.idBounce, null)
+    .subscribe((response)=>{
+      console.log(response);
+    })
     //FIM DO BOUNCE
 
     return this.http.get(this.apiURL+'/'+cepOrigem+'/'+cepDestino)
@@ -46,18 +38,10 @@ export class QuoteService {
   recQuote():any{
 
     //ATUALIZA BOUNCE
-
-     this.newBounce = {
-       "id":this.login.idBounce,
-       "user":this.login.userBounce,
-       "date":this.login.dateBounce,
-       "time":this.login.timeBounce,
-       "bounce_rate":false
-     }
-
-     console.log(this.newBounce);
-
-     this.http.post(this.APIBouncePut+this.login.idBounce, this.newBounce)
+     this.http.put(this.APIBouncePut+this.login.idBounce, null)
+     .subscribe((response)=>{
+      console.log(response);
+    })
     //FIM DO BOUNCE
 
     return this.http.get(this.apiURL2+`/recent/`+this.login.pessoaID)
@@ -67,18 +51,10 @@ export class QuoteService {
   regRecentQuotes(object:any){
 
     //ATUALIZA BOUNCE
-
-    this.newBounce = {
-      "id":this.login.idBounce,
-      "user":this.login.userBounce,
-      "date":this.login.dateBounce,
-      "time":this.login.timeBounce,
-      "bounce_rate":false
-    }
-
-    console.log(this.newBounce);
-
-    this.http.post(this.APIBouncePut+this.login.idBounce, this.newBounce)
+    this.http.put(this.APIBouncePut+this.login.idBounce, null)
+    .subscribe((response)=>{
+      console.log(response);
+    })
     //FIM DO BOUNCE
 
     this.http.post(this.apiURL2+'/recent',object)
