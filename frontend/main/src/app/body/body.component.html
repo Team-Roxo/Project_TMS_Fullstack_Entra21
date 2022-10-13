@@ -121,7 +121,7 @@
             </p>
           </a>
           <ul class="nav nav-treeview">
-            <li class="nav-item" [hidden]="!loginService.admin">
+            <li class="nav-item">
               <a routerLink="users" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Clients</p>
@@ -131,12 +131,6 @@
               <a routerLink="carriers" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Carriers</p>
-              </a>
-            </li>
-            <li class="nav-item" [hidden]="loginService.admin">
-              <a routerLink="user-client" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Clients</p>
               </a>
             </li>
           </ul>
@@ -161,14 +155,6 @@
                 <p>Recents Quotes</p>
               </a>
             </li>
-          </ul>
-          <ul class="nav nav-treeview">
-            <!-- <li class="nav-item">
-              <a routerLink="pack-register" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Register</p>
-              </a>
-            </li> -->
             <li class="nav-item">
               <a routerLink="pack-track" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>

@@ -13,9 +13,10 @@ import { LoginComponent } from './login/login.component';
 export class LoginserviceService implements CanActivate {
 
   readonly TMSLoginAPI: string = "http://35.199.78.13:8080"
-  readonly APIBounceInit: string = "http://35.199.78.13:8080/login/init"
+  readonly APIBounceInit: string = "http://localhost:8080/login/init"
 
   //DADOS BÁSICOS
+  id!:number
   nome!: string
   user!: string
   email!: string
@@ -61,9 +62,7 @@ export class LoginserviceService implements CanActivate {
     )
     .subscribe((response:any)=>{
 
-      console.log('API works');
-      console.log(response);
-
+      this.id = response[0].id
       this.admin = response[0].admin
       this.enterprise = response[0].enterprise
       this.user = response[0].user
@@ -72,7 +71,6 @@ export class LoginserviceService implements CanActivate {
 
       this.http.get(this.TMSLoginAPI+'/user/'+response[0].pessoa_id)
       .subscribe((resp:any) =>{
-        console.log(resp);
         this.nome = resp.nome
         this.birth = resp.birth
         this.document = resp.document

@@ -107,9 +107,9 @@
             <td>{{user.document}}</td>
             <td>{{user.birth}}</td>
             <td>
-                <button class="btn btn-danger mr-2" (click)="deletar(user.id)">Delet</button>
-               
-               
+                <button class="btn btn-danger mr-2" (click)="deletar(this.user.id)">Delet</button>
+
+
                 <button class="btn btn-primary" (click)="openModalEdit(this.user.id, this.user.name, this.user.email, this.user.document, this.user.birth)">Edit</button>
 
             </td>
@@ -151,10 +151,10 @@
                                             <div class="input-group" style="width: 100%;">
                                                 <span class="input-group-text"
                                                     style="border-radius: 5px; border-right: 10px;">🧑🏽‍💻</span>
-                                                <input type="text" [(ngModel)]="birth" class="form-control" birth="Data"
+                                                <input type="date" [(ngModel)]="birth" class="form-control" birth="Data"
                                                      required tabindex="1">
                                             </div>
-                
+
                                             <br>
                                             <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button"
                                                 (click)="closeModalEdit()"
@@ -162,7 +162,7 @@
                                                 <i class="fas fa-xmark me-1"></i>
                                                 Save
                                             </button>
-                
+
                                             <button class="btn btn-danger btn-xl text-uppercase ml-2" data-bs-dismiss="modal" type="button"
                                                 (click)="closeModalEdit()">
                                                 <i class="fas fa-xmark me-1"></i>
@@ -175,11 +175,11 @@
                         </div>
                     </div>
                 </div>
-                
-               
-               
-               
-               
-                
-          
+
+
+
+
+
+
+
 </table>

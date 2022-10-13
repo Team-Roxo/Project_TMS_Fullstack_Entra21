@@ -66,6 +66,11 @@ export class FinanceComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.http.put('http://localhost:8080/user/disbounce/'+this.login.idBounce, null)
+    .subscribe((response)=>{
+      console.log(response);
+    })
+
     this.http.get(this.packAPI + this.login.pessoaID)
       .subscribe((response: any) => {
         console.log(response);
