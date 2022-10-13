@@ -175,6 +175,4 @@ export class ShipQtComponent implements OnInit {
       modal?.setAttribute('style', 'display:none;')
     },500)
 
-  }
-
-}
+  }}
