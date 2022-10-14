@@ -92,20 +92,15 @@
 <hr>
 <table class="table table-bordered">
     <thead>
-        <th>Item</th>
+        <th>Action</th>
         <th>Name</th>
         <th>E-mail</th>
         <th>CPF</th>
         <th>Birthday</th>
-        <th>Action</th>
+        
     </thead>
     <tbody>
         <tr *ngFor="let user of users;let i = index;">
-            <td>{{i+1}}</td>
-            <td>{{user.name}}</td>
-            <td>{{user.email}}</td>
-            <td>{{user.document}}</td>
-            <td>{{user.birth}}</td>
             <td>
                 <button class="btn btn-danger mr-2" (click)="deletar(this.user.id)">Delet</button>
 
@@ -113,6 +108,12 @@
                 <button class="btn btn-primary" (click)="openModalEdit(this.user.id, this.user.name, this.user.email, this.user.document, this.user.birth)">Edit</button>
 
             </td>
+           
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.document}}</td>
+            <td>{{user.birth}}</td>
+           
             </tr>
         </tbody>
 

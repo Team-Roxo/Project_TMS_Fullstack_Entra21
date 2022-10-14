@@ -79,6 +79,9 @@ export class PacktrackComponent implements OnInit {
 
     })
 
+
+    
+
   }
 
   detailCarrier(pack:any) {
@@ -95,6 +98,9 @@ export class PacktrackComponent implements OnInit {
       this.openModal()
 
     })
+
+
+
 
   }
 
@@ -120,6 +126,8 @@ export class PacktrackComponent implements OnInit {
     }, 500)
 
   }
+
+  
 
 
 
