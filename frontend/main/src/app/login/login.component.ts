@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
   userReg!: string
   passwordReg!: string
 
-  user!: string
-  password!: string
+  user!:string
+  password!:string
 
   errorText!: string
 

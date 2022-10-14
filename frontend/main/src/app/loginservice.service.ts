@@ -23,6 +23,7 @@ export class LoginserviceService implements CanActivate {
   password!: string
   birth!: string
   document!: string
+  // id!:number
 
   //DADOS DE CONTROLE
   succeed!: boolean
@@ -55,7 +56,6 @@ export class LoginserviceService implements CanActivate {
           this.progress = false
           console.log(error);
           return error
-
         })
       )
       .subscribe((response: any) => {
