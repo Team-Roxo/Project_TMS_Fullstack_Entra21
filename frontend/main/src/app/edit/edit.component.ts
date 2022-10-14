@@ -16,7 +16,7 @@ export class EditComponent implements OnInit {
   document!: string
   email!: string
   password!: string
-  
+
   editPessoa: any
   editLogin: any
   api: string = "http://35.199.78.13:8080/user"
@@ -43,17 +43,12 @@ export class EditComponent implements OnInit {
     console.log(document);
     console.log(birth);
 
-
-
-
     let build = {
       "id": id,
       "nome": name,
       "email": email,
       "document": document,
       "birth": birth
-
-
     }
 
     let build2 = {
@@ -67,23 +62,18 @@ export class EditComponent implements OnInit {
     this.http.put(this.api, build)
       .subscribe((response) => {
         console.log(response);
-
       })
 
     this.http.put(this.api2, build2)
       .subscribe((response) => {
         console.log(response);
-
       })
 
     console.log(this.login.idBounce);
 
-
     setTimeout(() => {
       this.login.logging(user, password);
     }, 500);
-
-  }
 
     this.http.put('http://localhost:8080/user/disbounce/'+this.login.idBounce, null)
     .subscribe((response)=>{
