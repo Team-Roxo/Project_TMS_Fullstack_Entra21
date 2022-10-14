@@ -59,18 +59,7 @@ export class ShipQtComponent implements OnInit {
     this.quotes = new Array()
 
     //ATUALIZA BOUNCE
-
-    this.newBounce = {
-      "id":this.loginService.idBounce,
-      "user":this.loginService.userBounce,
-      "date":this.loginService.dateBounce,
-      "time":this.loginService.timeBounce,
-      "bounce_rate":false
-    }
-
-    console.log(this.newBounce);
-
-    this.http.post(this.APIBouncePut+this.loginService.idBounce, this.newBounce)
+    this.http.put(this.APIBouncePut+this.loginService.idBounce, null)
     //FIM DO BOUNCE
 
     if (this.cepOrigem != null && this.cepDestino != null && this.comprimento != null, this.altura != null, this.largura != null, this.peso != null) {
@@ -186,6 +175,4 @@ export class ShipQtComponent implements OnInit {
       modal?.setAttribute('style', 'display:none;')
     },500)
 
-  }
-
-}
+  }}

@@ -16,17 +16,13 @@ export class EditComponent implements OnInit {
   document!: string
   email!: string
   password!: string
+  
   editPessoa: any
   editLogin: any
   api: string = "http://35.199.78.13:8080/user"
   api2: string = "http://35.199.78.13:8080/login"
 
-
-  constructor(
-    private router: Router,
-    private login: LoginserviceService,
-    private http: HttpClient
-  ) { }
+  constructor(private router: Router, private login: LoginserviceService, private http: HttpClient) { }
 
   ngOnInit(): void {
 
@@ -38,9 +34,7 @@ export class EditComponent implements OnInit {
     this.password = this.login.password
     this.id = this.login.pessoaID
 
-
   }
-
 
   alterar(id: number, name: string, email: string, birth: string, document: string, user: string, password: string) {
     console.log(this.login.pessoaID);
@@ -91,5 +85,11 @@ export class EditComponent implements OnInit {
 
   }
 
+    this.http.put('http://localhost:8080/user/disbounce/'+this.login.idBounce, null)
+    .subscribe((response)=>{
+      console.log(response);
+    })
+
+  }
 
 }

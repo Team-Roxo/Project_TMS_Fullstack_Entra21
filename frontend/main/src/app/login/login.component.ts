@@ -14,89 +14,94 @@ export class LoginComponent implements OnInit {
 
   readonly TMSLoginAPI: string = "http://35.199.78.13:8080"
 
-  emailReg!:string
-  nameReg!:string
-  userReg!:string
-  passwordReg!:string
+  emailReg!: string
+  nameReg!: string
+  userReg!: string
+  passwordReg!: string
 
   user!:string
   password!:string
-  
 
-  constructor(private router:Router, public loginService:LoginserviceService, private http:HttpClient) { }
+  errorText!: string
+
+  constructor(private router: Router, public loginService: LoginserviceService, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.loginService.succeed = false
     this.loginService.progress = false
   }
 
-  submit():void{
+  submit(): void {
 
-    if(this.user != null && this.password != null){
+    if (this.user != '' && this.password != '') {
 
       this.loginService.logging(this.user, this.password)
 
-    }else{
-
-      alert('DIGITE TODOS OS CAMPOS OBRIGATÓRIOS!')
+    } else {
       this.loginService.progress = false
+      document.getElementById('alert-field')?.setAttribute('class', 'alert alert-danger fade show')
+
+      setTimeout(() => {
+        document.getElementById('alert-field')?.setAttribute('class', 'alert alert-danger fade')
+      }, 5000);
 
     }
+    
   }
 
-  gotoHome(){
+  gotoHome() {
     this.router.navigateByUrl('dashboard')
   }
 
-  register(){
+  register() {
 
-    let email:boolean
-    let user:boolean
+    let email: boolean
+    let user: boolean
 
-    if(this.emailReg.match('@')){
+    if (this.emailReg.match('@')) {
       email = true
-    }else{
+    } else {
       email = false
       console.log('FORMAÇÃO DE EMAIL ERRADO');
     }
 
-    if(this.nameReg != null && email && this.passwordReg != null && this.userReg != null){
+    if (this.nameReg != null && email && this.passwordReg != null && this.userReg != null) {
 
-      let response:any = this.loginService.registering(this.nameReg, this.userReg , this.emailReg, this.passwordReg)
+      let response: any = this.loginService.registering(this.nameReg, this.userReg, this.emailReg, this.passwordReg)
 
       console.log(response);
 
-      let ID!:number;
+      let ID!: number;
 
-      setTimeout(() =>{
-        this.http.post(this.TMSLoginAPI+'/login', response)
-      .subscribe((response:any)=>{
-        console.log(response);
+      setTimeout(() => {
+        this.http.post(this.TMSLoginAPI + '/login', response)
+          .subscribe((response: any) => {
+            console.log(response);
 
-        if(response == ""){
-          this.loginService.progress = false;
-          alert("USUARIO OU SENHA ERRADOS")
-        }else if(response.status == '500'){
-          this.loginService.progress = false;
-          console.log('Erro no Servidor! Por favor aguarde!');
-        }
-        else{
-          ID = response[0].pessoa_id
-          this.loginService.succeed = true
-          this.gotoHome()
-        }
-      })
-      setTimeout(()=>{
-        this.http.get(this.TMSLoginAPI+'/user/'+ID)
-        .subscribe((response:any)=>{
-          console.log(response);
-          this.loginService.nome = response.nome
-        })
-      },500)
+            if (response == "") {
+              this.loginService.progress = false;
+              alert("USUARIO OU SENHA ERRADOS")
+            } else if (response.status == '500') {
+              this.loginService.progress = false;
+              console.log('Erro no Servidor! Por favor aguarde!');
+            }
+            else {
+              ID = response[0].pessoa_id
+              this.loginService.succeed = true
+              this.gotoHome()
+            }
+          })
+        setTimeout(() => {
+          this.http.get(this.TMSLoginAPI + '/user/' + ID)
+            .subscribe((response: any) => {
+              console.log(response);
+              this.loginService.nome = response.nome
+            })
+        }, 500)
 
-      },1500)
+      }, 1500)
 
-    }else{
+    } else {
 
       alert('DIGITE TODOS OS CAMPOS OBRIGATÓRIOS!')
       this.loginService.progress = false
