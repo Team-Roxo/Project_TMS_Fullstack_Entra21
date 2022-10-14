@@ -1,53 +1,65 @@
-<button class="btn btn-primary" (click)="openModal()">New User</button>
+<table class="table table-bordered">
+    <thead>
+        <th>Tracking</th>
+        <th>Price (R$)</th>
+        <th>Await (Days)</th>
+        <th>Estimate delivery date</th>
+        <th>Status</th>
+        <th>Origin</th>
+        <th>Destiny</th>
+
+    </thead>
+    <tbody>
+        <tr *ngFor="let pack of packs;let i = index;">
+            
+            <td><button class="btn btn-success" 
+                    (click)="detailCarrier(pack)">Delivery</button>
+
+              
+            </td>
+            <td>{{pack.price}}</td>
+            <td>{{pack.await}}</td>
+            <td>{{pack.post}}</td>
+            <td>{{pack.status}}</td>
+            <td>{{pack.origin}}</td>
+            <td>{{pack.destiny}}</td>
+            <td>
+        </tr>
+    </tbody>
+</table>
 
 <div class="portfolio-modal modal fade show" id="modal2" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="close-modal" data-bs-dismiss="modal"><img src="" alt="" /></div>
             <div class="container">
-                <div class="row">
+                <div class="row" *ngIf="pack_sel">
                     <div class="col-lg-8">
                         <div class="modal-body">
-                            <h2 class="text-uppercase">New User</h2>
-                            <p class="item-intro text-muted">Insert the information below!</p>
+                            <!--  <h2 class="text-uppercase">New Carrier</h2>-->
+                            <p class="item-intro text-muted">Information about your package</p>
                             <!-- <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/2.jpg" alt="..." /> -->
-                            <div class="input-group" style="width: 100%;">
-                                <span class="input-group-text"
-                                    style="border-radius: 5px; border-right: 10px;">🧑🏽‍💻</span>
-                                <input type="text" class="form-control" name="Nome" placeholder="Nome completo" required
-                                    tabindex="1">
+                            <div class="input-group" style="width: 100%;">                                              
+                                <br>
+                                <p>Carrier: {{ pack_sel.carrierName }}</p>
+                                <br>
+                                <p>Estimate delivery date: {{ pack_sel.post }}</p>
+                                <br>
+                                <p>Tracking code: BR2565457854TR</p>
+                                <br>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated"
+                                    role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                    aria-valuemax="100" style="width: 75%"></div>
                             </div>
                             <br>
-                            <div class="input-group" style="width: 100%;">
-                                <span class="input-group-text"
-                                    style="border-radius: 5px; border-right: 10px;">🧑🏽‍💻</span>
-                                <input type="text" class="form-control" name="Nome" placeholder="E-mail" required
-                                    tabindex="1">
-                            </div>
+                            <img src="https://www.portaldailha.com.br/mapas/floripa.jpg" alt="">
                             <br>
-                            <div class="input-group" style="width: 100%;">
-                                <span class="input-group-text"
-                                    style="border-radius: 5px; border-right: 10px;">🧑🏽‍💻</span>
-                                <input type="text" class="form-control" name="Nome" placeholder="CPF" required
-                                    tabindex="1">
-                            </div>
                             <br>
-                            <div class="input-group" style="width: 100%;">
-                                <span class="input-group-text"
-                                    style="border-radius: 5px; border-right: 10px;">🧑🏽‍💻</span>
-                                <input type="text" class="form-control" name="Nome" placeholder="Data de nascimento"
-                                    required tabindex="1">
-                            </div>
 
-                            <br>
-                            <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button"
-                                (click)="closeModal()">
-                                <i class="fas fa-xmark me-1"></i>
-                                Save
-                            </button>
-
-                            <button class="btn btn-danger btn-xl text-uppercase " data-bs-dismiss="modal" type="button"
-                                (click)="closeModal()">
+                            <button class="btn btn-danger btn-xl text-uppercase ml-2"
+                                data-bs-dismiss="modal" type="button" (click)="closeModal()">
                                 <i class="fas fa-xmark me-1"></i>
                                 Close
                             </button>
@@ -57,4 +69,5 @@
             </div>
         </div>
     </div>
+
 </div>
