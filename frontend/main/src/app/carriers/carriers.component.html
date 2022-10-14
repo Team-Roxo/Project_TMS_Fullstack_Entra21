@@ -95,29 +95,30 @@
 <table class="table table-bordered">
     <thead>
 
-        <th>Item</th>
+        <th>Action</th>
         <th>Carrier name</th>
         <th>Tax of transport</th>
         <th>E-mail</th>
         <th>Cnpj</th>
-        <th>Action</th>
+        
 
 
     </thead>
     <tbody>
         <tr *ngFor="let carrier of carriers;let i = index;">
 
-            <td>{{i+1}}</td>
-            <td>{{carrier.razao}}</td>
-            <td>{{carrier.taxa}}</td>
-            <td>{{carrier.email}}</td>
-            <td>{{carrier.cnpj}}</td>
             <td>
                 <button class="btn btn-danger mr-2" (click)="deletar(carrier.id)">Delet</button>
 
 
                 <button class="btn btn-primary" (click)="openModalEdit(this.carrier.id, this.carrier.razao, this.carrier.taxa, this.carrier.email, this.carrier.cnpj)">Edit</button>
               </td>
+            
+            <td>{{carrier.razao}}</td>
+            <td>{{carrier.taxa}}</td>
+            <td>{{carrier.email}}</td>
+            <td>{{carrier.cnpj}}</td>
+            
 
             </tr>
         </tbody>
