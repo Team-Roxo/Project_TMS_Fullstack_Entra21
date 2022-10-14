@@ -271,10 +271,6 @@ h6 span{
   color: #ffeba7;
   box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
 }
-
-
-
-
 .logo {
 	position: absolute;
 	top: 30px;
@@ -287,4 +283,15 @@ h6 span{
 	height: 26px;
 	width: auto;
 	display: block;
+}
+#alert{
+  position: fixed;
+  top: 50px;
+  left: 34%;
+}
+#alert-field{
+  position: fixed;
+  top: 50px;
+  left: 34%;
+  padding-right: 470px;
 }

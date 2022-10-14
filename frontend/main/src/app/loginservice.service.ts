@@ -16,7 +16,7 @@ export class LoginserviceService implements CanActivate {
   readonly APIBounceInit: string = "http://localhost:8080/login/init"
 
   //DADOS BÁSICOS
-  id!:number
+  id!: number
   nome!: string
   user!: string
   email!: string
@@ -30,7 +30,7 @@ export class LoginserviceService implements CanActivate {
   admin!: boolean
   enterprise!: boolean
   pessoaID!: number
-  adminEnter:boolean = false
+  adminEnter: boolean = false
 
   //DADOS ESTATÍSTICOS
   idBounce!: number
@@ -42,8 +42,6 @@ export class LoginserviceService implements CanActivate {
 
   logging(user: string, password: string) {
 
-    console.log('login service iniciado');
-
     this.progress = true
 
     let build: any = {
@@ -51,58 +49,68 @@ export class LoginserviceService implements CanActivate {
       'senha': password
     }
 
-    this.http.post(this.TMSLoginAPI +'/login', build)
-    .pipe(
-      catchError((error)=>{
-        this.progress = false
-        console.log(error);
-        return error
+    this.http.post(this.TMSLoginAPI + '/login', build)
+      .pipe(
+        catchError((error) => {
+          this.progress = false
+          console.log(error);
+          return error
 
-      })
-    )
-    .subscribe((response:any)=>{
+        })
+      )
+      .subscribe((response: any) => {
 
-      this.id = response[0].id
-      this.admin = response[0].admin
-      this.enterprise = response[0].enterprise
-      this.user = response[0].user
-      this.pessoaID = response[0].pessoa_id
-      this.password = response[0].senha
+        if (response == "") {
+          this.progress = false;
 
-      this.http.get(this.TMSLoginAPI+'/user/'+response[0].pessoa_id)
-      .subscribe((resp:any) =>{
-        this.nome = resp.nome
-        this.birth = resp.birth
-        this.document = resp.document
-        this.email = resp.email
-      })
+          document.getElementById('alert')?.setAttribute('class', 'alert alert-danger fade show')
 
-      if(this.admin == true){
-        this.adminEnter = true;
-        if(this.enterprise == true){
-          this.adminEnter = true
+          setTimeout(() => {
+            document.getElementById('alert')?.setAttribute('class', 'alert alert-danger fade')
+          }, 5000);
+
+        } else {
+
+          this.succeed = true
+
+          this.id = response[0].id
+          this.admin = response[0].admin
+          this.enterprise = response[0].enterprise
+          this.user = response[0].user
+          this.pessoaID = response[0].pessoa_id
+          this.password = response[0].senha
+
+          this.http.get(this.TMSLoginAPI + '/user/' + response[0].pessoa_id)
+            .subscribe((resp: any) => {
+              this.nome = resp.nome
+              this.birth = resp.birth
+              this.document = resp.document
+              this.email = resp.email
+            })
+
+          if (this.admin == true) {
+            this.adminEnter = true;
+            if (this.enterprise == true) {
+              this.adminEnter = true
+            }
+          }
+
+          let bounce: any = {
+            "user": response[0].user
+          }
+
+          this.http.post(this.APIBounceInit, bounce)
+            .subscribe((response: any) => {
+              this.idBounce = response.id
+              this.userBounce = response.user
+              this.dateBounce = response.date
+              this.timeBounce = response.time
+            })
+
+          new LoginComponent(this.router, this, this.http).gotoHome();
+
         }
-      }
 
-      if(response == ""){
-        this.progress = false;
-        alert("USUARIO OU SENHA ERRADOS")
-      }else{
-        this.succeed = true
-        new LoginComponent(this.router, this, this.http).gotoHome();
-      }
-
-      let bounce: any = {
-          "user": response[0].user
-        }
-
-        this.http.post(this.APIBounceInit, bounce)
-          .subscribe((response: any) => {
-            this.idBounce = response.id
-            this.userBounce = response.user
-            this.dateBounce = response.date
-            this.timeBounce = response.time
-          })
       })
 
   }
