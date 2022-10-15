@@ -66,9 +66,12 @@ export class ShipQtComponent implements OnInit {
       this.quoteService.quote(this.cepOrigem, this.cepDestino)
         .pipe(
           catchError((error)=>{
-          return error
+            
+
+        return error
           })
         )
+        
         .subscribe((response: any) => {
 
           console.log(response);
