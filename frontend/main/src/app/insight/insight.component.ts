@@ -79,4 +79,6 @@ export class InsightComponent implements OnInit {
     }, 1500);
   }
 
+  
+
 }
