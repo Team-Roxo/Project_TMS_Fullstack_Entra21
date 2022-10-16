@@ -18,7 +18,7 @@ export class UsersComponent implements OnInit {
   birth!: string
   id!: number
 
-  constructor(public usersService: UsersService, private router: Router, private http: HttpClient, private login: LoginserviceService) { }
+  constructor(public usersService: UsersService, private router: Router, private http: HttpClient, public login: LoginserviceService) { }
 
   ngOnInit(): void {
     this.users = new Array()
@@ -38,7 +38,7 @@ export class UsersComponent implements OnInit {
           for (let i = 0; i < count; i++) {
 
             this.usersService.listUsersByLink(response[i].receiver)
-              .subscribe((result:any) => {
+              .subscribe((result: any) => {
 
                 console.log(result);
 
@@ -108,7 +108,7 @@ export class UsersComponent implements OnInit {
       "nome": name,
       "email": email,
       "document": document,
-      "birth":birth
+      "birth": birth
     }
 
     this.usersService.adicionar(build)
@@ -120,16 +120,24 @@ export class UsersComponent implements OnInit {
     //  this.users.push({name:this.name, email:this.email, document:this.document, birth:this.birth});
   }
 
-  deletar(id: number) {
+  deletar(idReceiver: number, idSender: number) {
 
     this.http.put('http://localhost:8080/user/disbounce/' + this.login.idBounce, null)
       .subscribe((response) => {
         console.log(response);
       })
 
-    this.http.delete('http://localhost:8080/user/links/'+id).subscribe();
+    if (this.login.admin) {
+      this.http.delete('http://localhost:8080/user/links/' + idReceiver + '/' + idSender).subscribe();
+      this.http.delete('http://35.199.78.13:8080/user/' + idReceiver).subscribe();
+      console.log('DELETE EXECUTA BY ADMIN');
 
-    this.http.delete('http://35.199.78.13:8080/user/' + id).subscribe();
+    }else{
+      this.http.delete('http://localhost:8080/user/links/' + idReceiver + '/' + idSender).subscribe();
+      console.log('DELETE EXECUTA BY CLIENT');
+    }
+
+
 
     setTimeout(() => {
       this.ngOnInit();

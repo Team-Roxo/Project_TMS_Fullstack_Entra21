@@ -1,9 +1,9 @@
 <div class="container-fluid">
   <br><br>
   <div class="row">
-    
-    <div class="card bg-gray text-center" id="graph">
-      <h2>PACKAGES QUANTITY IN LAST WEEK</h2>
+
+    <div class="card bg-gray text-center col mr-5 ml-5" id="graph">
+      <h2 id="card-title">PACKAGES QUANTITY IN LAST WEEK</h2>
       <svg class='container' width="529px" height="320px" viewBox="30 27 529 286" version="1.1"
         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
@@ -90,9 +90,9 @@
         </g>
       </svg>
     </div>
-   
-    <div class="card bg-gray text-center" id="graph">
-      <h2>TOTAL COST PER DAY IN THE LAST WEEK</h2>
+
+    <div class="card bg-gray text-center col ml-5 mr-5" id="graph">
+      <h2 id="card-title">TOTAL COST PER DAY IN THE LAST WEEK</h2>
       <svg class='container' width="529px" height="320px" viewBox="30 27 529 286" version="1.1"
         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
@@ -181,8 +181,8 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-4"><h1>R$ {{this.mediumCostPack}}/Package</h1></div>
+    <div id="status" class="col-4"><h1>R$ {{this.mediumCostPack}}/Package</h1></div>
     <div class="col-2"></div>
-    <div class="col-4"><h1>R$ {{this.mediumCostCubHeight}}/Cubical Height</h1></div>
+    <div id="status" class="col-4"><h1>R$ {{this.mediumCostCubHeight}}/Cubical Height</h1></div>
   </div>
 </div>
