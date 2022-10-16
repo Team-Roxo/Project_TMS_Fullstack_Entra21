@@ -23,7 +23,7 @@ export class BodyComponent implements OnInit {
   notificacoes: Array<any> = new Array()
   notificationCount!: number
   id!: number
-  nome!: string
+  nome!: any
   email!: string
   birth!: string
   document!: string
@@ -34,34 +34,6 @@ export class BodyComponent implements OnInit {
 
     this.notificacoes = new Array()
 
-    // this.http.get(this.APIBirthNow)
-    //   .subscribe((resultado: any) => {
-
-    //     console.log(resultado);
-
-    //     var count = Object.keys(resultado).length
-
-    //     for (let i = 0; i < count; i++) {
-
-    //       this.aniversariantes.push({ id: resultado[i].id, nome: resultado[i].nome, email: resultado[i].email, birth: resultado[i].birth, document: resultado[i].document })
-
-    //     }
-
-    //   });
-
-    // this.http.get(this.APIBirthMonth)
-    //   .subscribe((resultado: any) => {
-
-    //     var count = Object.keys(resultado).length
-
-    //     for (let i = 0; i < count; i++) {
-
-    //       this.aniversariantesMes.push({ id: resultado[i].id, nome: resultado[i].nome, email: resultado[i].email, birth: resultado[i].birth, document: resultado[i].document })
-
-    //     }
-
-    //   });
-
     setTimeout(() => {
       this.notification()
     }, 450);
@@ -71,7 +43,13 @@ export class BodyComponent implements OnInit {
   notification() {
 
     if (this.loginService.succeed == true) {
-      console.log(this.loginService.document, this.loginService.birth);
+
+      try{
+        this.nome = this.loginService.nome.split(' ').at(0)
+        this.nome += ' '+this.loginService.nome.split(' ').at(1)?.split('').at(0)?.toUpperCase()+'.'
+      }catch{
+        this.nome = this.loginService.nome
+      }
 
       setTimeout(() => {
 

@@ -81,9 +81,9 @@ public class PessoaController {
 		return linkRepository.save(body);
 	}
 	
-	@DeleteMapping("/links/{id}")
-	public void deleteLink(@PathVariable int id) {
-		jdbc.update("DELETE FROM link WHERE receiver = ?",id);
+	@DeleteMapping("/links/{idReceiver}/{idSender}")
+	public void deleteLink(@PathVariable int idReceiver, @PathVariable int idSender) {
+		jdbc.update("DELETE FROM link WHERE receiver = ? and sender = ?",idReceiver, idSender);
 	}
 	
 	@GetMapping("/countClients")

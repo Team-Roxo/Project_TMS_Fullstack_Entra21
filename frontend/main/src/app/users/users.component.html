@@ -97,23 +97,23 @@
         <th>E-mail</th>
         <th>CPF</th>
         <th>Birthday</th>
-        
+
     </thead>
     <tbody>
         <tr *ngFor="let user of users;let i = index;">
             <td>
-                <button class="btn btn-danger mr-2" (click)="deletar(this.user.id)">Delet</button>
+                <button class="btn btn-danger mr-2" (click)="deletar(this.user.id, this.login.pessoaID)">Delet</button>
 
 
                 <button class="btn btn-primary" (click)="openModalEdit(this.user.id, this.user.name, this.user.email, this.user.document, this.user.birth)">Edit</button>
 
             </td>
-           
+
             <td>{{user.name}}</td>
             <td>{{user.email}}</td>
             <td>{{user.document}}</td>
             <td>{{user.birth}}</td>
-           
+
             </tr>
         </tbody>
 

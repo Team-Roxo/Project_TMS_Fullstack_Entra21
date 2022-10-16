@@ -1,33 +1,31 @@
 <div class="card mt-2">
   <div class="card-header ">
-<div class="calendario-titulo card-header">
-    <div>
+    <div class="calendario-titulo card-header">
+      <div>
         <button class="btn btn-primary col-md-2" (click)="changeMonth(-1)">Previous Month</button>
-        <button class="btn btn-success col-md-2 float-right"    (click)="changeMonth(+1)">Next Month </button>
-    </div>
-   
-    <div>
-      <h5 class="calendario-titulo-mes-ano ">
-        {{dateActually | date : 'MMMM yyyy'}}   </h5>
- 
-</div>
-</div>
-<div class="card-body">
-<div class="calendario-dias card">
-   
-    <ng-container *ngFor="let day of  daysCalendar; let i = index">
-        <div *ngIf="i < 7">
-            <strong>{{ day | date: 'EEEE' }}</strong>
-        </div>
-    </ng-container>
-  
-    <div *ngFor="let day of daysCalendar; let i = index"
-        class="calendario-dia"
-        [class.calendario-quebrar-linha]="i % 7 === 0"
-        [class.calendario-dia-nao-faz-parte-mes-atual]="dateActually.getMonth() !== day.getMonth()">
-        {{day | date : 'dd'}}
-    </div>
-</div>
-</div>
-</div>
+        <button class="btn btn-success col-md-2 float-right" (click)="changeMonth(+1)">Next Month </button>
+      </div>
 
+      <div>
+        <h1 class="calendario-titulo-mes-ano ">
+          {{dateActually | date : 'MMMM yyyy'}} </h1>
+      </div>
+      
+    </div>
+    <div class="card-body">
+      <div class="calendario-dias card">
+
+        <ng-container *ngFor="let day of  daysCalendar; let i = index">
+          <div *ngIf="i < 7">
+            <strong>{{ day | date: 'EEEE' }}</strong>
+          </div>
+        </ng-container>
+
+        <div *ngFor="let day of daysCalendar; let i = index" class="calendario-dia"
+          [class.calendario-quebrar-linha]="i % 7 === 0"
+          [class.calendario-dia-nao-faz-parte-mes-atual]="dateActually.getMonth() !== day.getMonth()">
+          {{day | date : 'dd'}}
+        </div>
+      </div>
+    </div>
+  </div>
