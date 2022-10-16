@@ -12,7 +12,7 @@ import { LoginserviceService } from '../loginservice.service';
 })
 export class LoginComponent implements OnInit {
 
-  readonly TMSLoginAPI: string = "http://35.199.78.13:8080"
+  readonly TMSLoginAPI: string = "http://34.95.208.13:8080"
 
   emailReg!: string
   nameReg!: string
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       }, 5000);
 
     }
-    
+
   }
 
   gotoHome() {

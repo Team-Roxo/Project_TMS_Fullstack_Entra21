@@ -80,7 +80,7 @@ export class UserClientComponent implements OnInit {
 
     console.log(id);
 
-  this.http.delete('http://35.199.78.13:8080/user/'+id).subscribe();
+  this.http.delete('http://34.95.208.13:8080/user/'+id).subscribe();
 
   setTimeout(() => {
     this.ngOnInit();

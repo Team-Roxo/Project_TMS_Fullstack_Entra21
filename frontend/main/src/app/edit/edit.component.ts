@@ -19,8 +19,8 @@ export class EditComponent implements OnInit {
 
   editPessoa: any
   editLogin: any
-  api: string = "http://35.199.78.13:8080/user"
-  api2: string = "http://35.199.78.13:8080/login"
+  api: string = "http://34.95.208.13:8080/user"
+  api2: string = "http://34.95.208.13:8080/login"
 
   constructor(private router: Router, private login: LoginserviceService, private http: HttpClient) { }
 
@@ -75,7 +75,7 @@ export class EditComponent implements OnInit {
       this.login.logging(user, password);
     }, 500);
 
-    this.http.put('http://localhost:8080/user/disbounce/'+this.login.idBounce, null)
+    this.http.put('http://34.95.208.13:8080/user/disbounce/'+this.login.idBounce, null)
     .subscribe((response)=>{
       console.log(response);
     })

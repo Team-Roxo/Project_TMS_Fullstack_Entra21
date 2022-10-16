@@ -53,7 +53,7 @@ export class AboutComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.http.put('http://localhost:8080/user/disbounce/'+this.login.idBounce, null)
+    this.http.put('http://34.95.208.13:8080/user/disbounce/'+this.login.idBounce, null)
     .subscribe((response)=>{
       console.log(response);
     })

@@ -12,8 +12,8 @@ import { LoginComponent } from './login/login.component';
 
 export class LoginserviceService implements CanActivate {
 
-  readonly TMSLoginAPI: string = "http://35.199.78.13:8080"
-  readonly APIBounceInit: string = "http://localhost:8080/login/init"
+  readonly TMSLoginAPI: string = "http://34.95.208.13:8080"
+  readonly APIBounceInit: string = "http://34.95.208.13:8080/login/init"
 
   //DADOS BÁSICOS
   id!: number

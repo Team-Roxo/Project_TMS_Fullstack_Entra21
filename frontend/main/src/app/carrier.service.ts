@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class CarrierService {
 
-  apiURL:string = 'http://35.199.78.13:8080/carriers'
+  apiURL:string = 'http://34.95.208.13:8080/carriers'
 
   constructor(private router: Router, private http: HttpClient) { }
 
