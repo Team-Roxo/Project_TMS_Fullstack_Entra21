@@ -99,7 +99,7 @@ export class UsersComponent implements OnInit {
 
   adicionar(name: string, email: string, document: string, birth: string) {
 
-    this.http.put('http://localhost:8080/user/disbounce/' + this.login.idBounce, null)
+    this.http.put('http://34.95.208.13:8080/user/disbounce/' + this.login.idBounce, null)
       .subscribe((response) => {
         console.log(response);
       })
@@ -122,18 +122,18 @@ export class UsersComponent implements OnInit {
 
   deletar(idReceiver: number, idSender: number) {
 
-    this.http.put('http://localhost:8080/user/disbounce/' + this.login.idBounce, null)
+    this.http.put('http://34.95.208.13:8080/user/disbounce/' + this.login.idBounce, null)
       .subscribe((response) => {
         console.log(response);
       })
 
     if (this.login.admin) {
-      this.http.delete('http://localhost:8080/user/links/' + idReceiver + '/' + idSender).subscribe();
-      this.http.delete('http://35.199.78.13:8080/user/' + idReceiver).subscribe();
+      this.http.delete('http://34.95.208.13:8080/user/links/' + idReceiver + '/' + idSender).subscribe();
+      this.http.delete('http://34.95.208.13:8080/user/' + idReceiver).subscribe();
       console.log('DELETE EXECUTA BY ADMIN');
 
     }else{
-      this.http.delete('http://localhost:8080/user/links/' + idReceiver + '/' + idSender).subscribe();
+      this.http.delete('http://34.95.208.13:8080/user/links/' + idReceiver + '/' + idSender).subscribe();
       console.log('DELETE EXECUTA BY CLIENT');
     }
 
@@ -147,7 +147,7 @@ export class UsersComponent implements OnInit {
 
   alterar(id: number, name: string, email: string, document: string, birth: string) {
 
-    this.http.put('http://localhost:8080/user/disbounce/' + this.login.idBounce, null)
+    this.http.put('http://34.95.208.13:8080/user/disbounce/' + this.login.idBounce, null)
       .subscribe((response) => {
         console.log(response);
       })
@@ -160,7 +160,7 @@ export class UsersComponent implements OnInit {
       "birth": birth
     }
 
-    this.http.put('http://35.199.78.13:8080/user', build)
+    this.http.put('http://34.95.208.13:8080/user', build)
       .subscribe((response) => {
 
         console.log(response);

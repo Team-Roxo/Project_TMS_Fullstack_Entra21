@@ -84,7 +84,7 @@ export class RctQtComponent implements OnInit {
     console.log(id);
 
 
-    this.http.delete('http://35.199.78.13:8080/quote/recent/'+id).subscribe();
+    this.http.delete('http://34.95.208.13:8080/quote/recent/'+id).subscribe();
 
     setTimeout(()=>{
       this.succeed = id

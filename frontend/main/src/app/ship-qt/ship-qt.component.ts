@@ -39,7 +39,7 @@ export class ShipQtComponent implements OnInit {
   succeed:number = -1
   id!: number
 
-  APIBouncePut:string = "http://localhost:8080/user/disbounce/"
+  APIBouncePut:string = "http://34.95.208.13:8080/user/disbounce/"
   newBounce!:any
 
 
@@ -66,12 +66,12 @@ export class ShipQtComponent implements OnInit {
       this.quoteService.quote(this.cepOrigem, this.cepDestino)
         .pipe(
           catchError((error)=>{
-            
+
 
         return error
           })
         )
-        
+
         .subscribe((response: any) => {
 
           console.log(response);
@@ -145,8 +145,6 @@ export class ShipQtComponent implements OnInit {
     this.quoteService.regRecentQuotes(build)
 
     console.log(id);
-
-   // this.http.delete('http://localhost:8080/quote/recent/'+id).subscribe();
 
     setTimeout(()=>{
       this.succeed = id

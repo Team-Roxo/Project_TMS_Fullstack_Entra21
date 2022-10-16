@@ -6,8 +6,8 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class PackService {
- 
-  apiURL:string = 'http://35.199.78.13:8080/quote/packs/user'
+
+  apiURL:string = 'http://34.95.208.13:8080/quote/packs/user'
 
   constructor(private router: Router, private http: HttpClient) { }
 

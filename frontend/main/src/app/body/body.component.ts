@@ -12,9 +12,9 @@ import { catchError, Observable } from 'rxjs';
 })
 export class BodyComponent implements OnInit {
 
-  readonly APIBirthNow: string = "http://35.199.78.13:8080/user/birthnow"
+  readonly APIBirthNow: string = "http://34.95.208.13:8080/user/birthnow"
 
-  readonly APIBirthMonth: string = "http://35.199.78.13:8080/user/birthmonth"
+  readonly APIBirthMonth: string = "http://34.95.208.13:8080/user/birthmonth"
 
   birthnow!: string
   birthmonth!: string

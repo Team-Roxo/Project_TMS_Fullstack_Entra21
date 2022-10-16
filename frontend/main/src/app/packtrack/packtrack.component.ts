@@ -79,17 +79,17 @@ export class PacktrackComponent implements OnInit {
 
     })
 
-    
+
 
   }
 
   detailCarrier(pack:any) {
-    
+
     this.pack_sel = pack
     console.log(this.pack_sel.carrier_id);
 
-    this.http.get('http://35.199.78.13:8080/carriers/' + pack.carrier_id).subscribe((response: any) => {
-     
+    this.http.get('http://34.95.208.13:8080/carriers/' + pack.carrier_id).subscribe((response: any) => {
+
       this.pack_sel.carrierName = response.razao;
 
       console.log(this.pack_sel.carrierName);
@@ -126,7 +126,7 @@ export class PacktrackComponent implements OnInit {
 
   }
 
-  
+
 
 
 
