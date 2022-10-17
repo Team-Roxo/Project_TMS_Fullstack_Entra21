@@ -71,6 +71,12 @@ export class CarriersComponent implements OnInit {
 
     this.carrierService.adicionar(build)
 
+    document.getElementById('load-screen')?.setAttribute('style', 'display: block')
+
+    setTimeout(() => {
+      document.getElementById('load-screen')?.setAttribute('style', 'display: none')
+    }, 600);
+
     setTimeout(() => {
       this.ngOnInit();
     }, 500);
@@ -83,6 +89,12 @@ export class CarriersComponent implements OnInit {
     console.log(id);
 
     this.http.delete('http://34.95.208.13:8080/carriers/' + id).subscribe();
+
+    document.getElementById('load-screen')?.setAttribute('style', 'display: block')
+
+    setTimeout(() => {
+      document.getElementById('load-screen')?.setAttribute('style', 'display: none')
+    }, 600);
 
     setTimeout(() => {
       this.ngOnInit();
@@ -112,6 +124,12 @@ export class CarriersComponent implements OnInit {
         console.log(response);
 
       })
+      
+      document.getElementById('load-screen')?.setAttribute('style', 'display: block')
+
+      setTimeout(() => {
+        document.getElementById('load-screen')?.setAttribute('style', 'display: none')
+      }, 600);
 
     setTimeout(() => {
       this.ngOnInit();
