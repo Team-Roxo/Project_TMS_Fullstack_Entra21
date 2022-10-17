@@ -13,10 +13,10 @@ import { ShipQtComponent } from './ship-qt/ship-qt.component';
 })
 export class QuoteService {
 
-   apiURL:string = 'http://35.199.78.13:8080/ship'
-   apiURL2:string = 'http://35.199.78.13:8080/quote'
+   apiURL:string = 'http://34.95.208.13:8080/ship'
+   apiURL2:string = 'http://34.95.208.13:8080/quote'
 
-   APIBouncePut:string = "http://localhost:8080/user/disbounce/"
+   APIBouncePut:string = "http://34.95.208.13:8080/user/disbounce/"
    newBounce!:any
 
 
@@ -25,18 +25,10 @@ export class QuoteService {
   quote(cepOrigem:string, cepDestino:string):any{
 
     //ATUALIZA BOUNCE
-
-    this.newBounce = {
-      "id":this.login.idBounce,
-      "user":this.login.userBounce,
-      "date":this.login.dateBounce,
-      "time":this.login.timeBounce,
-      "bounce_rate":false
-    }
-
-    console.log(this.newBounce);
-
-    this.http.post(this.APIBouncePut+this.login.idBounce, this.newBounce)
+    this.http.put(this.APIBouncePut+this.login.idBounce, null)
+    .subscribe((response)=>{
+      console.log(response);
+    })
     //FIM DO BOUNCE
 
     return this.http.get(this.apiURL+'/'+cepOrigem+'/'+cepDestino)
@@ -46,18 +38,10 @@ export class QuoteService {
   recQuote():any{
 
     //ATUALIZA BOUNCE
-
-     this.newBounce = {
-       "id":this.login.idBounce,
-       "user":this.login.userBounce,
-       "date":this.login.dateBounce,
-       "time":this.login.timeBounce,
-       "bounce_rate":false
-     }
-
-     console.log(this.newBounce);
-
-     this.http.post(this.APIBouncePut+this.login.idBounce, this.newBounce)
+     this.http.put(this.APIBouncePut+this.login.idBounce, null)
+     .subscribe((response)=>{
+      console.log(response);
+    })
     //FIM DO BOUNCE
 
     return this.http.get(this.apiURL2+`/recent/`+this.login.pessoaID)
@@ -67,18 +51,10 @@ export class QuoteService {
   regRecentQuotes(object:any){
 
     //ATUALIZA BOUNCE
-
-    this.newBounce = {
-      "id":this.login.idBounce,
-      "user":this.login.userBounce,
-      "date":this.login.dateBounce,
-      "time":this.login.timeBounce,
-      "bounce_rate":false
-    }
-
-    console.log(this.newBounce);
-
-    this.http.post(this.APIBouncePut+this.login.idBounce, this.newBounce)
+    this.http.put(this.APIBouncePut+this.login.idBounce, null)
+    .subscribe((response)=>{
+      console.log(response);
+    })
     //FIM DO BOUNCE
 
     this.http.post(this.apiURL2+'/recent',object)

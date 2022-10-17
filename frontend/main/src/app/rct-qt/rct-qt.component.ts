@@ -56,6 +56,8 @@ export class RctQtComponent implements OnInit {
 
         this.recQuotes.push({id: response[i].id, price: response[i].price, await: response[i].await, origin: response[i].origin, destiny: response[i].destiny, cub_height: response[i].cub_height, razaoTransportadora: resp.razao, carrier_id: resp.id, nomePessoa: this.loginService.nome})
 
+
+
          })
 
       }
@@ -67,6 +69,8 @@ export class RctQtComponent implements OnInit {
   regPackage(id:number, price: number, time: number, origin: string, destiny: string, carrier_id: string, cub_height: number) {
 
     this.progress = id
+
+    document.getElementById('load-screen')?.setAttribute('style', 'display: block')
 
     let build = {
       "price": price,
@@ -84,7 +88,13 @@ export class RctQtComponent implements OnInit {
     console.log(id);
 
 
-    this.http.delete('http://35.199.78.13:8080/quote/recent/'+id).subscribe();
+
+    setTimeout(() => {
+      document.getElementById('load-screen')?.setAttribute('style', 'display: none')
+    }, 600);
+
+
+    this.http.delete('http://34.95.208.13:8080/quote/recent/'+id).subscribe();
 
     setTimeout(()=>{
       this.succeed = id

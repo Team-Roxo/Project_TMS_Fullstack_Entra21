@@ -1,7 +1,9 @@
 <div class="container-fluid">
+  <br><br>
   <div class="row">
-    <div class="card bg-gray text-center" id="graph">
-      <h2>LUCRO</h2>
+
+    <div class="card bg-gray text-center col mr-5 ml-5" id="graph">
+      <h2 id="card-title">PACKAGES QUANTITY IN LAST WEEK</h2>
       <svg class='container' width="529px" height="320px" viewBox="30 27 529 286" version="1.1"
         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
@@ -12,25 +14,25 @@
           <g id="y_axis" font-size="16" font-family=".HelveticaNeueDeskInterface-Regular, .Helvetica Neue DeskInterface"
             fill="#FFFFFF" opacity="0.4" font-weight="normal">
             <text id="0">
-              <tspan x="25.3008249" y="264.333333">0</tspan>
+              <tspan x="12.7757572" y="264.333333">0</tspan>
             </text>
             <text id="400">
-              <tspan x="12.7757572" y="201">25</tspan>
+              <tspan x="12.7757572" y="201">2</tspan>
             </text>
             <text id="800">
-              <tspan x="12.7757572" y="137.666667">50</tspan>
+              <tspan x="12.7757572" y="137.666667">4</tspan>
             </text>
             <text id="1200">
-              <tspan x="6.51322328" y="74.3333333">75</tspan>
+              <tspan x="12.7757572" y="74.3333333">6</tspan>
             </text>
             <text id="1600">
-              <tspan x="6.51322328" y="11">100</tspan>
+              <tspan x="12.7757572" y="11">8</tspan>
             </text>
           </g>
           <g id="GRAPHS" transform="translate(64.000000, 16.000000)" stroke-linecap="round" stroke-width="8"
             stroke-linejoin="round">
-            <polyline id="lucro1" stroke="#5BCAC1"></polyline>
-            <polyline id="lucro2" stroke="#81DEFF"></polyline>
+            <!-- <polyline id="lucro1" stroke="#5BCAC1"></polyline> -->
+            <!-- <polyline id="lucro2" stroke="#81DEFF"></polyline> -->
             <polyline id="lucro3" stroke="#F6F5A6"></polyline>
           </g>
           <g id="x_axis" transform="translate(71.974046, 271.541667)" font-size="11.0833333"
@@ -89,8 +91,8 @@
       </svg>
     </div>
 
-    <div class="card bg-gray text-center" id="graph">
-      <h2>LUCRO</h2>
+    <div class="card bg-gray text-center col ml-5 mr-5" id="graph">
+      <h2 id="card-title">TOTAL COST PER DAY IN THE LAST WEEK</h2>
       <svg class='container' width="529px" height="320px" viewBox="30 27 529 286" version="1.1"
         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
@@ -101,26 +103,26 @@
           <g id="y_axis" font-size="16" font-family=".HelveticaNeueDeskInterface-Regular, .Helvetica Neue DeskInterface"
             fill="#FFFFFF" opacity="0.4" font-weight="normal">
             <text id="0">
-              <tspan x="25.3008249" y="264.333333">0</tspan>
+              <tspan x="25.3008249" y="264.333333">$0</tspan>
             </text>
             <text id="400">
-              <tspan x="12.7757572" y="201">25</tspan>
+              <tspan x="12.7757572" y="201">$2,5k</tspan>
             </text>
             <text id="800">
-              <tspan x="12.7757572" y="137.666667">50</tspan>
+              <tspan x="12.7757572" y="137.666667">$5k</tspan>
             </text>
             <text id="1200">
-              <tspan x="6.51322328" y="74.3333333">75</tspan>
+              <tspan x="6.51322328" y="74.3333333">$4,5k</tspan>
             </text>
             <text id="1600">
-              <tspan x="6.51322328" y="9">100</tspan>
+              <tspan x="6.51322328" y="11">$6k</tspan>
             </text>
           </g>
           <g id="GRAPHS" transform="translate(64.000000, 16.000000)" stroke-linecap="round" stroke-width="8"
             stroke-linejoin="round">
-            <polyline id="cost1" stroke="#5BCAC1"></polyline>
+            <!-- <polyline id="cost1" stroke="#5BCAC1"></polyline> -->
             <polyline id="cost2" stroke="#81DEFF"></polyline>
-            <polyline id="cost3" stroke="#F6F5A6"></polyline>
+            <!-- <polyline id="cost3" stroke="#F6F5A6"></polyline> -->
           </g>
           <g id="x_axis" transform="translate(71.974046, 271.541667)" font-size="11.0833333"
             font-family=".HelveticaNeueDeskInterface-Regular, .Helvetica Neue DeskInterface" fill="#FFFFFF"
@@ -179,8 +181,8 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-4"><h1>R$ {{this.mediumCostPack}}/Package</h1></div>
+    <div id="status" class="col-4"><h1>R$ {{this.mediumCostPack}}/Package</h1></div>
     <div class="col-2"></div>
-    <div class="col-4"><h1>R$ {{this.mediumCostCubHeight}}/Cubical Height</h1></div>
+    <div id="status" class="col-4"><h1>R$ {{this.mediumCostCubHeight}}/Cubical Height</h1></div>
   </div>
 </div>

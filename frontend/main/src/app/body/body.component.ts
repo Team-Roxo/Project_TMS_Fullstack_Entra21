@@ -12,9 +12,9 @@ import { catchError, Observable } from 'rxjs';
 })
 export class BodyComponent implements OnInit {
 
-  readonly APIBirthNow: string = "http://35.199.78.13:8080/user/birthnow"
+  readonly APIBirthNow: string = "http://34.95.208.13:8080/user/birthnow"
 
-  readonly APIBirthMonth: string = "http://35.199.78.13:8080/user/birthmonth"
+  readonly APIBirthMonth: string = "http://34.95.208.13:8080/user/birthmonth"
 
   birthnow!: string
   birthmonth!: string
@@ -23,7 +23,7 @@ export class BodyComponent implements OnInit {
   notificacoes: Array<any> = new Array()
   notificationCount!: number
   id!: number
-  nome!: string
+  nome!: any
   email!: string
   birth!: string
   document!: string
@@ -34,34 +34,6 @@ export class BodyComponent implements OnInit {
 
     this.notificacoes = new Array()
 
-    this.http.get(this.APIBirthNow)
-      .subscribe((resultado: any) => {
-
-        console.log(resultado);
-
-        var count = Object.keys(resultado).length
-
-        for (let i = 0; i < count; i++) {
-
-          this.aniversariantes.push({ id: resultado[i].id, nome: resultado[i].nome, email: resultado[i].email, birth: resultado[i].birth, document: resultado[i].document })
-
-        }
-
-      });
-
-    this.http.get(this.APIBirthMonth)
-      .subscribe((resultado: any) => {
-
-        var count = Object.keys(resultado).length
-
-        for (let i = 0; i < count; i++) {
-
-          this.aniversariantesMes.push({ id: resultado[i].id, nome: resultado[i].nome, email: resultado[i].email, birth: resultado[i].birth, document: resultado[i].document })
-
-        }
-
-      });
-
     setTimeout(() => {
       this.notification()
     }, 450);
@@ -71,21 +43,30 @@ export class BodyComponent implements OnInit {
   notification() {
 
     if (this.loginService.succeed == true) {
-      console.log(this.loginService.document, this.loginService.birth);
+
+      try{
+        this.nome = this.loginService.nome.split(' ').at(0)
+        this.nome += ' '+this.loginService.nome.split(' ').at(1)?.split('').at(0)?.toUpperCase()+'.'
+      }catch{
+        this.nome = this.loginService.nome
+      }
 
       setTimeout(() => {
 
-        if (this.loginService.birth) {
-          console.log('DOCUMENTOS CORRETOS!');
-        } else {
+        if (!this.loginService.birth) {
           this.notificacoes.push({ title: "Complete seu Cadastro!", text: "Clique aqui para concluir!", route: "edit" })
+        }else if(!this.loginService.document){
+          this.notificacoes.push({ title: "Complete seu Cadastro!", text: "Clique aqui para concluir!", route: "edit" })
+        }
+         else {
+          console.log('DOCUMENTOS CORRETOS!');
         }
 
-        if (this.loginService.document) {
-          console.log('DOCUMENTOS CORRETOS!');
-        } else {
-          this.notificacoes.push({ title: "Complete seu Cadastro!", text: "Clique aqui para concluir!", route: "edit" })
-        }
+        // if (this.loginService.document) {
+        //   console.log('DOCUMENTOS CORRETOS!');
+        // } else {
+        //   this.notificacoes.push({ title: "Complete seu Cadastro!", text: "Clique aqui para concluir!", route: "edit" })
+        // }
 
       }, 500);
 
@@ -102,6 +83,23 @@ export class BodyComponent implements OnInit {
           }
 
         })
+
+        this.http.get(this.APIBirthMonth)
+      .subscribe((resultado: any) => {
+
+        var count = Object.keys(resultado).length
+
+        for (let i = 0; i < count; i++) {
+
+          this.aniversariantesMes.push({ id: resultado[i].id, nome: resultado[i].nome, email: resultado[i].email, birth: resultado[i].birth, document: resultado[i].document })
+
+          if (resultado[i].id === this.loginService.pessoaID) {
+            this.notificacoes.push({ title: "Seu aniversário é esse mês!🥳🎉", text: "Parabéns, "+this.loginService.nome.split(' ').at(0)+"! Esse mês você terá ofertas feitas apenas para você!🤑 Confira!🤩", route: "ship-quote" })
+          }
+
+        }
+
+      });
 
       setTimeout(() => {
 

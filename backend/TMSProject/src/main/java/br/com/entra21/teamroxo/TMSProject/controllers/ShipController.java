@@ -28,7 +28,7 @@ public class ShipController {
 		
 		try {
 
-            String APIUrl = GOOGLE+param1+"&destination="+param2+"&key=AIzaSyCKNjLUI0d01M0SfoDjIov4vZlR3DprotM"; 
+            String APIUrl = GOOGLE+param1+"&destination="+param2+"&key=AIzaSyAAbslGhDXuM0keygxvVNtuJvOdGnK0LXg"; 
 
             URL url = new URL(APIUrl);
             HttpsURLConnection get = (HttpsURLConnection) url.openConnection();

@@ -5,19 +5,15 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class VisitsService {
+export class PackService {
 
-  readonly APICountVisits:string = "http://34.95.208.13:8080/user/countVisitors"
+  apiURL:string = 'http://34.95.208.13:8080/quote/packs/user'
 
   constructor(private router: Router, private http: HttpClient) { }
 
+  listPack(id:number):any{
 
-  listVisits():any{
-
-    return this.http.get(this.APICountVisits)
+    return this.http.get(this.apiURL+'/'+id)
 
   }
-
-
-
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InsightComponent } from './insight/insight.component';
@@ -20,6 +21,10 @@ import { HttpClientModule } from "@angular/common/http";
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { UserClientComponent } from './user-client/user-client.component';
 import { VisitsComponent } from './visits/visits.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -39,15 +44,23 @@ import { VisitsComponent } from './visits/visits.component';
     AboutComponent,
     ForgetPasswordComponent,
     UserClientComponent,
-    VisitsComponent
+    VisitsComponent,
+    
+
   ],
+
   imports: [
     BrowserModule,
+    CommonModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CalendarModule,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

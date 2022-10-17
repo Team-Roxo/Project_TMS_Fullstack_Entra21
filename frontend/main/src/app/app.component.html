@@ -1,8 +1,6 @@
 <body class="hold-transition sidebar-mini">
   <div [ngClass]="{'wrapper':login.succeed}">
-
     <app-body [hidden]="!login.succeed"></app-body>
-
     <div [ngClass]="{'content-wrapper':login.succeed}">
       <section class="content">
         <div class="container-fluid">
@@ -14,9 +12,7 @@
         </div>
       </section>
     </div>
-
     <app-footer [hidden]="!login.succeed"></app-footer>
-
     <aside class="control-sidebar control-sidebar-dark"></aside>
   </div>
 </body>

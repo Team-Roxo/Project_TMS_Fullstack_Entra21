@@ -1,3 +1,6 @@
+<div id="load-screen" style="display: none;">
+    <div id="load" class="fas fa-circle-notch fa-spin fade show"></div>
+  </div>
 <br>
 <button class="btn btn-success" (click)="openModal()">New Carrier</button>
 
@@ -14,28 +17,28 @@
                             <!-- <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/2.jpg" alt="..." /> -->
                             <div class="input-group" style="width: 100%;">
                                 <span class="input-group-text"
-                                    style="border-radius: 5px; border-right: 10px;">🧑🏽‍💻</span>
+                                    style="border-radius: 5px; border-right: 10px;">🚚</span>
                                 <input type="text" [(ngModel)]="razao" class="form-control" razao="Razao"
                                     placeholder="Razão social" required tabindex="1">
                             </div>
                             <br>
                             <div class="input-group" style="width: 100%;">
                                 <span class="input-group-text"
-                                    style="border-radius: 5px; border-right: 10px;">🧑🏽‍💻</span>
+                                    style="border-radius: 5px; border-right: 10px;">🔢</span>
                                 <input type="text" [(ngModel)]="taxa" class="form-control" taxa="Taxa"
                                     placeholder="Taxa de cubagem" required tabindex="1">
                             </div>
                             <br>
                             <div class="input-group" style="width: 100%;">
                                 <span class="input-group-text"
-                                    style="border-radius: 5px; border-right: 10px;">🧑🏽‍💻</span>
+                                    style="border-radius: 5px; border-right: 10px;">📧</span>
                                 <input type="text" [(ngModel)]="email" class="form-control" email="E-mail"
                                     placeholder="E-mail" required tabindex="1">
                             </div>
                             <br>
                             <div class="input-group" style="width: 100%;">
                                 <span class="input-group-text"
-                                    style="border-radius: 5px; border-right: 10px;">🧑🏽‍💻</span>
+                                    style="border-radius: 5px; border-right: 10px;">📃</span>
                                 <input type="text" [(ngModel)]="cnpj" class="form-control" cnpj="CNPJ"
                                     placeholder="CNPJ" required tabindex="1">
                             </div>
@@ -95,29 +98,30 @@
 <table class="table table-bordered">
     <thead>
 
-        <th>Item</th>
+        <th>Action</th>
         <th>Carrier name</th>
         <th>Tax of transport</th>
         <th>E-mail</th>
         <th>Cnpj</th>
-        <th>Action</th>
+        
 
 
     </thead>
     <tbody>
         <tr *ngFor="let carrier of carriers;let i = index;">
 
-            <td>{{i+1}}</td>
-            <td>{{carrier.razao}}</td>
-            <td>{{carrier.taxa}}</td>
-            <td>{{carrier.email}}</td>
-            <td>{{carrier.cnpj}}</td>
             <td>
                 <button class="btn btn-danger mr-2" (click)="deletar(carrier.id)">Delet</button>
 
 
                 <button class="btn btn-primary" (click)="openModalEdit(this.carrier.id, this.carrier.razao, this.carrier.taxa, this.carrier.email, this.carrier.cnpj)">Edit</button>
               </td>
+            
+            <td>{{carrier.razao}}</td>
+            <td>{{carrier.taxa}}</td>
+            <td>{{carrier.email}}</td>
+            <td>{{carrier.cnpj}}</td>
+            
 
             </tr>
         </tbody>
@@ -135,28 +139,28 @@
                                             <!-- <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/2.jpg" alt="..." /> -->
                                             <div class="input-group" style="width: 100%;">
                                                 <span class="input-group-text"
-                                                    style="border-radius: 5px; border-right: 10px;">🧑🏽‍💻</span>
+                                                    style="border-radius: 5px; border-right: 10px;">🚚</span>
                                                 <input type="text" [(ngModel)]="razao" class="form-control"
                                                     razao="Razao"  required tabindex="1">
                                             </div>
                                             <br>
                                             <div class="input-group" style="width: 100%;">
                                                 <span class="input-group-text"
-                                                    style="border-radius: 5px; border-right: 10px;">🧑🏽‍💻</span>
+                                                    style="border-radius: 5px; border-right: 10px;">🔢</span>
                                                 <input type="text" [(ngModel)]="taxa" class="form-control" taxa="Taxa"
                                                      required tabindex="1">
                                             </div>
                                             <br>
                                             <div class="input-group" style="width: 100%;">
                                                 <span class="input-group-text"
-                                                    style="border-radius: 5px; border-right: 10px;">🧑🏽‍💻</span>
+                                                    style="border-radius: 5px; border-right: 10px;">📧</span>
                                                 <input type="text" [(ngModel)]="email" class="form-control"
                                                     email="E-mail"  required tabindex="1">
                                             </div>
                                             <br>
                                             <div class="input-group" style="width: 100%;">
                                                 <span class="input-group-text"
-                                                    style="border-radius: 5px; border-right: 10px;">🧑🏽‍💻</span>
+                                                    style="border-radius: 5px; border-right: 10px;">📃</span>
                                                 <input type="text" [(ngModel)]="cnpj" class="form-control" cnpj="CNPJ"
                                                      required tabindex="1">
                                             </div>
@@ -164,7 +168,7 @@
                                             <br>
                                             <button class="btn btn-primary btn-xl text-uppercase"
                                                 data-bs-dismiss="modal" type="button" (click)="closeModalEdit()"
-                                                (click)="alterar()">
+                                                (click)="alterar(this.id, this.razao, this.taxa, this.email, this.cnpj)">
                                                 <i class="fas fa-xmark me-1"></i>
                                                 Save
                                             </button>

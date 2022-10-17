@@ -1,3 +1,6 @@
+<div id="load-screen" style="display: none;">
+  <div id="load" class="fas fa-circle-notch fa-spin fade show"></div>
+</div>
 <br>
 <button class="btn btn-success" (click)="openModal()">New User</button>
 
@@ -14,28 +17,28 @@
                             <!-- <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/2.jpg" alt="..." /> -->
                             <div class="input-group" style="width: 100%;">
                                 <span class="input-group-text"
-                                    style="border-radius: 5px; border-right: 10px;">🧑🏽‍💻</span>
+                                    style="border-radius: 5px; border-right: 10px;">😀</span>
                                 <input type="text" [(ngModel)]="name" class="form-control" name="Nome"
                                     placeholder="Nome completo" required tabindex="1">
                             </div>
                             <br>
                             <div class="input-group" style="width: 100%;">
                                 <span class="input-group-text"
-                                    style="border-radius: 5px; border-right: 10px;">🧑🏽‍💻</span>
+                                    style="border-radius: 5px; border-right: 10px;">📧</span>
                                 <input type="text" [(ngModel)]="email" class="form-control" email="E-mail"
                                     placeholder="E-mail" required tabindex="1">
                             </div>
                             <br>
                             <div class="input-group" style="width: 100%;">
                                 <span class="input-group-text"
-                                    style="border-radius: 5px; border-right: 10px;">🧑🏽‍💻</span>
+                                    style="border-radius: 5px; border-right: 10px;">📃</span>
                                 <input type="text" [(ngModel)]="document" class="form-control" document="CPF"
                                     placeholder="CPF" required tabindex="1">
                             </div>
                             <br>
                             <div class="input-group" style="width: 100%;">
                                 <span class="input-group-text"
-                                    style="border-radius: 5px; border-right: 10px;">🧑🏽‍💻</span>
+                                    style="border-radius: 5px; border-right: 10px;">🎁</span>
                                 <input type="text" [(ngModel)]="birth" class="form-control" birth="Data"
                                     placeholder="Data de nascimento" required tabindex="1">
                             </div>
@@ -92,25 +95,30 @@
 <hr>
 <table class="table table-bordered">
     <thead>
-        <th>Item</th>
+        <th>Action</th>
         <th>Name</th>
         <th>E-mail</th>
         <th>CPF</th>
         <th>Birthday</th>
-        <th>Action</th>
+
     </thead>
     <tbody>
         <tr *ngFor="let user of users;let i = index;">
-            <td>{{i+1}}</td>
+            <td>
+                <button class="btn btn-danger mr-2" (click)="deletar(this.user.id, this.login.pessoaID)">Delet</button>
+
+
+                <button class="btn btn-primary" (click)="openModalEdit(this.user.id, this.user.name, this.user.email, this.user.document, this.user.birth)">Edit</button>
+
+            </td>
+
             <td>{{user.name}}</td>
             <td>{{user.email}}</td>
             <td>{{user.document}}</td>
             <td>{{user.birth}}</td>
-            <td>
-                <button class="btn btn-danger mr-2" (click)="deletar(user.id)">Delet</button>
-               
-               
-                <button class="btn btn-primary" (click)="openModalEdit()">Edit</button>
+
+            </tr>
+        </tbody>
 
                 <div class="portfolio-modal modal fade show" id="modal3" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog">
@@ -125,40 +133,40 @@
                                             <!-- <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/2.jpg" alt="..." /> -->
                                             <div class="input-group" style="width: 100%;">
                                                 <span class="input-group-text"
-                                                    style="border-radius: 5px; border-right: 10px;">🧑🏽‍💻</span>
+                                                    style="border-radius: 5px; border-right: 10px;">😀</span>
                                                 <input type="text" [(ngModel)]="name" class="form-control" name="Nome"
                                                      required tabindex="1">
                                             </div>
                                             <br>
                                             <div class="input-group" style="width: 100%;">
                                                 <span class="input-group-text"
-                                                    style="border-radius: 5px; border-right: 10px;">🧑🏽‍💻</span>
+                                                    style="border-radius: 5px; border-right: 10px;">📧</span>
                                                 <input type="text" [(ngModel)]="email" class="form-control" email="E-mail"
                                                      required tabindex="1">
                                             </div>
                                             <br>
                                             <div class="input-group" style="width: 100%;">
                                                 <span class="input-group-text"
-                                                    style="border-radius: 5px; border-right: 10px;">🧑🏽‍💻</span>
+                                                    style="border-radius: 5px; border-right: 10px;">📃</span>
                                                 <input type="text" [(ngModel)]="document" class="form-control" document="CPF"
                                                      required tabindex="1">
                                             </div>
                                             <br>
                                             <div class="input-group" style="width: 100%;">
                                                 <span class="input-group-text"
-                                                    style="border-radius: 5px; border-right: 10px;">🧑🏽‍💻</span>
-                                                <input type="text" [(ngModel)]="birth" class="form-control" birth="Data"
+                                                    style="border-radius: 5px; border-right: 10px;">🎁</span>
+                                                <input type="date" [(ngModel)]="birth" class="form-control" birth="Data"
                                                      required tabindex="1">
                                             </div>
-                
+
                                             <br>
                                             <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button"
                                                 (click)="closeModalEdit()"
-                                                (click)="alterar()">
+                                                (click)="alterar(this.id, this.name, this.email, this.document, this.birth)">
                                                 <i class="fas fa-xmark me-1"></i>
                                                 Save
                                             </button>
-                
+
                                             <button class="btn btn-danger btn-xl text-uppercase ml-2" data-bs-dismiss="modal" type="button"
                                                 (click)="closeModalEdit()">
                                                 <i class="fas fa-xmark me-1"></i>
@@ -171,13 +179,5 @@
                         </div>
                     </div>
                 </div>
-                
-               
-               
-               
-               
-                
-            </td>
-        </tr>
-    </tbody>
 </table>
+

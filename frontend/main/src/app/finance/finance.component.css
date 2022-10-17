@@ -44,3 +44,20 @@ p {
   font-size: .8rem;
   font-weight: light;
 }
+
+@media (max-width: 991px) {
+  #card-title{
+    font-size: 40px;
+  }
+  #graph{
+    height: 300px;
+  }
+}
+@media (max-width: 1250px) {
+  #card-title{
+    font-size: medium;
+  }
+  #graph{
+    height: 300px;
+  }
+}

@@ -14,6 +14,7 @@ import java.util.logging.SimpleFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,9 +35,11 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import br.com.entra21.teamroxo.TMSProject.interfaces.CountVisitorsRepository;
 import br.com.entra21.teamroxo.TMSProject.interfaces.PessoaRepository;
+import br.com.entra21.teamroxo.TMSProject.interfaces.SystemLinkRepository;
 import br.com.entra21.teamroxo.TMSProject.template.CountVisitors;
 import br.com.entra21.teamroxo.TMSProject.template.ItemNivel3;
 import br.com.entra21.teamroxo.TMSProject.template.Pessoa;
+import br.com.entra21.teamroxo.TMSProject.template.SystemLink;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -51,6 +54,12 @@ public class PessoaController {
 	@Autowired
 	private CountVisitorsRepository countVisitorsRepository;
 	
+	@Autowired
+	private SystemLinkRepository linkRepository;
+	
+	@Autowired
+	private JdbcTemplate jdbc;
+	
 	@GetMapping()
 	@ResponseStatus(code = HttpStatus.OK)
 	public List<Pessoa>listAll(){
@@ -60,6 +69,21 @@ public class PessoaController {
 	@GetMapping("/{id}")
 	public Optional<Pessoa> list(@PathVariable int id){
 		return pessoaRepository.findById(id);
+	}
+	
+	@GetMapping("/links/{id}")
+	public List<SystemLink> getLinks(@PathVariable int id){
+		return linkRepository.getLinks(id);
+	}
+	
+	@PostMapping("/links")
+	public SystemLink postLink(@RequestBody SystemLink body) {
+		return linkRepository.save(body);
+	}
+	
+	@DeleteMapping("/links/{idReceiver}/{idSender}")
+	public void deleteLink(@PathVariable int idReceiver, @PathVariable int idSender) {
+		jdbc.update("DELETE FROM link WHERE receiver = ? and sender = ?",idReceiver, idSender);
 	}
 	
 	@GetMapping("/countClients")
@@ -92,9 +116,17 @@ public class PessoaController {
 		
 	}
 	
-	@PostMapping("/disbounce/{id}")
+	@PutMapping("/disbounce/{id}")
 	public boolean disBounce(@PathVariable("id") int id) {
-		countVisitorsRepository.updateBounce(id);
+		
+		CountVisitors count = new CountVisitors();
+		
+		count.setId(id);
+		count.setUser(countVisitorsRepository.findById(id).get().getUser());
+		count.setDate(countVisitorsRepository.findById(id).get().getDate());
+		count.setTime(countVisitorsRepository.findById(id).get().getTime());
+		count.setBounceRate(false);
+		countVisitorsRepository.save(count);
 		return false;
 	}
 	

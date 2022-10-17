@@ -1,0 +1,30 @@
+.calendario-dias {
+    display: grid;
+    margin-top: 10px;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    cursor: pointer;
+    
+}
+
+.calendario-dias div {
+    border: 1px solid rgb(7, 6, 6);
+    border-radius: 5px;
+    font-size: 24px;
+    padding: 20px;
+    background-color: rgb(142, 142, 247);
+    
+    
+} 
+
+.calendario-titulo-mes-ano{
+    text-align: center;
+}
+.calendario-dia-nao-faz-parte-mes-atual{
+    opacity: 0.4;
+    background-color: rgb(142, 142, 247);
+    
+    
+}
+.calendario-dias div:hover { background: rgb(0, 149, 255); }
+
