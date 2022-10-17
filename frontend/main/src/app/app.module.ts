@@ -24,7 +24,6 @@ import { VisitsComponent } from './visits/visits.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { CommonModule } from '@angular/common';
-import { CalendarComponent } from './calendar/calendar.component';
 
 
 @NgModule({
@@ -46,11 +45,10 @@ import { CalendarComponent } from './calendar/calendar.component';
     ForgetPasswordComponent,
     UserClientComponent,
     VisitsComponent,
-    CalendarComponent,
     
 
   ],
-  exports: [CalendarComponent],
+
   imports: [
     BrowserModule,
     CommonModule,
