@@ -53,17 +53,17 @@ export class BodyComponent implements OnInit {
 
       setTimeout(() => {
 
-        if (this.loginService.birth) {
+        if (this.loginService.birth || this.loginService.document) {
           console.log('DOCUMENTOS CORRETOS!');
         } else {
           this.notificacoes.push({ title: "Complete seu Cadastro!", text: "Clique aqui para concluir!", route: "edit" })
         }
 
-        if (this.loginService.document) {
-          console.log('DOCUMENTOS CORRETOS!');
-        } else {
-          this.notificacoes.push({ title: "Complete seu Cadastro!", text: "Clique aqui para concluir!", route: "edit" })
-        }
+        // if (this.loginService.document) {
+        //   console.log('DOCUMENTOS CORRETOS!');
+        // } else {
+        //   this.notificacoes.push({ title: "Complete seu Cadastro!", text: "Clique aqui para concluir!", route: "edit" })
+        // }
 
       }, 500);
 

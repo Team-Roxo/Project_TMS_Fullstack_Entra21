@@ -47,7 +47,8 @@ export class ShipQtComponent implements OnInit {
 
   ngOnInit(): void {
 
-
+    this.progress = -1
+    this.succeed = -1
 
     //this.quotes.push({ precoFrete: 45.50, tempo: 3, trackid: "BR23154546TR", cepOrigem: 88058086, cepDestino: 88058086, comprimento: 50, largura: 50, altura: 50, peso: 10 })
     //this.quotes.push({ precoFrete: 94.50, tempo: 6, trackid: "BR22315445TR", cepOrigem: 46513265, cepDestino: 65898454, comprimento: 100, largura: 200, altura: 10, peso: 25 })

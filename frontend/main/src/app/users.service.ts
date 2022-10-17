@@ -8,7 +8,7 @@ import { LoginserviceService } from './loginservice.service';
 })
 export class UsersService {
 
-  apiURL:string = 'http://localhost:8080/user'
+  apiURL:string = 'http://34.95.208.13:8080/user'
 
   constructor(private router: Router, private http: HttpClient, private login:LoginserviceService) { }
 

@@ -79,7 +79,7 @@ export class FinanceComponent implements OnInit {
     console.log(date.getFullYear() + '-' + (date.getUTCMonth() + 1) + '-' + date.getDate());
 
 
-    this.http.put('http://localhost:8080/user/disbounce/' + this.login.idBounce, null)
+    this.http.put('http://34.95.208.13:8080/user/disbounce/' + this.login.idBounce, null)
       .subscribe((response) => {
         console.log(response);
       })
@@ -156,143 +156,143 @@ export class FinanceComponent implements OnInit {
     //SETTING GRAPH
     setTimeout(() => {
 
-      if (this.cost7 >= 10000) {
+      if (this.cost7 >= 6000) {
         this.poly_5_p7 = -10
-      } else if (this.cost7 > 9000) {
+      } else if (this.cost7 >= 5500) {
         this.poly_5_p7 = 21.875
-      } else if (this.cost7 > 8000) {
+      } else if (this.cost7 >= 5000) {
         this.poly_5_p7 = 53.75
-      } else if (this.cost7 > 7000) {
+      } else if (this.cost7 >= 4500) {
         this.poly_5_p7 = 85.625
-      } else if (this.cost7 > 6000) {
+      } else if (this.cost7 >= 4000) {
         this.poly_5_p7 = 117.5
-      } else if (this.cost7 > 5000) {
+      } else if (this.cost7 >= 3500) {
         this.poly_5_p7 = 149.375
-      } else if (this.cost7 > 3500) {
+      } else if (this.cost7 >= 3000) {
         this.poly_5_p7 = 181.25
-      } else if (this.cost7 > 2000) {
+      } else if (this.cost7 >= 2000) {
         this.poly_5_p7 = 213.125
-      } else if (this.cost7 < 1000) {
+      } else if (this.cost7 <= 500) {
         this.poly_5_p7 = 245
       }
 
-      if (this.cost6 >= 10000) {
+      if (this.cost6 >= 6000) {
         this.poly_5_p6 = -10
-      } else if (this.cost6 > 9000) {
+      } else if (this.cost6 >= 5500) {
         this.poly_5_p6 = 21.875
-      } else if (this.cost6 > 8000) {
+      } else if (this.cost6 >= 5000) {
         this.poly_5_p6 = 53.75
-      } else if (this.cost6 > 7000) {
+      } else if (this.cost6 >= 4500) {
         this.poly_5_p6 = 85.625
-      } else if (this.cost6 > 6000) {
+      } else if (this.cost6 >= 4000) {
         this.poly_5_p6 = 117.5
-      } else if (this.cost6 > 5000) {
+      } else if (this.cost6 >= 3500) {
         this.poly_5_p6 = 149.375
-      } else if (this.cost6 > 3500) {
+      } else if (this.cost6 >= 3000) {
         this.poly_5_p6 = 181.25
-      } else if (this.cost6 > 2000) {
+      } else if (this.cost6 >= 2000) {
         this.poly_5_p6 = 213.125
-      } else if (this.cost6 < 1000) {
+      } else if (this.cost6 <= 500) {
         this.poly_5_p6 = 245
       }
 
-      if (this.cost5 >= 10000) {
+      if (this.cost5 >= 6000) {
         this.poly_5_p5 = -10
-      } else if (this.cost5 > 9000) {
+      } else if (this.cost5 >= 5500) {
         this.poly_5_p5 = 21.875
-      } else if (this.cost5 > 8000) {
+      } else if (this.cost5 >= 5000) {
         this.poly_5_p5 = 53.75
-      } else if (this.cost5 > 7000) {
+      } else if (this.cost5 >= 4500) {
         this.poly_5_p5 = 85.625
-      } else if (this.cost5 > 6000) {
+      } else if (this.cost5 >= 4000) {
         this.poly_5_p5 = 117.5
-      } else if (this.cost5 > 5000) {
+      } else if (this.cost5 >= 3500) {
         this.poly_5_p5 = 149.375
-      } else if (this.cost5 > 3500) {
+      } else if (this.cost5 >= 3000) {
         this.poly_5_p5 = 181.25
-      } else if (this.cost5 > 2000) {
+      } else if (this.cost5 >= 2000) {
         this.poly_5_p5 = 213.125
-      } else if (this.cost5 < 1000) {
+      } else if (this.cost5 <= 500) {
         this.poly_5_p5 = 245
       }
 
-      if (this.cost4 >= 10000) {
+      if (this.cost4 >= 6000) {
         this.poly_5_p4 = -10
-      } else if (this.cost4 > 9000) {
+      } else if (this.cost4 >= 5500) {
         this.poly_5_p4 = 21.875
-      } else if (this.cost4 > 8000) {
+      } else if (this.cost4 >= 5000) {
         this.poly_5_p4 = 53.75
-      } else if (this.cost4 > 7000) {
+      } else if (this.cost4 >= 4500) {
         this.poly_5_p4 = 85.625
-      } else if (this.cost4 > 6000) {
+      } else if (this.cost4 >= 4000) {
         this.poly_5_p4 = 117.5
-      } else if (this.cost4 > 5000) {
+      } else if (this.cost4 >= 3500) {
         this.poly_5_p4 = 149.375
-      } else if (this.cost4 > 3500) {
+      } else if (this.cost4 >= 3000) {
         this.poly_5_p4 = 181.25
-      } else if (this.cost4 > 2000) {
+      } else if (this.cost4 >= 2000) {
         this.poly_5_p4 = 213.125
-      } else if (this.cost4 < 1000) {
+      } else if (this.cost4 <= 500) {
         this.poly_5_p4 = 245
       }
 
-      if (this.cost3 >= 10000) {
+      if (this.cost3 >= 6000) {
         this.poly_5_p3 = -10
-      } else if (this.cost3 > 9000) {
+      } else if (this.cost3 >= 5500) {
         this.poly_5_p3 = 21.875
-      } else if (this.cost3 > 8000) {
+      } else if (this.cost3 >= 5000) {
         this.poly_5_p3 = 53.75
-      } else if (this.cost3 > 7000) {
+      } else if (this.cost3 >= 4500) {
         this.poly_5_p3 = 85.625
-      } else if (this.cost3 > 6000) {
+      } else if (this.cost3 >= 4000) {
         this.poly_5_p3 = 117.5
-      } else if (this.cost3 > 5000) {
+      } else if (this.cost3 >= 3500) {
         this.poly_5_p3 = 149.375
-      } else if (this.cost3 > 3500) {
+      } else if (this.cost3 >= 3000) {
         this.poly_5_p3 = 181.25
-      } else if (this.cost3 > 2000) {
+      } else if (this.cost3 >= 2000) {
         this.poly_5_p3 = 213.125
-      } else if (this.cost3 < 1000) {
+      } else if (this.cost3 <= 500) {
         this.poly_5_p3 = 245
       }
 
-      if (this.cost2 >= 10000) {
+      if (this.cost2 >= 6000) {
         this.poly_5_p2 = -10
-      } else if (this.cost2 > 9000) {
+      } else if (this.cost2 >= 5500) {
         this.poly_5_p2 = 21.875
-      } else if (this.cost2 > 8000) {
+      } else if (this.cost2 >= 5000) {
         this.poly_5_p2 = 53.75
-      } else if (this.cost2 > 7000) {
+      } else if (this.cost2 >= 4500) {
         this.poly_5_p2 = 85.625
-      } else if (this.cost2 > 6000) {
+      } else if (this.cost2 >= 4000) {
         this.poly_5_p2 = 117.5
-      } else if (this.cost2 > 5000) {
+      } else if (this.cost2 >= 3500) {
         this.poly_5_p2 = 149.375
-      } else if (this.cost2 > 3500) {
+      } else if (this.cost2 >= 3000) {
         this.poly_5_p2 = 181.25
-      } else if (this.cost2 > 2000) {
+      } else if (this.cost2 >= 2000) {
         this.poly_5_p2 = 213.125
-      } else if (this.cost2 < 1000) {
+      } else if (this.cost2 <= 500) {
         this.poly_5_p2 = 245
       }
 
-      if (this.cost1 >= 10000) {
+      if (this.cost1 >= 6000) {
         this.poly_5_p1 = -10
-      } else if (this.cost1 > 9000) {
+      } else if (this.cost1 >= 5500) {
         this.poly_5_p1 = 21.875
-      } else if (this.cost1 > 8000) {
+      } else if (this.cost1 >= 5000) {
         this.poly_5_p1 = 53.75
-      } else if (this.cost1 > 7000) {
+      } else if (this.cost1 >= 4500) {
         this.poly_5_p1 = 85.625
-      } else if (this.cost1 > 6000) {
+      } else if (this.cost1 >= 4000) {
         this.poly_5_p1 = 117.5
-      } else if (this.cost1 > 5000) {
+      } else if (this.cost1 >= 3500) {
         this.poly_5_p1 = 149.375
-      } else if (this.cost1 > 3500) {
+      } else if (this.cost1 >= 3000) {
         this.poly_5_p1 = 181.25
-      } else if (this.cost1 > 2000) {
+      } else if (this.cost1 >= 2000) {
         this.poly_5_p1 = 213.125
-      } else if (this.cost1 < 1000) {
+      } else if (this.cost1 <= 500) {
         this.poly_5_p1 = 245
       }
 
