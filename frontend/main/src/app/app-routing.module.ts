@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
-import { CalendarComponent } from './calendar/calendar.component';
 import { CarriersComponent } from './carriers/carriers.component';
 import { EditComponent } from './edit/edit.component';
 import { FinanceComponent } from './finance/finance.component';
@@ -31,8 +30,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent, canActivate: [LoginserviceService] },
   { path: 'forgetPassword', component: ForgetPasswordComponent },
   { path: "user-client", component: UserClientComponent, canActivate: [LoginserviceService] },
-  { path: "visits", component: VisitsComponent, canActivate: [LoginserviceService] },
-  { path: "calendar", component: CalendarComponent, canActivate: [LoginserviceService] }
+  { path: "visits", component: VisitsComponent, canActivate: [LoginserviceService] }
 ];
 
 @NgModule({
