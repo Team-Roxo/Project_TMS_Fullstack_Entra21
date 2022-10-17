@@ -59,6 +59,8 @@ export class ShipQtComponent implements OnInit {
 
     this.quotes = new Array()
 
+    document.getElementById('load-screen')?.setAttribute('style', 'display: block')
+
     //ATUALIZA BOUNCE
     this.http.put(this.APIBouncePut + this.loginService.idBounce, null)
     //FIM DO BOUNCE
@@ -105,54 +107,54 @@ export class ShipQtComponent implements OnInit {
               console.log(response[i].taxa);
 
               if (this.cubagem >= 30) {
-                this.precoFrete = ((Math.random() * 30) + this.distance * response[i].taxa * this.cubagem) / 7000;
+                this.precoFrete = 35+((Math.random() * 30) + this.distance * response[i].taxa * this.cubagem) / 7000;
                 this.tempo = Math.floor(Math.random() * 10 + 6);
                 this.quotes.push({ precoFrete: this.precoFrete.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }), tempo: this.tempo, start_adress: this.start_adress, end_address: this.end_address, carrier: response[i].razao, vol: this.vol, cubagem: this.cubagem, carrierID: response[i].id, pessoaID: this.loginService.pessoaID });
                 console.log("Foi no IF");
-                
-              } else if(this.cubagem >= 20 && this.cubagem <=30){
-              this.precoFrete = ((Math.random() * 20) + this.distance * response[i].taxa * this.cubagem) / 6500;
-              this.tempo = Math.floor(Math.random() * 10 + 3);
-              this.quotes.push({ precoFrete: this.precoFrete.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }), tempo: this.tempo, start_adress: this.start_adress, end_address: this.end_address, carrier: response[i].razao, vol: this.vol, cubagem: this.cubagem, carrierID: response[i].id, pessoaID: this.loginService.pessoaID });
-              console.log("Foi no ELSE IF 1");
 
-            }else if(this.cubagem >= 15 && this.cubagem <=20){
-              this.precoFrete = ((Math.random() * 20) + this.distance * response[i].taxa * this.cubagem) / 6000;
-              this.tempo = Math.floor(Math.random() * 10 + 2);
-              this.quotes.push({ precoFrete: this.precoFrete.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }), tempo: this.tempo, start_adress: this.start_adress, end_address: this.end_address, carrier: response[i].razao, vol: this.vol, cubagem: this.cubagem, carrierID: response[i].id, pessoaID: this.loginService.pessoaID });
-              console.log("Foi no ELSE IF 2");
+              } else if (this.cubagem >= 20 && this.cubagem <= 30) {
+                this.precoFrete = 30+((Math.random() * 20) + this.distance * response[i].taxa * this.cubagem) / 6500;
+                this.tempo = Math.floor(Math.random() * 10 + 3);
+                this.quotes.push({ precoFrete: this.precoFrete.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }), tempo: this.tempo, start_adress: this.start_adress, end_address: this.end_address, carrier: response[i].razao, vol: this.vol, cubagem: this.cubagem, carrierID: response[i].id, pessoaID: this.loginService.pessoaID });
+                console.log("Foi no ELSE IF 1");
 
-            }else if(this.cubagem >= 10 && this.cubagem <=15){
-              this.precoFrete = ((Math.random() * 20) + this.distance * response[i].taxa * this.cubagem) / 5000;
-              this.tempo = Math.floor(Math.random() * 10 + 2);
-              this.quotes.push({ precoFrete: this.precoFrete.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }), tempo: this.tempo, start_adress: this.start_adress, end_address: this.end_address, carrier: response[i].razao, vol: this.vol, cubagem: this.cubagem, carrierID: response[i].id, pessoaID: this.loginService.pessoaID });
-              console.log("Foi no ELSE IF 3");
+              } else if (this.cubagem >= 15 && this.cubagem <= 20) {
+                this.precoFrete = 25+((Math.random() * 20) + this.distance * response[i].taxa * this.cubagem) / 6000;
+                this.tempo = Math.floor(Math.random() * 10 + 2);
+                this.quotes.push({ precoFrete: this.precoFrete.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }), tempo: this.tempo, start_adress: this.start_adress, end_address: this.end_address, carrier: response[i].razao, vol: this.vol, cubagem: this.cubagem, carrierID: response[i].id, pessoaID: this.loginService.pessoaID });
+                console.log("Foi no ELSE IF 2");
 
-            }else if(this.cubagem >= 7 && this.cubagem <=10){
-              this.precoFrete = ((Math.random() * 20) + this.distance * response[i].taxa * this.cubagem) / 4000;
-              this.tempo = Math.floor(Math.random() * 10 + 2);
-              this.quotes.push({ precoFrete: this.precoFrete.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }), tempo: this.tempo, start_adress: this.start_adress, end_address: this.end_address, carrier: response[i].razao, vol: this.vol, cubagem: this.cubagem, carrierID: response[i].id, pessoaID: this.loginService.pessoaID });
-              console.log("Foi no ELSE IF 4");
+              } else if (this.cubagem >= 10 && this.cubagem <= 15) {
+                this.precoFrete = 20+((Math.random() * 20) + this.distance * response[i].taxa * this.cubagem) / 5000;
+                this.tempo = Math.floor(Math.random() * 10 + 2);
+                this.quotes.push({ precoFrete: this.precoFrete.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }), tempo: this.tempo, start_adress: this.start_adress, end_address: this.end_address, carrier: response[i].razao, vol: this.vol, cubagem: this.cubagem, carrierID: response[i].id, pessoaID: this.loginService.pessoaID });
+                console.log("Foi no ELSE IF 3");
 
-            }else if(this.cubagem >= 4 && this.cubagem <=7){
-              this.precoFrete = ((Math.random() * 20) + this.distance * response[i].taxa * this.cubagem) / 3000;
-              this.tempo = Math.floor(Math.random() * 10 + 2);
-              this.quotes.push({ precoFrete: this.precoFrete.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }), tempo: this.tempo, start_adress: this.start_adress, end_address: this.end_address, carrier: response[i].razao, vol: this.vol, cubagem: this.cubagem, carrierID: response[i].id, pessoaID: this.loginService.pessoaID });
-              console.log("Foi no ELSE IF 5");
+              } else if (this.cubagem >= 7 && this.cubagem <= 10) {
+                this.precoFrete = 12+((Math.random() * 20) + this.distance * response[i].taxa * this.cubagem) / 4000;
+                this.tempo = Math.floor(Math.random() * 10 + 2);
+                this.quotes.push({ precoFrete: this.precoFrete.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }), tempo: this.tempo, start_adress: this.start_adress, end_address: this.end_address, carrier: response[i].razao, vol: this.vol, cubagem: this.cubagem, carrierID: response[i].id, pessoaID: this.loginService.pessoaID });
+                console.log("Foi no ELSE IF 4");
 
-            }else if(this.cubagem >= 2 && this.cubagem <=4){
-              this.precoFrete = ((Math.random() * 20) + this.distance * response[i].taxa * this.cubagem) / 2000;
-              this.tempo = Math.floor(Math.random() * 10 + 1);
-              this.quotes.push({ precoFrete: this.precoFrete.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }), tempo: this.tempo, start_adress: this.start_adress, end_address: this.end_address, carrier: response[i].razao, vol: this.vol, cubagem: this.cubagem, carrierID: response[i].id, pessoaID: this.loginService.pessoaID });
-              console.log("Foi no ELSE IF 6");
+              } else if (this.cubagem >= 4 && this.cubagem <= 7) {
+                this.precoFrete = 9+((Math.random() * 20) + this.distance * response[i].taxa * this.cubagem) / 3000;
+                this.tempo = Math.floor(Math.random() * 10 + 2);
+                this.quotes.push({ precoFrete: this.precoFrete.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }), tempo: this.tempo, start_adress: this.start_adress, end_address: this.end_address, carrier: response[i].razao, vol: this.vol, cubagem: this.cubagem, carrierID: response[i].id, pessoaID: this.loginService.pessoaID });
+                console.log("Foi no ELSE IF 5");
 
-            }else if(this.cubagem <= 2){
-              this.precoFrete = ((Math.random() * 20) + this.distance * response[i].taxa * this.cubagem) / 1000;
-              this.tempo = Math.floor(Math.random() * 10 + 1);
-              this.quotes.push({ precoFrete: this.precoFrete.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }), tempo: this.tempo, start_adress: this.start_adress, end_address: this.end_address, carrier: response[i].razao, vol: this.vol, cubagem: this.cubagem, carrierID: response[i].id, pessoaID: this.loginService.pessoaID });
-              console.log("Foi no ELSE IF 7");
-            }
-            
+              } else if (this.cubagem >= 2 && this.cubagem <= 4) {
+                this.precoFrete = 7+((Math.random() * 20) + this.distance * response[i].taxa * this.cubagem) / 2000;
+                this.tempo = Math.floor(Math.random() * 10 + 1);
+                this.quotes.push({ precoFrete: this.precoFrete.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }), tempo: this.tempo, start_adress: this.start_adress, end_address: this.end_address, carrier: response[i].razao, vol: this.vol, cubagem: this.cubagem, carrierID: response[i].id, pessoaID: this.loginService.pessoaID });
+                console.log("Foi no ELSE IF 6");
+
+              } else if (this.cubagem <= 2) {
+                this.precoFrete = 5+((Math.random() * 20) + this.distance * response[i].taxa * this.cubagem) / 1000;
+                this.tempo = Math.floor(Math.random() * 10 + 1);
+                this.quotes.push({ precoFrete: this.precoFrete.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }), tempo: this.tempo, start_adress: this.start_adress, end_address: this.end_address, carrier: response[i].razao, vol: this.vol, cubagem: this.cubagem, carrierID: response[i].id, pessoaID: this.loginService.pessoaID });
+                console.log("Foi no ELSE IF 7");
+              }
+
             }
 
           })
@@ -164,8 +166,8 @@ export class ShipQtComponent implements OnInit {
           this.altura = 0
           this.peso = 0
           this.destinatario = ""
-          
-          document.getElementById('load-screen')?.setAttribute('style', 'display: block')
+
+
 
           setTimeout(() => {
             document.getElementById('load-screen')?.setAttribute('style', 'display: none')
@@ -180,8 +182,7 @@ export class ShipQtComponent implements OnInit {
 
   regRecentQuotes(id: number, priceQuote: number, prazo: number, origem: string, destino: string, carrierID: number, cubagem: number, pessoaID: number) {
 
-    this.progress = -1
-    this.succeed = -1
+    this.progress = id
 
     console.log(priceQuote);
 
@@ -197,20 +198,24 @@ export class ShipQtComponent implements OnInit {
 
     this.quoteService.regRecentQuotes(build)
 
-    document.getElementById('load-screen')?.setAttribute('style', 'display: block')
+    // document.getElementById('load-screen')?.setAttribute('style', 'display: block')
 
-    setTimeout(() => {
-      document.getElementById('load-screen')?.setAttribute('style', 'display: none')
-    }, 600);
+    // setTimeout(() => {
+    //   document.getElementById('load-screen')?.setAttribute('style', 'display: none')
+    // }, 600);
 
     console.log(id);
 
     setTimeout(() => {
       this.succeed = id
       setTimeout(() => {
-        this.ngOnInit()
+        this.quotes.splice(id, 1)
+        this.progress = -1
+        this.succeed = -1
       }, 3000);
     }, 1500)
+
+
 
   }
 

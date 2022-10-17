@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit {
 
             if (response == "") {
               this.loginService.progress = false;
-              alert("USUARIO OU SENHA ERRADOS")
+              
             } else if (response.status == '500') {
               this.loginService.progress = false;
               console.log('Erro no Servidor! Por favor aguarde!');

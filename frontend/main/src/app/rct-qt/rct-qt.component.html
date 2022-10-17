@@ -1,30 +1,38 @@
 <div id="load-screen" style="display: none;">
-    <div id="load" class="fas fa-circle-notch fa-spin fade show"></div>
-  </div>
+  <div id="load" class="fas fa-circle-notch fa-spin fade show"></div>
+</div>
 
 <table class="table table-bordered">
-    <thead>
-        <th>Action</th>
-        <th>Shipping Price</th>
-        <th>Deadline</th>
-        <th>Carrier</th>
-        <th>Origin</th>
-        <th>Destiny</th>
-        <th>Cubed Weight</th>
-        <th>User</th>
-    </thead>
-    <tbody>
-          <tr *ngFor="let recQuote of recQuotes;let i = index;">
-            <td class="align-items-center"><button [hidden]="succeed==this.recQuote.id" class="btn btn-primary" (click)="regPackage(this.recQuote.id ,this.recQuote.price, this.recQuote.await, this.recQuote.origin, this.recQuote.destiny, this.recQuote.carrier_id, this.recQuote.cub_height)"><i [ngClass]="{'fas fa-circle-notch fa-spin':progress==this.recQuote.id}"></i> Criar pacote</button><button disabled [hidden]="succeed!=this.recQuote.id" class="btn btn-success"><i class="fas fa-check"></i> Added!</button></td>
+  <thead>
+    <th>Action</th>
+    <th>Shipping Price</th>
+    <th>Deadline</th>
+    <th>Carrier</th>
+    <th>Origin</th>
+    <th>Destiny</th>
+    <th>Cubed Weight</th>
+    <th>User</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let recQuote of recQuotes;let i = index;">
+      <td class="align-items-center">
+        <button [hidden]="succeed==this.recQuote.id" class="btn btn-primary"
+          (click)="regPackage(this.recQuote.id ,this.recQuote.price, this.recQuote.await, this.recQuote.origin, this.recQuote.destiny, this.recQuote.carrier_id, this.recQuote.cub_height)">
+          <i [ngClass]="{'fas fa-circle-notch fa-spin':progress==this.recQuote.id}"></i> Criar pacote
+        </button>
+        <button disabled [hidden]="succeed!=this.recQuote.id" class="btn btn-success">
+          <i class="fas fa-check"></i> Added!
+        </button>
+      </td>
 
-            <td>R${{recQuote.price}}</td>
-            <td>{{recQuote.await}} dias úteis</td>
-            <td>{{recQuote.razaoTransportadora}}</td>
-            <td>{{recQuote.origin}}</td>
-            <td>{{recQuote.destiny}}</td>
-            <td>{{recQuote.cub_height}} kg</td>
-            <td>{{recQuote.nomePessoa}}</td>
+      <td>R${{recQuote.price}}</td>
+      <td>{{recQuote.await}} dias úteis</td>
+      <td>{{recQuote.razaoTransportadora}}</td>
+      <td>{{recQuote.origin}}</td>
+      <td>{{recQuote.destiny}}</td>
+      <td>{{recQuote.cub_height}} kg</td>
+      <td>{{recQuote.nomePessoa}}</td>
 
-        </tr>
-    </tbody>
+    </tr>
+  </tbody>
 </table>
