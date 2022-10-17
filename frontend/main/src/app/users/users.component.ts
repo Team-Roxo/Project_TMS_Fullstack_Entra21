@@ -97,7 +97,7 @@ export class UsersComponent implements OnInit {
 
   }
 
-  adicionar(name: string, email: string, document: string, birth: string) {
+  adicionar(name: string, email: string, documento: string, birth: string) {
 
     this.http.put('http://34.95.208.13:8080/user/disbounce/' + this.login.idBounce, null)
       .subscribe((response) => {
@@ -107,11 +107,17 @@ export class UsersComponent implements OnInit {
     let build = {
       "nome": name,
       "email": email,
-      "document": document,
+      "document": documento,
       "birth": birth
     }
 
     this.usersService.adicionar(build)
+
+    document.getElementById('load-screen')?.setAttribute('style', 'display: block')
+
+    setTimeout(() => {
+      document.getElementById('load-screen')?.setAttribute('style', 'display: none')
+    }, 600);
 
     setTimeout(() => {
       this.ngOnInit();
