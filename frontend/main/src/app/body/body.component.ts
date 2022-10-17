@@ -53,10 +53,13 @@ export class BodyComponent implements OnInit {
 
       setTimeout(() => {
 
-        if (this.loginService.birth || this.loginService.document) {
-          console.log('DOCUMENTOS CORRETOS!');
-        } else {
+        if (!this.loginService.birth) {
           this.notificacoes.push({ title: "Complete seu Cadastro!", text: "Clique aqui para concluir!", route: "edit" })
+        }else if(!this.loginService.document){
+          this.notificacoes.push({ title: "Complete seu Cadastro!", text: "Clique aqui para concluir!", route: "edit" })
+        }
+         else {
+          console.log('DOCUMENTOS CORRETOS!');
         }
 
         // if (this.loginService.document) {
