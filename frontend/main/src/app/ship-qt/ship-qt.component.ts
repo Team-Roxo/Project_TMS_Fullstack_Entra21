@@ -164,7 +164,12 @@ export class ShipQtComponent implements OnInit {
           this.altura = 0
           this.peso = 0
           this.destinatario = ""
+          
+          document.getElementById('load-screen')?.setAttribute('style', 'display: block')
 
+          setTimeout(() => {
+            document.getElementById('load-screen')?.setAttribute('style', 'display: none')
+          }, 1000);
 
         })
     } else {
@@ -191,6 +196,12 @@ export class ShipQtComponent implements OnInit {
     }
 
     this.quoteService.regRecentQuotes(build)
+
+    document.getElementById('load-screen')?.setAttribute('style', 'display: block')
+
+    setTimeout(() => {
+      document.getElementById('load-screen')?.setAttribute('style', 'display: none')
+    }, 600);
 
     console.log(id);
 

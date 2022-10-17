@@ -138,12 +138,16 @@ export class UsersComponent implements OnInit {
       this.http.delete('http://34.95.208.13:8080/user/' + idReceiver).subscribe();
       console.log('DELETE EXECUTA BY ADMIN');
 
-    }else{
+    } else {
       this.http.delete('http://34.95.208.13:8080/user/links/' + idReceiver + '/' + idSender).subscribe();
       console.log('DELETE EXECUTA BY CLIENT');
     }
 
+    document.getElementById('load-screen')?.setAttribute('style', 'display: block')
 
+    setTimeout(() => {
+      document.getElementById('load-screen')?.setAttribute('style', 'display: none')
+    }, 600);
 
     setTimeout(() => {
       this.ngOnInit();
@@ -156,6 +160,8 @@ export class UsersComponent implements OnInit {
     this.http.put('http://34.95.208.13:8080/user/disbounce/' + this.login.idBounce, null)
       .subscribe((response) => {
         console.log(response);
+
+
       })
 
     let build = {
@@ -171,11 +177,16 @@ export class UsersComponent implements OnInit {
 
         console.log(response);
 
+
       })
+
+
 
     setTimeout(() => {
       this.ngOnInit();
     }, 500);
+
+
 
   }
 
