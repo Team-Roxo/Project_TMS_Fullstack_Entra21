@@ -13,6 +13,12 @@
 >><b>2.1. <a href="#org_geral"> Visão Geral</b></a>
 >>
 >><b>2.2. <a href="#org_fluxograma"> Fluxograma</b></a>
+>>
+>><b>2.3. <a href="#org_estrutura"> Estrutura Macro</b></a>
+>>
+>><b>2.4. <a href=""> Futuras Features</b></a>
+>>
+>><b>2.5. <a href=""> Instalação </b></a>
 >
 ><b>3. SOFTWARE</b>
 >
@@ -116,7 +122,7 @@
 
 #### &nbsp;&nbsp;&nbsp;&nbsp; <b>A cópia do recurso está disponível a todos, podendo ser modificada e alterada. Fica proibida a venda, distribuição ou repasse da mesma. </b>
 
-#### &nbsp;&nbsp;&nbsp;&nbsp; A maioria dos recurso e tecnologias são de código livre (open-source) ou teste de avaliação por tempo determinado (Google Cloud), afim de trazer a melhor experiência do uso de um software funcional. Devido ao nosso objetivo de comprovar os conhecimentos adquiridos, algumas partes do software são simulados devido ao tempo e resposta que levaria na realidade, acelerando, assim, o processo de entrega, por exemplo, para que possa ser vista em tempo real o processamento de dados, tanto localmente quanto em nuvem.
+#### &nbsp;&nbsp;&nbsp;&nbsp; A maioria dos recurso e tecnologias são de código livre (open-source) ou teste de avaliação por tempo determinado (Google Cloud), afim de trazer a melhor experiência do uso de um software funcional. Devido ao nosso objetivo de comprovar os conhecimentos adquiridos, algumas partes do software são simulados (porém não "Mockados") devido ao tempo e resposta que levaria na realidade, acelerando, assim, o processo de entrega, por exemplo, para que possa ser vista em tempo real o processamento de dados, tanto localmente quanto em nuvem.
 
 <br/>
 
@@ -137,6 +143,7 @@
 > #### Tecnologias:
 >> * ##### <img align=center alt=kaka-vscode height=25 width=40 src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/spring/spring-original.svg" /> Spring Boot
 >> * ##### <img align="center" alt="kaka-Angular" height="25" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/angularjs/angularjs-original.svg" /> Angular
+>> * ##### <img align=center alt=electron height=25 width=40 src=https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/electron/electron-original.svg> Electron
 >> * ##### <img align=center alt=kaka-vscode height=25 width=40 src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/mysql/mysql-original.svg" /> MySQL
 > #
 > #### Ferramentas:
@@ -147,6 +154,10 @@
 > #
 > #### Metodologia:
 >> * ##### <img align=center alt=kaka-vscode height=25 width=40 src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/trello/trello-plain.svg" /> Trello - Kanban
+> #
+> #### Versionamento:
+>> * ##### <img align="center" alt=git height=25 width=40 src=https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/github/github-original.svg> Github
+>> * ##### <img align=center alt=git height=25 width=40 src=https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/git/git-original.svg> Git
 
 </details>
 <br/><br/>
@@ -159,11 +170,35 @@
 #### &nbsp;&nbsp;&nbsp;&nbsp; 
 
 </details>
-
+<br><br>
 <details open id="org_fluxograma">
 <summary><b>2.2 - Fluxograma</b></summary>
 
 
+
+</details>
+<br><br>
+<details open id="org_estrutura">
+<summary><b>2.3 - Estruturamento Macro</b></summary>
+
+#### &nbsp;&nbsp;&nbsp;&nbsp; Começando pelo nosso <b>Banco de Dados</b>, sua organização foi detalhadamente pensada para os fins que queríamos, como por exemplo um método muito utilizado por nós, foi o relacionamento dos objetos um com os outros. Isso foi de extrema importância, pois o usuário terá todos os detalhes das transações, além de dificultar o acesso direto aos dados.
+
+#### &nbsp;&nbsp;&nbsp;&nbsp; Em nossa <b>API RESTful</b>, temos 4 pacotes que movem nossa API (Classe Principal, Controllers, Repositório e Models), dentro deles cada um tem sua função específica e dividida, como os controllers fornecerem as rotas e processamento de dados para nos fornecer o solicitado. A nossa Interface, que é utilizado como repositório, usa <b><i>Anottations</i></b> para comunicar diretamente com o nosso Banco de Dados na nuvem, utilizando as configurações definidas no arquivo <i><b>"application.properties"</i></b>, mas também utilizamos a dependência do JPA Repository, tanto para a comunicação com o Banco de Dados quanto a consulta personalizada, utilizando argumentos como <b>UPDATE, DELETE, EXTRACT, MONTH(), DAY(), BETWEEN</b> e outros. Claro que para DELETE poderíamos utilizar apenas o <i><b>repository.deleteById()</i></b>, mas como em alguns casos o delete não pode ser geral, fizemos funções especificas como <b>Deletar Relacionamento entre usuários e empresas</b> (evitando excluir todos os dados relacionados aos dois).
+
+#### &nbsp;&nbsp;&nbsp;&nbsp; No nosso aplicativo em <b>Angular</b>, fizemos várias validações de resposta quanto de erros ocasionados por credenciais erradas ou falha na comunicação com o servidor. Nenhum dado sensível é armazenado no frontend devido ao pública visualização da mesma, como a <i><b>API_KEY</i></b> utilizada para acessar o Banco de Dados do Google Maps.
+
+</details>
+<br><br>
+<details open id>
+<summary><b>2.4 - Futuras Features</b></summary>
+
+#### &nbsp;&nbsp;&nbsp;&nbsp; Devido a nossa Deadline o projeto final teve sua versão 1.0.0 de acordo com o possível, deixando a maioria de suas funcionalidades operacionais, porém, há mais que queremos fazer e categorizar nosso projeto como um trabalho profissional!
+
+São elas:
+
+ * FEAT - Implementar Criptografia JWP ou AES256
+ * STYLE - Melhoras Design dos Componentes
+ * PERF - Utilizar WebSocket ao invés de um loop cronometrado
 
 </details>
 
