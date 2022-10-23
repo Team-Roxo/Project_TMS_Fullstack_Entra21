@@ -203,13 +203,14 @@
 
 São elas:
 
- * FEAT - Implementar Criptografia JWP ou AES256 no Frontend e Backend
- * STYLE - Melhorar Design dos Componentes
- * PERF - Utilizar WebSocket ao invés de um loop cronometrado
- * PERF - Melhorar cálculo de frete utilizando mais dados
- * FEAT - Utilizar o calendário para armazenar dados de contar a pagar, receber e outros
- * STYLE & PERF - Melhorar o componente "Finance", tanto graficamente quanto em funcionalidades
+ * FEAT - Implementar Criptografia JWP ou AES256 no Frontend e Backend.
+ * STYLE - Melhorar Design dos Componentes.
+ * PERF - Utilizar WebSocket ao invés de um loop cronometrado.
+ * PERF - Melhorar cálculo de frete utilizando mais dados.
+ * FEAT - Utilizar o calendário para armazenar dados de contar a pagar, receber e outros.
+ * STYLE & PERF - Melhorar o componente "Finance", tanto graficamente quanto em funcionalidades.
  * FIX - Melhorar validações de requisições, entrada e processamento de dados.
+ * FEAT - Terminar de implementar a API para envio do email de recuperação da senha ou confirmação do email.
 
 </details>
 
