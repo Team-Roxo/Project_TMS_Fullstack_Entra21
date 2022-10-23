@@ -1,12 +1,17 @@
 {
   "name": "main",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "main": "main.js",
   "scripts": {
+    "electron": "electron .",
+    "electron-build": "ng build && electron .",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -35,6 +40,8 @@
     "@types/jasmine": "~4.0.0",
     "@types/jquery": "^3.5.14",
     "@types/node": "^18.8.4",
+    "angular-cli-ghpages": "^1.0.3",
+    "electron": "^21.2.0",
     "jasmine-core": "~4.3.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",

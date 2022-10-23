@@ -160,6 +160,7 @@
 >> * ##### <img align=center alt=git height=25 width=40 src=https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/git/git-original.svg> Git
 
 </details>
+
 <br/><br/>
 
 # 2 - ORGANIZAÇÃO DO PROJETO
@@ -170,14 +171,18 @@
 #### &nbsp;&nbsp;&nbsp;&nbsp; 
 
 </details>
+
 <br><br>
+
 <details open id="org_fluxograma">
 <summary><b>2.2 - Fluxograma</b></summary>
 
 
 
 </details>
+
 <br><br>
+
 <details open id="org_estrutura">
 <summary><b>2.3 - Estruturamento Macro</b></summary>
 
@@ -188,7 +193,9 @@
 #### &nbsp;&nbsp;&nbsp;&nbsp; No nosso aplicativo em <b>Angular</b>, fizemos várias validações de resposta quanto de erros ocasionados por credenciais erradas ou falha na comunicação com o servidor. Nenhum dado sensível é armazenado no frontend devido ao pública visualização da mesma, como a <i><b>API_KEY</i></b> utilizada para acessar o Banco de Dados do Google Maps.
 
 </details>
+
 <br><br>
+
 <details open id>
 <summary><b>2.4 - Futuras Features</b></summary>
 
@@ -196,9 +203,41 @@
 
 São elas:
 
- * FEAT - Implementar Criptografia JWP ou AES256
- * STYLE - Melhoras Design dos Componentes
+ * FEAT - Implementar Criptografia JWP ou AES256 no Frontend e Backend
+ * STYLE - Melhorar Design dos Componentes
  * PERF - Utilizar WebSocket ao invés de um loop cronometrado
+ * PERF - Melhorar cálculo de frete utilizando mais dados
+ * FEAT - Utilizar o calendário para armazenar dados de contar a pagar, receber e outros
+ * STYLE & PERF - Melhorar o componente "Finance", tanto graficamente quanto em funcionalidades
+ * FIX - Melhorar validações de requisições, entrada e processamento de dados.
+
+</details>
+
+<br></br>
+
+<details open>
+<summary>2.5 - Instalação</summary>
+
+#### &nbsp;&nbsp;&nbsp;&nbsp; Para utilização do nosso aplicativo há duas formas, em modo desenvolvedor ou como usuário final.
+
+#### &nbsp;&nbsp;&nbsp;&nbsp; 1. Para utilizar como desenvolvedor, baixe o repositório do projeto colando o comando `git clone https://github.com/Team-Roxo/Project_TMS_Fullstack_Entra21.git` no seu terminal Git. Você precisará do framework instalado em sua máquina, você pode baixar ele clicando <a href="https://nodejs.org/dist/v16.18.0/node-v16.18.0-x64.msi">aqui</a> e instalando de acordo com os passos solicitados. 
+
+<img src="./assets/img/gitbash.png"></img>
+
+#### &nbsp;&nbsp;&nbsp;&nbsp;Após isso, vá na pasta criada quando você clonou o repositório e entre na subpasta `frontend`, abra o terminal nessa pasta clicando em `Shift + <botão direito do mouse>` e `Abrir janela do PowerShell aqui` ou o terminal referente ao seu Sistema Operacional.
+<img src="./assets/img/powershell_opt.png"></img>
+
+#### &nbsp;&nbsp;&nbsp;&nbsp; Com o Terminal aberto, cole o comando `npm i` e pressione `Enter`. Após o node finalizar a instalação de todas as dependências necessárias, cole o comando `npm start` ou `ng serve` e `Enter` novamente, ele iniciará o servidor do projeto localmente, para acessar e começar a utilizar o aplicativo, basta copiar a URL disponibilizada na penúltima linha de resposta e colar na aba de links do seu browser.
+
+<img src="./assets/img/powershell.png"></img>
+
+#### &nbsp;&nbsp;&nbsp;&nbsp; OBS.: NÃO FECHE O TERMINAL ENQUANTO UTILIZA O APLICATIVO, POIS ELE É NECESSÁRIO PARA O FUNCIONAMENTO DO MESMO!
+
+#### &nbsp;&nbsp;&nbsp;&nbsp; 2. Para utilizar como usuário final, você terá duas opções bem simples. A primeira você precisará do Git instalado em sua e baixar nosso repositório da branch `compiled` utilizando o comando `git clone --branch compiled https://github.com/Team-Roxo/Project_TMS_Fullstack_Entra21.git`, após isso entre na pasta raiz do projeto clonado, clique com o `botão direito do mouse` e selecione `Abrir com Visual Code`.
+
+<img src="./assets/img/visualcode.png"></img>
+
+#### &nbsp;&nbsp;&nbsp;&nbsp; Após abrir o Visual Studio Code, selecione 
 
 </details>
 
